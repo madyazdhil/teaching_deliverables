@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatics Class</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #00709A; /* Retro Blue Background */
+            color: #000000;
+            /* For sharp, pixelated scaling of any images */
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        /* Base style for pixelated containers */
+        .pixel-container {
+            background-color: #F3DDBB; /* Beige/Cream content box */
+            border: 4px solid #000000;
+            padding: 1rem;
+            position: relative;
+        }
+
+        /* Base style for pixelated buttons and links */
+        .pixel-button {
+            background-color: #C7C7C7; /* Light gray */
+            border: 4px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 0.75rem;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            color: #000000;
+            position: relative;
+            transition: all 0.05s linear;
+        }
+
+        .pixel-button:hover {
+            background-color: #dcdcdc;
+        }
+
+        .pixel-button:active, .pixel-button.active {
+            box-shadow: none;
+            transform: translate(4px, 4px);
+            background-color: #FFD700; /* Yellow when active/pressed */
+        }
+        
+        .main-content {
+            margin-left: 20rem; /* Adjusted for new sidebar width */
+            padding: 1.5rem;
+            width: calc(100% - 20rem);
+        }
+
+        .sidebar {
+            width: 18rem;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1.5rem;
+        }
+
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            padding-left: 1rem; /* Indent accordion content */
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Specific header styles */
+        .page-header {
+            background-color: #FFD700; /* Yellow header box */
+            border: 4px solid #000000;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .page-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .page-header h3 {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Prose styles for content inside tabs */
+        .prose {
+            font-size: 0.8rem;
+            line-height: 1.8;
+        }
+        .prose h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .prose ul {
+            list-style-type: square;
+            padding-left: 1rem;
+        }
+        .prose a {
+            color: #00709A;
+            text-decoration: underline;
+        }
+         .prose a:hover {
+            color: #00507A;
+        }
+        .prose img {
+             border: 4px solid #000;
+        }
+    </style>
+</head>
+<body class="text-xs">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="pixel-container h-full flex flex-col">
+            <div class="text-center mb-6 p-2 border-b-4 border-black">
+                <h1 class="text-lg font-bold">Informatics</h1>
+                <p class="text-xs mt-2">by Mr. Ahmad</p>
+            </div>
+            
+            <div id="sidebar-menu" class="w-full space-y-3 overflow-y-auto flex-grow">
+                <!-- Home -->
+                <a href="#" data-meet-id="landing-page" class="pixel-button">Home</a>
+                
+                <!-- JHS Accordion -->
+                <div class="accordion-item pixel-button">JHS</div>
+                <div class="accordion-content space-y-2 mt-2">
+                    <a href="#" data-meet-id="jhs-5" class="pixel-button text-xs">Meet 5</a>
+                    <a href="#" data-meet-id="jhs-6" class="pixel-button text-xs">Meet 6</a>
+                    <a href="#" data-meet-id="jhs-7" class="pixel-button text-xs">Meet 7</a>
+                    <a href="#" data-meet-id="jhs-8" class="pixel-button text-xs">Meet 8</a>
+                </div>
+
+                <!-- IT - 11 Accordion -->
+                <div class="accordion-item pixel-button">IT - 11</div>
+                <div class="accordion-content space-y-2 mt-2">
+                    <a href="#" data-meet-id="it11-1" class="pixel-button text-xs">Meet 1</a>
+                    <a href="#" data-meet-id="it11-2" class="pixel-button text-xs">Meet 2</a>
+                </div>
+
+                <!-- IT - 10 Accordion -->
+                <div class="accordion-item pixel-button">IT - 10</div>
+                <div class="accordion-content space-y-2 mt-2">
+                    <a href="#" data-meet-id="it10-1" class="pixel-button text-xs">Meet 1</a>
+                </div>
+            </div>
+            <div class="mt-auto pt-4 text-center">
+                <img src="https://art.pixilart.com/sr2650a16315217.png" alt="Pixel art wizard character" class="mx-auto" style="width: 100px;" onerror="this.onerror=null;this.style.display='none'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content-container" class="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- TEMPLATES FOR DYNAMIC CONTENT ---
+
+            const openingTabContent = `
+                <div class="pixel-container mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-green-700">Class Rules!</h4>
+                    <p class="mb-4">To make sure we have a great session:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><span class="font-bold">Camera ON:</span> Be present!</li>
+                        <li><span class="font-bold">Muted MIC:</span> Unmute to speak.</li>
+                        <li><span class="font-bold">Raise Hand:</span> For questions.</li>
+                        <li><span class="font-bold">Stay Active:</span> Participate!</li>
+                        <li><span class="font-bold">Take Turns:</span> Listen to others.</li>
+                    </ul>
+                </div>
+                <div class="pixel-container">
+                    <h5 class="text-center text-lg">Let's Get Started!</h5>
+                    <p class="text-center mt-2">Let's begin with a moment of prayer.</p>
+                </div>
+            `;
+
+            const closingTabContent = `
+                 <div class="pixel-container mb-6">
+                    <h5 class="text-center text-lg">It's a wrap!</h5>
+                    <p class="text-center mt-2">Let's end today's class with prayer.</p>
+                </div>
+                <div class="pixel-container">
+                    <h5 class="text-center text-xl text-green-700">You Crushed It!</h5>
+                    <p class="text-center text-lg mt-2">See You Next Time!</p>
+                </div>
+            `;
+
+            // --- DATA FOR EACH PAGE/MEETING ---
+
+            const meetingsData = {
+                'landing-page': {
+                    title: 'Welcome!',
+                    subtitle: 'Informatics Material Bank',
+                    tabs: [
+                        { id: 'about-teacher', name: 'About', content: `
+                            <h4 class="text-lg">About Mr. Ahmad Yazid</h4>
+                            <div class="flex flex-col sm:flex-row items-center gap-4 mt-4">
+                                <img src="https://art.pixilart.com/359a1017833691c.png" alt="Pixel art teacher" class="w-32 border-4 border-black" onerror="this.onerror=null;this.style.display='none'">
+                                <p>Mr. Ahmad has been teaching for the past 4 years. He started as a laboratory assistant, teaching university juniors. He then began professionally teaching kids ages 8-16, introducing them to coding from the basics to expert levels using Scratch, Construct, Roblox Studio, and Python. He is now a proud member of Alta Global School, teaching informatics to JHS and SHS students.</p>
+                            </div>
+                        `},
+                        { id: 'contact-me', name: 'Contact', content: `
+                            <h4 class="text-lg">Contact Me</h4>
+                            <div class="space-y-4 mt-4">
+                                <p>Feel free to reach out!</p>
+                                <p><a href="https://wa.me/0882019861992" target="_blank">WhatsApp</a></p>
+                                <p><a href="https://linkedin.com/in/ahmad-yazid-hilmi" target="_blank">LinkedIn</a></p>
+                            </div>
+                        `}
+                    ]
+                },
+                'jhs-5': {
+                    title: 'JHS - Meeting 5',
+                    subtitle: 'Introduction to Text Coding',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'intro', name: 'Intro', content: `
+                            <h4>What is Informatics?</h4>
+                            <p class="mt-4">Informatics is the science of information. It's about how we create, manage, and use information. It's a blend of computer science, info theory, and human-computer interaction.</p>
+                            `
+                        },
+                        { id: 'data-info', name: 'Data', content: `
+                            <h4>The Importance of Data</h4>
+                            <p class="mt-4">Data is the raw material of informatics. Without data, there is no information. We'll explore how data is collected, stored, and processed to create meaningful insights.</p>
+                            <img src="https://art.pixilart.com/sr26521598f45a6.png" alt="Pixel art computer" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">
+                            `
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'jhs-6': {
+                    title: 'JHS - Meeting 6',
+                    subtitle: 'Fundamentals of Programming',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'what-is-code', name: 'Coding', content: `
+                            <h4>What is Code?</h4>
+                            <p class="mt-4">Coding is using a programming language to tell a computer what to do. We'll learn the basic building blocks like variables, loops, and functions.</p>`
+                        },
+                        { id: 'algorithms', name: 'Algorithms', content: `
+                            <h4>Intro to Algorithms</h4>
+                            <p class="mt-4">An algorithm is a set of instructions, like a recipe. We'll look at simple algorithms and practice creating our own.</p>
+                            <img src="https://art.pixilart.com/sr233306871c828.png" alt="Pixel art lightbulb" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">
+                            `
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'jhs-7': {
+                    title: 'JHS - Meeting 7',
+                    subtitle: 'Data Structures',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'data-struct', name: 'Structures', content: `
+                            <h4>What are Data Structures?</h4>
+                            <p class="mt-4">They are ways of organizing and storing data. Think of lists, dictionaries, and arrays. Choosing the right one makes your code more efficient!</p>
+                            <img src="https://art.pixilart.com/sr217823e59074d.png" alt="Pixel art blocks" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">`
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                 'jhs-8': {
+                    title: 'JHS - Meeting 8',
+                    subtitle: 'Problem Solving',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'problem-solving', name: 'Logic', content: `
+                            <h4>Computational Thinking</h4>
+                            <p class="mt-4">We will learn how to break down large problems into smaller, manageable steps. This is a key skill for any programmer.</p>
+                            <img src="https://art.pixilart.com/sr26639b787593c.png" alt="Pixel art question mark block" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">`
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it11-1': {
+                    title: 'IT-11 - Meeting 1',
+                    subtitle: 'Advanced Algorithms',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'graph-theory', name: 'Graphs', content: `
+                            <h4>Graph Theory</h4>
+                            <p class="mt-4">We'll dive deep into graph theory and explore algorithms like Dijkstra's and Breadth-First Search, essential for solving network problems.</p>
+                            <img src="https://art.pixilart.com/sr231c51db3f0e0.png" alt="Pixel art connected nodes" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">`
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it11-2': {
+                    title: 'IT-11 - Meeting 2',
+                    subtitle: 'Machine Learning Basics',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'ml-intro', name: 'ML Intro', content: `
+                            <h4>Intro to ML</h4>
+                            <p class="mt-4">We will cover supervised and unsupervised learning, and how to train a simple machine learning model.</p>
+                            <img src="https://art.pixilart.com/sr24b5952f41b31.png" alt="Pixel art robot" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">`
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it10-1': {
+                    title: 'IT-10 - Meeting 1',
+                    subtitle: 'Web Dev Fundamentals',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'html-css', name: 'HTML/CSS', content: `
+                            <h4>HTML & CSS</h4>
+                            <p class="mt-4">Learn to structure web pages with HTML and style them with CSS to create beautiful, responsive designs.</p>
+                            <img src="https://art.pixilart.com/sr20e36511a7501.png" alt="Pixel art code bracket" class="my-4 mx-auto max-w-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x200/F3DDBB/000000?text=Image+Not+Found';">`
+                        },
+                        { id: 'js-basics', name: 'JS Basics', content: `
+                            <h4>JavaScript</h4>
+                            <p class="mt-4">We will introduce JavaScript, the language of the web, and learn how to make your websites interactive.</p>`
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                }
+            };
+
+            // --- RENDER AND EVENT HANDLING LOGIC ---
+
+            const mainContentContainer = document.getElementById('main-content-container');
+            const sidebarMenu = document.getElementById('sidebar-menu');
+
+            function renderMeeting(meetingId) {
+                const meeting = meetingsData[meetingId];
+                if (!meeting) {
+                    mainContentContainer.innerHTML = `<div class="pixel-container"><p>Meeting not found.</p></div>`;
+                    return;
+                }
+
+                // Create the main content HTML
+                let htmlContent = `
+                    <div class="page-header">
+                        <h2>${meeting.title}</h2>
+                        <h3>${meeting.subtitle}</h3>
+                    </div>
+                    <div class="pixel-container">
+                        <div class="flex border-b-4 border-black mb-4 space-x-2">
+                `;
+
+                // Add tab buttons
+                meeting.tabs.forEach((tab, index) => {
+                    const activeClass = index === 0 ? 'active' : '';
+                    htmlContent += `<button class="tab-button pixel-button flex-1 text-xs ${activeClass}" data-tab="${tab.id}">${tab.name}</button>`;
+                });
+
+                htmlContent += `</div>`;
+
+                // Add tab content divs
+                meeting.tabs.forEach((tab, index) => {
+                    const activeClass = index === 0 ? 'active' : '';
+                    htmlContent += `<div id="${tab.id}" class="tab-content prose max-w-none p-4 ${activeClass}">${tab.content}</div>`;
+                });
+
+                htmlContent += `</div>`;
+                mainContentContainer.innerHTML = htmlContent;
+
+                // Attach event listeners for the new tab buttons
+                const tabButtons = mainContentContainer.querySelectorAll('.tab-button');
+                const tabContents = mainContentContainer.querySelectorAll('.tab-content');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+
+                        button.classList.add('active');
+                        document.getElementById(button.dataset.tab).classList.add('active');
+                    });
+                });
+            }
+
+            // Accordion functionality
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Optional: Close other accordions
+                    // accordionItems.forEach(otherItem => {
+                    //     if (otherItem !== item) {
+                    //         otherItem.nextElementSibling.classList.remove('active');
+                    //         otherItem.classList.remove('active');
+                    //     }
+                    // });
+                    item.classList.toggle('active');
+                    item.nextElementSibling.classList.toggle('active');
+                });
+            });
+
+            // Handle sidebar menu clicks
+            sidebarMenu.addEventListener('click', (event) => {
+                const target = event.target.closest('a');
+                if (target && target.dataset.meetId) {
+                    event.preventDefault();
+                    
+                    // Update active state in sidebar
+                    sidebarMenu.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+                    target.classList.add('active');
+
+                    renderMeeting(target.dataset.meetId);
+                }
+            });
+            
+            // Initial load
+            renderMeeting('landing-page');
+            sidebarMenu.querySelector('a[data-meet-id="landing-page"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
+

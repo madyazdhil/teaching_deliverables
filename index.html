@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatics Class</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* New Color Palette */
+        :root {
+            --bg-light: #F8F9FA;
+            --text-dark: #333745;
+            --text-light: #6B7280;
+            --border-soft: #E0E0E0;
+            --primary-blue: #2596BE;
+            --primary-yellow: #F7B32B;
+            --accent-green: #2ECC71;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .sidebar {
+            width: 18rem;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            background-color: var(--white);
+            border-right: 1px solid var(--border-soft);
+        }
+
+        .main-content {
+            margin-left: 19rem; /* Adjusted for new sidebar width */
+            padding: 2rem;
+            width: calc(100% - 19rem);
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .sidebar-link:hover {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .sidebar-link.active {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .accordion-header {
+             cursor: pointer;
+        }
+
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            padding-left: 1.5rem; /* Indent accordion content */
+            margin-top: 0.5rem;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+        
+        .tab-button {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .tab-button.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Custom card style */
+        .card {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Prose styles for content inside tabs */
+        .prose h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .prose p, .prose li {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-dark);
+        }
+         .prose a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+         .prose a:hover {
+            text-decoration: underline;
+        }
+        .prose img {
+            border-radius: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar flex flex-col">
+        <div class="text-left mb-8 p-2">
+            <h1 class="text-2xl font-bold" style="color: var(--primary-blue);">Informatics</h1>
+            <p class="text-sm mt-1" style="color: var(--text-light);">by Mr. Ahmad</p>
+        </div>
+        
+        <nav id="sidebar-menu" class="w-full space-y-2 flex-grow overflow-y-auto">
+            <!-- Home -->
+            <a href="#" data-meet-id="landing-page" class="sidebar-link">Home</a>
+            
+            <!-- JHS Accordion -->
+            <div class="accordion-header sidebar-link">JHS</div>
+            <div class="accordion-content space-y-1">
+                <a href="#" data-meet-id="jhs-5" class="sidebar-link text-sm">Meet 5</a>
+                <a href="#" data-meet-id="jhs-6" class="sidebar-link text-sm">Meet 6</a>
+                <a href="#" data-meet-id="jhs-7" class="sidebar-link text-sm">Meet 7</a>
+                <a href="#" data-meet-id="jhs-8" class="sidebar-link text-sm">Meet 8</a>
+            </div>
+
+            <!-- IT - 11 Accordion -->
+            <div class="accordion-header sidebar-link">IT - 11</div>
+            <div class="accordion-content space-y-1">
+                <a href="#" data-meet-id="it11-1" class="sidebar-link text-sm">Meet 1</a>
+                <a href="#" data-meet-id="it11-2" class="sidebar-link text-sm">Meet 2</a>
+            </div>
+
+            <!-- IT - 10 Accordion -->
+            <div class="accordion-header sidebar-link">IT - 10</div>
+            <div class="accordion-content space-y-1">
+                <a href="#" data-meet-id="it10-1" class="sidebar-link text-sm">Meet 1</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content-container" class="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const openingTabContent = `
+                <div style="background-color: #E9F5F9; border-color: #BEE3F0;" class="border p-6 rounded-xl mb-6">
+                    <h4 class="text-xl font-semibold mb-3" style="color: #2596BE;">Class Rules!</h4>
+                    <p style="color: #333745;" class="mb-4">To make sure we have a great session:</p>
+                    <ul class="list-disc list-inside space-y-2" style="color: #333745;">
+                        <li><span class="font-semibold">Camera ON:</span> Be present!</li>
+                        <li><span class="font-semibold">Muted MIC:</span> Unmute to speak.</li>
+                        <li><span class="font-semibold">Raise Hand:</span> For questions.</li>
+                        <li><span class="font-semibold">Stay Active:</span> Participate!</li>
+                        <li><span class="font-semibold">Take Turns:</span> Listen to others.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 border p-6 rounded-xl text-center">
+                    <h5 class="font-bold text-2xl" style="color: #333745;">Let's Get Started!</h5>
+                    <p class="mt-2" style="color: #6B7280;">Let's begin with a moment of prayer.</p>
+                </div>
+            `;
+
+            const closingTabContent = `
+                 <div class="bg-gray-50 border p-6 rounded-xl text-center mb-6">
+                    <h5 class="font-bold text-2xl" style="color: #333745;">It's a wrap!</h5>
+                    <p class="mt-2" style="color: #6B7280;">Let's end today's class with prayer.</p>
+                </div>
+                <div style="background-color: #FEF6E4; border-color: #FDEBC8;" class="border p-8 rounded-xl text-center">
+                    <h5 class="font-bold text-3xl" style="color: #D68910;">You Crushed It!</h5>
+                    <p class="text-xl mt-2" style="color: #6B7280;">See You Next Time!</p>
+                </div>
+            `;
+
+            const meetingsData = {
+                'landing-page': {
+                    title: 'Welcome!',
+                    subtitle: 'Informatics Material Bank',
+                    tabs: [
+                        { id: 'about-teacher', name: 'About', content: `
+                            <h4>About Mr. Ahmad Yazid</h4>
+                            <div class="flex flex-col md:flex-row items-center gap-8 mt-4">
+                                <img src="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?q=80&w=400&auto=format&fit=crop" alt="Teacher with laptop" class="w-full md:w-1/3 h-auto object-cover rounded-xl shadow-md">
+                                <div class="prose">
+                                    <p>Mr. Ahmad has been teaching for the past 4 years. He started as a laboratory assistant, teaching university juniors. He then began professionally teaching kids ages 8-16, introducing them to coding from the basics to expert levels using Scratch, Construct, Roblox Studio, and Python. He is now a proud member of Alta Global School, teaching informatics to JHS and SHS students.</p>
+                                </div>
+                            </div>
+                        `},
+                        { id: 'contact-me', name: 'Contact', content: `
+                            <h4>Contact Me</h4>
+                            <div class="space-y-4 mt-4 text-lg">
+                                <p>Feel free to reach out!</p>
+                                <p><a href="https://wa.me/0882019861992" target="_blank">WhatsApp</a></p>
+                                <p><a href="https://linkedin.com/in/ahmad-yazid-hilmi" target="_blank">LinkedIn</a></p>
+                            </div>
+                        `}
+                    ]
+                },
+                'jhs-5': {
+                    title: 'JHS - Meeting 5',
+                    subtitle: 'Introduction to Text Coding',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'intro', name: 'Intro', content: `
+                            <h4>What is Informatics?</h4>
+                            <p>Informatics is the science of information. It's about how we create, manage, and use information. It's a blend of computer science, info theory, and human-computer interaction.</p>
+                        `},
+                        { id: 'data-info', name: 'Data', content: `
+                            <h4>The Importance of Data</h4>
+                            <p>Data is the raw material of informatics. Without data, there is no information. We'll explore how data is collected, stored, and processed to create meaningful insights.</p>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data analytics charts on a screen" class="my-6">
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'jhs-6': {
+                    title: 'JHS - Meeting 6',
+                    subtitle: 'Fundamentals of Programming',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'what-is-code', name: 'Coding', content: `
+                            <h4>What is Code?</h4>
+                            <p>Coding is using a programming language to tell a computer what to do. We'll learn the basic building blocks like variables, loops, and functions.</p>
+                             <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop" alt="Colorful code on a screen" class="my-6">
+                        `},
+                        { id: 'algorithms', name: 'Algorithms', content: `
+                            <h4>Intro to Algorithms</h4>
+                            <p>An algorithm is a set of instructions, like a recipe. We'll look at simple algorithms and practice creating our own.</p>
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'jhs-7': {
+                    title: 'JHS - Meeting 7',
+                    subtitle: 'Data Structures',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'data-struct', name: 'Structures', content: `
+                            <h4>What are Data Structures?</h4>
+                            <p>They are ways of organizing and storing data. Think of lists, dictionaries, and arrays. Choosing the right one makes your code more efficient!</p>
+                            <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=800&auto=format&fit=crop" alt="Abstract network of nodes" class="my-6">
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                 'jhs-8': {
+                    title: 'JHS - Meeting 8',
+                    subtitle: 'Problem Solving',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'problem-solving', name: 'Logic', content: `
+                            <h4>Computational Thinking</h4>
+                            <p>We will learn how to break down large problems into smaller, manageable steps. This is a key skill for any programmer.</p>
+                            <img src="https://images.unsplash.com/photo-1522542550221-31fd1f5e14c8?q=80&w=800&auto=format&fit=crop" alt="Person planning on a whiteboard" class="my-6">
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it11-1': {
+                    title: 'IT-11 - Meeting 1',
+                    subtitle: 'Advanced Algorithms',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'graph-theory', name: 'Graphs', content: `
+                            <h4>Graph Theory</h4>
+                            <p>We'll dive deep into graph theory and explore algorithms like Dijkstra's and Breadth-First Search, essential for solving network problems.</p>
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it11-2': {
+                    title: 'IT-11 - Meeting 2',
+                    subtitle: 'Machine Learning Basics',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'ml-intro', name: 'ML Intro', content: `
+                            <h4>Intro to ML</h4>
+                            <p>We will cover supervised and unsupervised learning, and how to train a simple machine learning model.</p>
+                            <img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=800&auto=format&fit=crop" alt="Abstract art representing AI" class="my-6">
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it10-1': {
+                    title: 'IT-10 - Meeting 1',
+                    subtitle: 'Web Dev Fundamentals',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'html-css', name: 'HTML/CSS', content: `
+                            <h4>HTML & CSS</h4>
+                            <p>Learn to structure web pages with HTML and style them with CSS to create beautiful, responsive designs.</p>
+                        `},
+                        { id: 'js-basics', name: 'JS Basics', content: `
+                            <h4>JavaScript</h4>
+                            <p>We will introduce JavaScript, the language of the web, and learn how to make your websites interactive.</p>
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                }
+            };
+
+            const mainContentContainer = document.getElementById('main-content-container');
+            const sidebarMenu = document.getElementById('sidebar-menu');
+
+            function renderMeeting(meetingId) {
+                const meeting = meetingsData[meetingId];
+                if (!meeting) {
+                    mainContentContainer.innerHTML = `<div class="card"><p>Meeting not found.</p></div>`;
+                    return;
+                }
+
+                let htmlContent = `
+                    <header class="mb-8">
+                        <h2 class="text-4xl font-bold text-gray-800">${meeting.title}</h2>
+                        <h3 class="text-xl text-gray-500 mt-2">${meeting.subtitle}</h3>
+                    </header>
+                    <div class="card">
+                        <div class="flex border-b border-gray-200 mb-6">
+                `;
+
+                meeting.tabs.forEach((tab, index) => {
+                    const activeClass = index === 0 ? 'active' : '';
+                    htmlContent += `<button class="tab-button ${activeClass}" data-tab="${tab.id}">${tab.name}</button>`;
+                });
+
+                htmlContent += `</div><div class="prose max-w-none">`;
+
+                meeting.tabs.forEach((tab, index) => {
+                    const activeClass = index === 0 ? 'active' : '';
+                    htmlContent += `<div id="${tab.id}" class="tab-content ${activeClass}">${tab.content}</div>`;
+                });
+
+                htmlContent += `</div></div>`;
+                mainContentContainer.innerHTML = htmlContent;
+
+                const tabButtons = mainContentContainer.querySelectorAll('.tab-button');
+                const tabContents = mainContentContainer.querySelectorAll('.tab-content');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+
+                        button.classList.add('active');
+                        document.getElementById(button.dataset.tab).classList.add('active');
+                    });
+                });
+            }
+
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    header.nextElementSibling.classList.toggle('active');
+                });
+            });
+
+            sidebarMenu.addEventListener('click', (event) => {
+                const target = event.target.closest('a');
+                if (target && target.dataset.meetId) {
+                    event.preventDefault();
+                    
+                    sidebarMenu.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+                    target.classList.add('active');
+
+                    renderMeeting(target.dataset.meetId);
+                }
+            });
+            
+            renderMeeting('landing-page');
+            sidebarMenu.querySelector('a[data-meet-id="landing-page"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
+
