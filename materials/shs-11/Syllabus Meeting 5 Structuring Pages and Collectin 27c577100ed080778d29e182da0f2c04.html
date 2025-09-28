@@ -1,0 +1,843 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Syllabus Meeting 5: Structuring Pages and Collecting Information</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.highlight-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.highlight-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.block-color-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.block-color-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="27c57710-0ed0-8077-8d29-e182da0f2c04" class="page sans"><header><h1 class="page-title">Syllabus Meeting 5: <strong>Structuring Pages and Collecting Information</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="27c57710-0ed0-8078-8637-d65dfc7124ca" class=""><strong>Student Grade:</strong> 11</p><h3 id="27c57710-0ed0-8061-8c9c-dd7af3d4c980" class=""><strong>Warm-Up: Quick Review (5 mins)</strong></h3><p id="27c57710-0ed0-8041-8798-eda913a403fc" class="">Let&#x27;s start by looking at the profile pages we built last time. Open up your <code>index.html</code> file. We created a basic page with headings, paragraphs, and images. Today, we are going to learn how to organize that content into logical sections and how to add forms to make our pages interactive!</p><h3 id="27c57710-0ed0-801d-a4bf-ef01361a87c0" class=""><strong>Topic 1: Structuring Content with </strong><code><strong>&lt;div&gt;</strong></code><strong> and Layout Elements</strong></h3><h3 id="27c57710-0ed0-80ec-a880-df5e40dc9d4d" class=""><strong>The </strong><code><strong>&lt;div&gt;</strong></code><strong> Element: The All-Purpose Container</strong></h3><p id="27c57710-0ed0-807b-939b-d649dd23a97f" class="">The <code>&lt;div&gt;</code> element is one of the most common tags in HTML. Think of it as an empty cardboard box that you can use to <strong>group other elements together</strong>. It has no special look on its own, but it&#x27;s incredibly useful for organizing your page into sections so you can style them or move them around together.</p><ul id="27c57710-0ed0-809e-8e13-f9c5e17164b2" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;div&gt;</strong></code><strong> is a &quot;Block&quot; Element:</strong> By default, a <code>&lt;div&gt;</code> is a <strong>block-level element</strong>. This means it always starts on a new line and takes up the full width available on the page, like a whole paragraph block.</li></ul><p id="27c57710-0ed0-80d7-84dd-e05986224203" class=""><strong>Example: </strong><code><strong>&lt;div&gt;</strong></code><strong> as a container</strong> In this example, we group a heading and two paragraphs inside a single <code>&lt;div&gt;</code>. We can then add a border to the entire group with one style attribute.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8049-b14c-d72165a855ee" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;div style=&quot;border:1px solid black; padding:10px; margin-bottom:10px;&quot;&gt;
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;London is the capital city of England.&lt;/p&gt;
+  &lt;p&gt;London has over 9 million inhabitants.&lt;/p&gt;
+&lt;/div&gt;
+
+</code></pre><p id="27c57710-0ed0-8071-ae3e-f1715380f06a" class=""><strong>Result:</strong></p><h2 id="27c57710-0ed0-8084-8a23-f8bc12a374d8" class="">London</h2><p id="27c57710-0ed0-8016-8ce3-d459614ef8bc" class="">London is the capital city of England. London has over 9 million inhabitants.</p><p id="27c57710-0ed0-802a-acc4-faaec8d67bcf" class=""><strong>How to Center a </strong><code><strong>&lt;div&gt;</strong></code> If you give a <code>&lt;div&gt;</code> a specific width that is less than the full page width, it will align to the left by default. To center it, you can use the inline style <code>margin:auto;</code>.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8051-a843-cb10998ac69f" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;div style=&quot;width:300px; margin:auto; border:1px solid black; padding:10px;&quot;&gt;
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;London is the capital city of England.&lt;/p&gt;
+  &lt;p&gt;London has over 9 million inhabitants.&lt;/p&gt;
+&lt;/div&gt;
+
+</code></pre><p id="27c57710-0ed0-802d-a6ad-fc65a5fb7d33" class="">This tells the browser to automatically calculate equal margins on the left and right, pushing the box into the center.</p><h3 id="27c57710-0ed0-8043-80b8-e2175638866b" class=""><strong>HTML Layout Elements: Giving Your Page Meaning</strong></h3><p id="27c57710-0ed0-80b6-a342-fbf269ddca65" class="">While you can build an entire website using only <code>&lt;div&gt;</code>s, modern HTML gives us special tags that work like <code>&lt;div&gt;</code>s but have meaningful names. These are called <strong>semantic elements</strong> because they describe the <em>meaning</em> or <em>purpose</em> of the content inside them.</p><p id="27c57710-0ed0-805a-898b-c1bf1da5d74e" class=""><strong>Why use Semantic Elements?</strong></p><ul id="27c57710-0ed0-8058-85fb-fc8c8c6e13ae" class="bulleted-list"><li style="list-style-type:disc"><strong>Accessibility:</strong> Screen readers can use them to help visually impaired users navigate your page.</li></ul><ul id="27c57710-0ed0-8085-9d36-f0133c6ee87d" class="bulleted-list"><li style="list-style-type:disc"><strong>SEO:</strong> Search engines like Google can better understand your content, which can help your site rank higher.</li></ul><ul id="27c57710-0ed0-80f5-97d7-fb091f110340" class="bulleted-list"><li style="list-style-type:disc"><strong>Clarity:</strong> It makes your code easier for you and other developers to read.</li></ul><p id="27c57710-0ed0-8018-ac42-c13c29683054" class="">
+</p><figure id="27c57710-0ed0-804d-a8bb-e7f3abd99d9c" class="image"><a href="https://www.w3schools.com/html/img_sem_elements.gif"><img src="https://www.w3schools.com/html/img_sem_elements.gif"/></a></figure><p id="27c57710-0ed0-80fa-b961-ee750f4ad7b7" class=""><strong>Meet the Layout Team:</strong></p><ul id="27c57710-0ed0-80a6-beb6-c259b47de54d" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;header&gt;</code>: The introduction for a page or a section. Usually contains the logo, site title, and main navigation.</li></ul><ul id="27c57710-0ed0-80b8-b33f-e26c86876e60" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;nav&gt;</code>: Specifically for a block of navigation links.</li></ul><ul id="27c57710-0ed0-80fe-9a2a-f205ad10e3e9" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;section&gt;</code>: A major, standalone section of a document. Think of it like a chapter in a book.</li></ul><ul id="27c57710-0ed0-80e1-968b-ef0c92ec49d4" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;article&gt;</code>: For self-contained content that could be distributed on its own, like a blog post, news story, or forum post.</li></ul><ul id="27c57710-0ed0-80e6-a8ea-e9ee24c8a798" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;aside&gt;</code>: For content that is indirectly related to the main content, like a sidebar with related links or an author bio.</li></ul><ul id="27c57710-0ed0-80d7-becc-e4ddb067febf" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;footer&gt;</code>: The footer for a page or a section. Usually contains copyright information, contact details, and links.</li></ul><ul id="27c57710-0ed0-805e-ac8d-d97ff99b6905" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;details&gt;</code> &amp; <code>&lt;summary&gt;</code>: A fun interactive widget that the user can open and close to see more details. <code>&lt;summary&gt;</code>provides the visible heading.</li></ul><p id="27c57710-0ed0-8000-8cd8-dfe7e306cb91" class=""><strong>Example of a Semantic Layout:</strong> Here is an example of a simple webpage layout using these meaningful elements.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80b5-b7e2-c02ff254ee0b" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;body&gt;
+
+&lt;header style=&quot;background-color:#f1f1f1; text-align:center; padding:20px;&quot;&gt;
+  &lt;h1&gt;My Awesome Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav style=&quot;background-color:#333; overflow:hidden;&quot;&gt;
+  &lt;a href=&quot;#&quot; style=&quot;color:white; padding:14px 20px; float:left;&quot;&gt;Home&lt;/a&gt;
+  &lt;a href=&quot;#&quot; style=&quot;color:white; padding:14px 20px; float:left;&quot;&gt;About&lt;/a&gt;
+  &lt;a href=&quot;#&quot; style=&quot;color:white; padding:14px 20px; float:left;&quot;&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;section style=&quot;padding:20px;&quot;&gt;
+  &lt;h2&gt;About Me&lt;/h2&gt;
+  &lt;p&gt;This is where I talk about myself.&lt;/p&gt;
+  &lt;details&gt;
+    &lt;summary&gt;More Fun Facts&lt;/summary&gt;
+    &lt;p&gt;I also enjoy playing the guitar and coding!&lt;/p&gt;
+  &lt;/details&gt;
+&lt;/section&gt;
+
+&lt;footer style=&quot;background-color:#333; color:white; text-align:center; padding:10px; margin-top:20px;&quot;&gt;
+  &lt;p&gt;Copyright 2025&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;/body&gt;
+
+</code></pre><h3 id="27c57710-0ed0-802e-a556-c320ff870f04" class=""><strong>Topic 2: Collecting Information with HTML Forms</strong></h3><p id="27c57710-0ed0-80b8-b07b-f06e9d20ae67" class="">An HTML <code>&lt;form&gt;</code> is used to collect input from the user. This is how you create login pages, contact forms, search bars, and quizzes!</p><h3 id="27c57710-0ed0-801c-94a6-fa9350723b92" class=""><strong>The Core Form Elements</strong></h3><ul id="27c57710-0ed0-80c1-af21-ecf00fdf12ce" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;form&gt;</strong></code><strong>:</strong> This is the main container for all your form elements. It has two crucial attributes:<ul id="27c57710-0ed0-8090-927f-e573dfaeb74a" class="bulleted-list"><li style="list-style-type:circle"><code>action</code>: This attribute tells the browser <strong>where</strong> to send the form data when it&#x27;s submitted. This is usually a URL to a script on a server.</li></ul><ul id="27c57710-0ed0-809c-8625-fe04b45e777e" class="bulleted-list"><li style="list-style-type:circle"><code>method</code>: This attribute tells the browser <strong>how</strong> to send the data. The two most common methods are <code>GET</code> and <code>POST</code>.</li></ul></li></ul><p id="27c57710-0ed0-80be-a8eb-f06acd4c6699" class=""><strong>Understanding </strong><code><strong>GET</strong></code><strong> vs. </strong><code><strong>POST</strong></code></p><p id="27c57710-0ed0-802c-aaef-eecdb5f141ef" class="">Think of it like sending mail:</p><ul id="27c57710-0ed0-8090-acff-d4d39ff68ced" class="bulleted-list"><li style="list-style-type:disc"><code><strong>method=&quot;GET&quot;</strong></code><strong> is like sending a postcard.</strong> ✉️ The data you submit is attached to the URL in the address bar, visible to everyone. It looks like this: <code>.../process.html?name=John&amp;age=14</code>. This method is fine for things like search queries, but you should <strong>never</strong> use it for sensitive information like passwords.</li></ul><ul id="27c57710-0ed0-80cd-b5c4-d43d8708517f" class="bulleted-list"><li style="list-style-type:disc"><code><strong>method=&quot;POST&quot;</strong></code><strong> is like sending a sealed letter.</strong> 📮 The data is sent in the body of the web request, hidden from the URL. This is more secure and is used for sending private information, like when you log in to an account.</li></ul><ul id="27c57710-0ed0-809e-93ff-f61f998d1eeb" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;input&gt;</strong></code><strong>:</strong> This is the most used form element. The <code>type</code> attribute changes how it looks and behaves.</li></ul><ul id="27c57710-0ed0-80ac-b7c5-d1c272ef03f7" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;label&gt;</strong></code><strong>:</strong> This defines a label for an input element. It&#x27;s important for two reasons:<ol type="1" id="27c57710-0ed0-806a-9138-dc192883819d" class="numbered-list" start="1"><li>It helps screen-reader users understand what the input field is for.</li></ol><ol type="1" id="27c57710-0ed0-80eb-84f1-fe77ebd5b9bd" class="numbered-list" start="2"><li>It allows users to click on the label text to focus on or select the input field, which is great for small radio buttons or checkboxes.</li></ol><ul id="27c57710-0ed0-8087-b413-e9902e8bb322" class="bulleted-list"><li style="list-style-type:circle">The <code>for</code> attribute of the <code>&lt;label&gt;</code> must match the <code>id</code> attribute of the <code>&lt;input&gt;</code> to connect them.</li></ul></li></ul><h3 id="27c57710-0ed0-8013-bba3-eb224692c661" class=""><strong>Common Input Types</strong></h3><table id="27c57710-0ed0-8055-bef8-dce78b705343" class="simple-table"><thead class="simple-table-header"><tr id="27c57710-0ed0-801b-8e26-da657113a9e9"><th id="d}ae" class="simple-table-header-color simple-table-header">Type</th><th id="hH_Z" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="27c57710-0ed0-80e6-9134-ec68ebfc6ef4"><td id="d}ae" class=""><code>&lt;input type=&quot;text&quot;&gt;</code></td><td id="hH_Z" class="">A single-line text input field.</td></tr><tr id="27c57710-0ed0-80e2-b9b8-f89e25c0611f"><td id="d}ae" class=""><code>&lt;input type=&quot;radio&quot;&gt;</code></td><td id="hH_Z" class="">A radio button (for selecting ONE of many choices).</td></tr><tr id="27c57710-0ed0-809e-b7aa-d55a3e9065ea"><td id="d}ae" class=""><code>&lt;input type=&quot;checkbox&quot;&gt;</code></td><td id="hH_Z" class="">A checkbox (for selecting ZERO or MORE of many choices).</td></tr><tr id="27c57710-0ed0-80bc-abb0-c0c56ae8a320"><td id="d}ae" class=""><code>&lt;input type=&quot;submit&quot;&gt;</code></td><td id="hH_Z" class="">A button that submits the form.</td></tr><tr id="27c57710-0ed0-806f-849e-f13bd895fe63"><td id="d}ae" class=""><code>&lt;input type=&quot;button&quot;&gt;</code></td><td id="hH_Z" class="">A simple clickable button.</td></tr></tbody></table><blockquote id="27c57710-0ed0-80b4-8177-d59f957f4043" class="">The name Attribute is VITAL! Notice that each input field must have a name attribute to be submitted. This name becomes the &quot;key&quot; for the data. For example, name=&quot;username&quot; with a value of &quot;Sarah&quot; becomes username=Sarah when it&#x27;s sent. If the name attribute is missing, the data from that field will not be sent.</blockquote><h3 id="27c57710-0ed0-8049-abb8-febcbca36231" class=""><strong>Topic 3: Showcase: Seeing Form Data in Action!</strong></h3><p id="27c57710-0ed0-80d6-9c31-c6220a56d99f" class="">Let&#x27;s do a quick experiment to see how the <code>GET</code> method works. This is a sneak peek for when we learn JavaScript later!</p><p id="27c57710-0ed0-80c8-99db-de48f1e25179" class=""><strong>Activity: The Data Postcard</strong></p><ol type="1" id="27c57710-0ed0-80a2-b87b-d790f539a365" class="numbered-list" start="1"><li>Create two new HTML files in the same folder: <code>formindex.html</code> and <code>process.html</code>.</li></ol><ol type="1" id="27c57710-0ed0-80a3-9f5b-c006ed74f6df" class="numbered-list" start="2"><li>Copy the code below into each file.</li></ol><p id="27c57710-0ed0-8070-8ac6-f4ef36a406ae" class=""><strong>File 1: </strong><code><strong>formindex.html</strong></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80a7-9a7a-e580fc330f3a" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;HTML Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style=&quot;font-family: sans-serif; padding: 20px;&quot;&gt;
+
+    &lt;h1&gt;Enter Your Details&lt;/h1&gt;
+
+    &lt;!--
+      The &lt;form&gt; tag is the container for our inputs.
+      - The &#x27;action&#x27; attribute tells the browser to send the data to our &#x27;process.html&#x27; page.
+      - The &#x27;method=&quot;GET&quot;&#x27; attribute tells the browser to send the form data in the URL.
+        You will see it in the address bar on the next page!
+    --&gt;
+    &lt;form action=&quot;process.html&quot; method=&quot;GET&quot;&gt;
+
+        &lt;!-- Label for the name input. The &#x27;for&#x27; attribute links it to the input&#x27;s &#x27;id&#x27;. --&gt;
+        &lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
+        &lt;br&gt;
+        &lt;!--
+          The &#x27;name&#x27; attribute is very important. It becomes the key for the data we send.
+          For example: name=John
+        --&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;!-- Label for the age input. --&gt;
+        &lt;label for=&quot;age&quot;&gt;Age:&lt;/label&gt;
+        &lt;br&gt;
+        &lt;!-- The &#x27;name&#x27; attribute here will be &#x27;age&#x27;. For example: age=25 --&gt;
+        &lt;input type=&quot;number&quot; id=&quot;age&quot; name=&quot;age&quot; required&gt;
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;!-- A simple submit button to send the form. --&gt;
+        &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre><p id="27c57710-0ed0-80c6-9a4b-df5ac81398aa" class=""><strong>File 2: </strong><code><strong>process.html</strong></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8046-b775-e3d4dfc43379" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Data Sent&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style=&quot;font-family: sans-serif; padding: 20px;&quot;&gt;
+
+    &lt;h1&gt;Data Sent Successfully!&lt;/h1&gt;
+
+    &lt;!--
+      With pure HTML, we cannot dynamically read the data from the URL.
+      However, you can look at the browser&#x27;s address bar right now!
+      You will see the data you entered, like this:
+      .../process.html?name=John&amp;age=14
+    --&gt;
+    &lt;p style=&quot;background-color: #eee; border: 1px solid #ccc; padding: 10px; border-radius: 5px;&quot;&gt;
+        &lt;strong&gt;Teaching Moment:&lt;/strong&gt; Check the browser&#x27;s address bar! You&#x27;ll see the values you just entered attached to the URL. That&#x27;s the `GET` method in action.
+    &lt;/p&gt;
+
+    &lt;h2&gt;Data We Imagine Was Saved:&lt;/h2&gt;
+    &lt;p&gt;We can&#x27;t show your *actual* data here without JavaScript, but imagine we saved it!&lt;/p&gt;
+    &lt;p&gt;name = John&lt;/p&gt;
+    &lt;p&gt;age = 14&lt;/p&gt;
+
+    &lt;br&gt;
+
+    &lt;!-- This is a link that takes the user back to the form page. --&gt;
+    &lt;a href=&quot;formindex.html&quot;&gt;Go Back&lt;/a&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre><p id="27c57710-0ed0-8052-9b75-caadeadaf791" class=""><strong>Instructions:</strong></p><ol type="1" id="27c57710-0ed0-801b-829f-fcfc96143756" class="numbered-list" start="1"><li>Open <code>formindex.html</code> in your browser.</li></ol><ol type="1" id="27c57710-0ed0-808e-b905-c79fb36cd70d" class="numbered-list" start="2"><li>Fill in your name and an age, then click &quot;Submit&quot;.</li></ol><ol type="1" id="27c57710-0ed0-8092-950d-fbe440085f87" class="numbered-list" start="3"><li><strong>Look at the address bar on the </strong><code><strong>process.html</strong></code><strong> page!</strong> You will see your data right there in the URL. You&#x27;ve just used the <code>GET</code> method!</li></ol><h3 id="27c57710-0ed0-80f5-8b50-f769670af89e" class=""><strong>Topic 4: More Awesome Form Elements</strong></h3><ul id="27c57710-0ed0-8047-8ade-f4a30498479c" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;textarea&gt;</strong></code><strong>:</strong> A multi-line text box for longer messages.<ul id="27c57710-0ed0-8000-a6b2-dea0bc9f7f54" class="bulleted-list"><li style="list-style-type:circle"><code>rows</code>: Specifies the visible number of lines.</li></ul><ul id="27c57710-0ed0-80f2-b3fd-e49f118c9d0a" class="bulleted-list"><li style="list-style-type:circle"><code>cols</code>: Specifies the visible width (in characters).</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80b1-ae8d-f7553e82be04" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;textarea name=&quot;message&quot; rows=&quot;5&quot; cols=&quot;30&quot; style=&quot;width:250px; height:100px;&quot;&gt;
+The cat was playing in the garden.
+&lt;/textarea&gt;
+
+</code></pre></li></ul><ul id="27c57710-0ed0-8039-b26e-eb9c41643e3e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;select&gt;</strong></code><strong> and </strong><code><strong>&lt;option&gt;</strong></code><strong>:</strong> A drop-down list. <code>&lt;select&gt;</code> is the container and <code>&lt;option&gt;</code> is each choice.<ul id="27c57710-0ed0-8053-bbe9-dcba28f22c2c" class="bulleted-list"><li style="list-style-type:circle"><code>selected</code>: Add this attribute to an option to make it the default choice.</li></ul><ul id="27c57710-0ed0-80bc-8463-e8131cb59b32" class="bulleted-list"><li style="list-style-type:circle"><code>size</code>: Specifies the number of visible options (creates a scroll box).</li></ul><ul id="27c57710-0ed0-80a1-866f-dc60329e19b9" class="bulleted-list"><li style="list-style-type:circle"><code>multiple</code>: Allows the user to select more than one option (usually by holding Ctrl or Cmd).</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8055-accd-fd333eeb62f1" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;label for=&quot;cars&quot;&gt;Choose a car:&lt;/label&gt;
+&lt;select id=&quot;cars&quot; name=&quot;cars&quot;&gt;
+  &lt;option value=&quot;volvo&quot;&gt;Volvo&lt;/option&gt;
+  &lt;option value=&quot;saab&quot;&gt;Saab&lt;/option&gt;
+  &lt;option value=&quot;fiat&quot; selected&gt;Fiat&lt;/option&gt;
+  &lt;option value=&quot;audi&quot;&gt;Audi&lt;/option&gt;
+&lt;/select&gt;
+
+</code></pre></li></ul><ul id="27c57710-0ed0-8044-a9e5-db6cd91fa38c" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;button&gt;</strong></code><strong>:</strong> A clickable button. Always specify the <code>type</code> attribute. <code>type=&quot;button&quot;</code> is a clickable button, while <code>type=&quot;submit&quot;</code>will submit the form.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8067-998d-e21a27300629" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;button type=&quot;button&quot;&gt;Click Me!&lt;/button&gt;
+
+</code></pre></li></ul><ul id="27c57710-0ed0-8094-9dd1-d6ef4cdfbd73" class="bulleted-list"><li style="list-style-type:disc"><code><strong>&lt;fieldset&gt;</strong></code><strong> and </strong><code><strong>&lt;legend&gt;</strong></code><strong>:</strong> Use <code>&lt;fieldset&gt;</code> to draw a box around related data in a form, and <code>&lt;legend&gt;</code> to give the group a caption. This is great for organization.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8016-9397-e621c2bff518" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;form action=&quot;/action_page.php&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Personalia:&lt;/legend&gt;
+    &lt;label for=&quot;fname&quot;&gt;First name:&lt;/label&gt;&lt;br&gt;
+    &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot; value=&quot;John&quot;&gt;&lt;br&gt;
+    &lt;label for=&quot;lname&quot;&gt;Last name:&lt;/label&gt;&lt;br&gt;
+    &lt;input type=&quot;text&quot; id=&quot;lname&quot; name=&quot;lname&quot; value=&quot;Doe&quot;&gt;&lt;br&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+</code></pre></li></ul><h3 id="27c57710-0ed0-804a-9b90-d80b0dc162f8" class=""><strong>Topic 5: Your Grand Mission: Profile Page with a Form!</strong></h3><h3 id="27c57710-0ed0-80b2-9496-e4b98b885d69" class=""><strong>Let&#x27;s Build!</strong></h3><p id="27c57710-0ed0-8032-a902-ee54a06cce0a" class="">Now it&#x27;s time to combine everything you&#x27;ve learned. You will add a contact form to the personal profile page you created in our last session.</p><ol type="1" id="27c57710-0ed0-804c-b719-dab9dbd18f14" class="numbered-list" start="1"><li><strong>Open your </strong><code><strong>index.html</strong></code><strong> file in VS Code.</strong></li></ol><ol type="1" id="27c57710-0ed0-8043-bfaf-ea3fe55b490b" class="numbered-list" start="2"><li><strong>Guided Practice:</strong> Below your existing profile information, create a new section for a contact form using a <code>&lt;section&gt;</code>tag.</li></ol><ol type="1" id="27c57710-0ed0-807a-8bf0-f93e807d0a5a" class="numbered-list" start="3"><li><strong>Create the Form:</strong><ul id="27c57710-0ed0-80db-981f-cf9b9f739ecb" class="bulleted-list"><li style="list-style-type:disc">Add an <code>&lt;h2&gt;</code> that says &quot;Contact Me&quot;.</li></ul><ul id="27c57710-0ed0-8063-bdcc-f4cfbf3be0e6" class="bulleted-list"><li style="list-style-type:disc">Start with a <code>&lt;form action=&quot;/action_page.php&quot; method=&quot;POST&quot;&gt;</code> tag. (We&#x27;ll use POST since this could be private info!).</li></ul><ul id="27c57710-0ed0-8051-b90c-f438790d6fde" class="bulleted-list"><li style="list-style-type:disc">Add a text input field for &quot;Name&quot; (<code>&lt;input type=&quot;text&quot;&gt;</code>). Don&#x27;t forget the <code>&lt;label&gt;</code>.</li></ul><ul id="27c57710-0ed0-8058-85d6-dd1aed7b1fa2" class="bulleted-list"><li style="list-style-type:disc">Add a text input field for &quot;Email&quot;.</li></ul><ul id="27c57710-0ed0-80ca-bccc-d19abd148503" class="bulleted-list"><li style="list-style-type:disc">Add a <code>&lt;textarea&gt;</code> for a &quot;Message&quot;.</li></ul><ul id="27c57710-0ed0-80aa-b0ed-fefb6a513931" class="bulleted-list"><li style="list-style-type:disc">Add a submit button (<code>&lt;input type=&quot;submit&quot;&gt;</code>).</li></ul></li></ol><ol type="1" id="27c57710-0ed0-80ac-8d4b-e30f23b524ef" class="numbered-list" start="4"><li><strong>Independent Task:</strong> Enhance your form using other attributes you learned about:<ul id="27c57710-0ed0-8050-9913-ee900773a270" class="bulleted-list"><li style="list-style-type:disc">Add a <code>placeholder</code> attribute to your Name and Email inputs to give users a hint about what to type (e.g., <code>placeholder=&quot;Enter your name&quot;</code>).</li></ul><ul id="27c57710-0ed0-80bd-85ab-ca1f88f23ed3" class="bulleted-list"><li style="list-style-type:disc">Add the <code>required</code> attribute to the Name input to make sure it can&#x27;t be left empty.</li></ul></li></ol><h3 id="27c57710-0ed0-8044-87e6-f4123963a428" class=""><strong>Topic 6: Save and Share Your Work</strong></h3><h3 id="27c57710-0ed0-80ee-8423-c376fd4ca01e" class=""><strong>GitHub Upload: Your Online Portfolio</strong></h3><p id="27c57710-0ed0-8035-8080-d0892337137d" class="">You&#x27;ve built a webpage with layout and a form! Let&#x27;s save your major update online.</p><p id="27c57710-0ed0-8020-9f2d-e9fc4a3816a8" class="">Open your terminal in VS Code and run these commands:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8093-9ea2-e02e74274e50" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">git add .
+git commit -m &quot;Add layout structure and a contact form to my profile page&quot;
+git push
+
+</code></pre><h3 id="27c57710-0ed0-807c-97c9-dddb42bd0d72" class=""><strong>Topic 7: Closing Reflection</strong></h3><h3 id="27c57710-0ed0-8051-83ee-c0a7e9aef624" class=""><strong>What Did You Learn?</strong></h3><p id="27c57710-0ed0-8051-b4cd-d6c5ceb8c53e" class="">To finish today&#x27;s mission, go to your GitHub repository for this project.</p><ol type="1" id="27c57710-0ed0-803c-865a-f92ee35fc163" class="numbered-list" start="1"><li>Find the <code>README.md</code> file and click the pencil icon to edit it.</li></ol><ol type="1" id="27c57710-0ed0-8080-920b-e55b6cfbee43" class="numbered-list" start="2"><li>At the bottom of the file, answer this question: <strong>&quot;How could the form you built be useful in a real project?&quot;</strong></li></ol><ol type="1" id="27c57710-0ed0-8049-a006-d81d6fd29b8e" class="numbered-list" start="3"><li>Commit your changes to the <code>README.md</code> file.</li></ol><ol type="1" id="27c57710-0ed0-80cc-8e70-f95385d36129" class="numbered-list" start="4"><li><strong>Peer Review:</strong> Find a classmate&#x27;s repository on GitHub. Go to their &quot;Issues&quot; tab and create a new issue to give them one piece of positive feedback on their form design.</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

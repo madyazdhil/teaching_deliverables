@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Syllabus Meeting 5: Designing Logic with Digital Flowcharts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.highlight-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.highlight-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.block-color-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.block-color-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="27c57710-0ed0-80b3-ac54-cbfb6920da71" class="page sans"><header><h1 class="page-title">Syllabus Meeting 5: <strong>Designing Logic with Digital Flowcharts</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="27c57710-0ed0-8078-9700-cd962e40abd2" class=""><strong>Student Grade:</strong> 7</p><h3 id="27c57710-0ed0-8086-832b-fc0353d3af59" class=""><strong>Topic 1: Your Digital Drawing Board: Getting Started with Draw.io</strong></h3><h3 id="27c57710-0ed0-8072-8b2c-f020c2877d65" class=""><strong>Mission Briefing: From Paper to Pixels! 🖱️</strong></h3><p id="27c57710-0ed0-809b-8134-f1bb4915dccf" class="">You&#x27;ve learned how to think like a computer, and now it&#x27;s time to use the tools of a digital designer. We will be using <strong>Draw.io</strong> (which is also called diagrams.net), a free and powerful online tool for creating professional diagrams, including flowcharts!</p><p id="27c57710-0ed0-804c-a7af-e681294ab14d" class=""><strong>Let&#x27;s Get Started:</strong></p><ol type="1" id="27c57710-0ed0-808a-80da-daa119751f55" class="numbered-list" start="1"><li>Open your web browser and go to <strong><a href="https://app.diagrams.net/">https://app.diagrams.net/</a></strong>.</li></ol><ol type="1" id="27c57710-0ed0-80aa-8999-f5b410a05a98" class="numbered-list" start="2"><li>The site will ask you where you want to save your diagram. For now, just choose <strong>&quot;Decide Later&quot;</strong>.</li></ol><ol type="1" id="27c57710-0ed0-80c0-bb25-d72cb1ae2dd7" class="numbered-list" start="3"><li>You now have a blank digital canvas ready for your ideas!</li></ol><p id="27c57710-0ed0-8075-94e4-c0085803617a" class="">On the left-hand side, you&#x27;ll see a library of shapes. We&#x27;ll be using the ones under the <strong>&quot;Flowchart&quot;</strong> section.</p><h3 id="27c57710-0ed0-801d-821b-ec9adf5ef8f9" class=""><strong>Topic 2: The Building Blocks: Decoding Flowchart Symbols</strong></h3><h3 id="27c57710-0ed0-809f-ada8-c98b113cbf70" class=""><strong>Mastering the Symbols of Logic 🔷</strong></h3><p id="27c57710-0ed0-80fb-a372-def39f664151" class="">Every flowchart uses a standard set of symbols to represent different types of actions or decisions. Think of them as a universal language for logic! Let&#x27;s learn the main ones we&#x27;ll be using in Draw.io.</p><p id="27c57710-0ed0-80fc-8a3f-cb63f88070f9" class="">Here’s a breakdown of the most common symbols you&#x27;ll find in the &quot;Flowchart&quot; section of Draw.io:</p><figure id="27c57710-0ed0-80b1-bfa1-cd972c46d4c0" class="image"><a href="Syllabus%20Meeting%205%20Designing%20Logic%20with%20Digital%20Fl%2027c577100ed080b3ac54cbfb6920da71/image.png"><img style="width:699.982666015625px" src="Syllabus%20Meeting%205%20Designing%20Logic%20with%20Digital%20Fl%2027c577100ed080b3ac54cbfb6920da71/image.png"/></a></figure><ul id="27c57710-0ed0-808b-ab30-d4db31bd98da" class="bulleted-list"><li style="list-style-type:disc"><strong>Terminator (Oval):</strong> Represents the <strong>Start</strong> and <strong>End</strong> points of your process. Every flowchart must begin with a &quot;Start&quot; and finish with an &quot;End&quot;.</li></ul><ul id="27c57710-0ed0-807c-a1d1-e18ab1bc3187" class="bulleted-list"><li style="list-style-type:disc"><strong>Process (Rectangle):</strong> This is your main action symbol. It represents a step, a calculation, or an operation. Think of it as a command.<ul id="27c57710-0ed0-8003-872b-e36ab8ad6871" class="bulleted-list"><li style="list-style-type:circle"><em>Examples:</em> &quot;Turn light green,&quot; &quot;Calculate total score,&quot; &quot;Save the file.&quot;</li></ul></li></ul><ul id="27c57710-0ed0-8056-bb67-c15cc74a8b6e" class="bulleted-list"><li style="list-style-type:disc"><strong>Decision (Diamond):</strong> This symbol is crucial for making your flowchart &quot;smart.&quot; It asks a &quot;Yes/No&quot; or &quot;True/False&quot; question. It will always have at least two arrows coming out of it: one for the &quot;Yes&quot; path and one for the &quot;No&quot; path.<ul id="27c57710-0ed0-809e-85a8-c2869a8133a8" class="bulleted-list"><li style="list-style-type:circle"><em>Examples:</em> &quot;Is the timer finished?&quot;, &quot;Is the password correct?&quot;</li></ul></li></ul><ul id="27c57710-0ed0-8076-abbb-d20d2acfd89e" class="bulleted-list"><li style="list-style-type:disc"><strong>Input/Output (Parallelogram):</strong> This shape is used whenever the process needs to get information (input) from a user or display information (output) to a screen.<ul id="27c57710-0ed0-809c-ab1f-c83ab2932fc6" class="bulleted-list"><li style="list-style-type:circle"><em>Input Example:</em> &quot;Get username from keyboard.&quot;</li></ul><ul id="27c57710-0ed0-8026-8e6b-c97241f15c5a" class="bulleted-list"><li style="list-style-type:circle"><em>Output Example:</em> &quot;Display &#x27;Welcome!&#x27; message.&quot;</li></ul></li></ul><ul id="27c57710-0ed0-80a9-bc58-dc958ec5cc61" class="bulleted-list"><li style="list-style-type:disc"><strong>Flow Line (Arrow):</strong> These are the connectors. They show the direction of the process, guiding you from one step to the next.</li></ul><p id="27c57710-0ed0-8047-aa96-f1c31cad33d5" class="">
+</p><p id="27c57710-0ed0-809b-99cf-e1312506ab38" class=""><strong>How to Use Them in Draw.io:</strong></p><ol type="1" id="27c57710-0ed0-803b-af06-c4de18edad9d" class="numbered-list" start="1"><li><strong>Click</strong> a symbol on the left panel to add it to your canvas.</li></ol><ol type="1" id="27c57710-0ed0-8018-970a-f97381deeade" class="numbered-list" start="2"><li><strong>Double-click</strong> inside a shape to type your text.</li></ol><ol type="1" id="27c57710-0ed0-80aa-b7ce-d1c86eece121" class="numbered-list" start="3"><li><strong>Hover</strong> over a shape until blue arrows appear. <strong>Click and drag</strong> an arrow to another shape to connect them.</li></ol><h3 id="27c57710-0ed0-8066-b935-f5ebbd24acdd" class=""><strong>Topic 3: Case Study - The Logic of a Traffic Light</strong></h3><h3 id="27c57710-0ed0-80cf-b6c0-f9687d9763af" class=""><strong>How Do Traffic Lights </strong><em><strong>Really</strong></em><strong> Work? 🚦</strong></h3><p id="27c57710-0ed0-80ae-9ffd-e990f1999cf7" class="">A traffic light is the perfect real-world example of the three core logic concepts working together.</p><ul id="27c57710-0ed0-8047-9090-d64d292233b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Sequencing:</strong> The lights follow a strict order: Green → Yellow → Red. This sequence ensures traffic flows safely and predictably.</li></ul><ul id="27c57710-0ed0-80f0-8839-e8327c4cc92f" class="bulleted-list"><li style="list-style-type:disc"><strong>Conditions:</strong> The &quot;brain&quot; of the traffic light is always asking a question (a condition). The most common question is based on a timer: &quot;<strong>Has the timer for the green light reached 30 seconds?</strong>&quot; This is a decision point, perfect for our <strong>Diamond</strong> symbol.</li></ul><ul id="27c57710-0ed0-80d2-a9bf-d66f58029c29" class="bulleted-list"><li style="list-style-type:disc"><strong>Loops:</strong> Does the traffic light cycle once and then go home for the day? No! It <strong>repeats</strong> its sequence endlessly. This is a <strong>loop</strong>. In a flowchart, we show a loop by drawing a connector line from the end of the process back to an earlier step.</li></ul><h3 id="27c57710-0ed0-809e-9773-cec8b961667d" class=""><strong>Brainstorming Session: What Else is a Loop?</strong></h3><p id="27c57710-0ed0-8074-b3b7-c3aae36d79e9" class="">Before we build our big flowchart, let&#x27;s find loops in the real world. In small groups, brainstorm things that repeat in a cycle.</p><ul id="27c57710-0ed0-800a-9861-d25380a29865" class="bulleted-list"><li style="list-style-type:disc"><em>Examples:</em> A washing machine&#x27;s cycle, brushing your teeth, the hands on a clock, seasons of the year. Be ready to share your ideas!</li></ul><h3 id="27c57710-0ed0-80bc-9fe2-c22935452397" class=""><strong>Topic 4: Flowchart Challenge - Control the Intersection with Draw.io!</strong></h3><h3 id="27c57710-0ed0-80ae-949d-ec3e983b63c7" class=""><strong>Your Mission: Design a Traffic Light Control System 🚗</strong></h3><p id="27c57710-0ed0-8080-be2b-ddd071766a50" class="">Now it&#x27;s time to combine your knowledge of logic and your new skills in Draw.io. Your challenge is to create a digital flowchart that maps out the complete process for a traffic light at a simple North/South and East/West intersection.</p><p id="27c57710-0ed0-80bb-ae55-c08be6f3791c" class=""><strong>The Logic You Need to Map:</strong></p><ol type="1" id="27c57710-0ed0-80ca-9fd7-e4f1fe3fd4f9" class="numbered-list" start="1"><li>The process starts.</li></ol><ol type="1" id="27c57710-0ed0-80f1-81cd-f36a048ddf4f" class="numbered-list" start="2"><li>Turn the North/South (N/S) light <strong>Green</strong> and the East/West (E/W) light <strong>Red</strong>.</li></ol><ol type="1" id="27c57710-0ed0-80b1-af15-cd14051fa5bc" class="numbered-list" start="3"><li>Wait for 30 seconds.</li></ol><ol type="1" id="27c57710-0ed0-800e-92f7-eb91d7ec0e3a" class="numbered-list" start="4"><li>Turn the N/S light <strong>Yellow</strong>.</li></ol><ol type="1" id="27c57710-0ed0-80cc-ad21-fd79b8e86714" class="numbered-list" start="5"><li>Wait for 5 seconds.</li></ol><ol type="1" id="27c57710-0ed0-80e5-98c1-e4b6fb73b0c9" class="numbered-list" start="6"><li>Turn the N/S light <strong>Red</strong>.</li></ol><ol type="1" id="27c57710-0ed0-8092-bf61-e270dec0dcae" class="numbered-list" start="7"><li>Turn the E/W light <strong>Green</strong>.</li></ol><ol type="1" id="27c57710-0ed0-80bf-b8dd-ee95f166033f" class="numbered-list" start="8"><li>Wait for 30 seconds.</li></ol><ol type="1" id="27c57710-0ed0-80c6-b143-c92290cc282e" class="numbered-list" start="9"><li>Turn the E/W light <strong>Yellow</strong>.</li></ol><ol type="1" id="27c57710-0ed0-80fa-ab67-e5e2694c59bc" class="numbered-list" start="10"><li>Wait for 5 seconds.</li></ol><ol type="1" id="27c57710-0ed0-8073-8f28-c749b86a36db" class="numbered-list" start="11"><li>Turn the E/W light <strong>Red</strong>.</li></ol><ol type="1" id="27c57710-0ed0-80a6-8982-d40aebaa660a" class="numbered-list" start="12"><li><strong>Loop!</strong> Go back to step 2 to repeat the cycle forever.</li></ol><p id="27c57710-0ed0-80c9-a326-c9ceb5887732" class=""><strong>Instructions for Draw.io:</strong></p><ol type="1" id="27c57710-0ed0-80f6-9d2c-f9599da75a23" class="numbered-list" start="1"><li>Start your flowchart with a &quot;Terminator&quot; (oval) symbol labeled &quot;Start&quot;.</li></ol><ol type="1" id="27c57710-0ed0-801d-b179-fd168d499749" class="numbered-list" start="2"><li>Use &quot;Process&quot; (rectangle) symbols for all the actions (like &quot;Turn N/S Light Green&quot; or &quot;Wait 30s&quot;).</li></ol><ol type="1" id="27c57710-0ed0-800e-864b-d79e1809623a" class="numbered-list" start="3"><li>Connect your symbols in the correct sequence using the arrows.</li></ol><ol type="1" id="27c57710-0ed0-80ba-ba6b-ef03ffdbbf6d" class="numbered-list" start="4"><li>To create the loop, drag the final arrow from your last step all the way back to the first step of the cycle (&quot;Turn N/S Light Green&quot;).</li></ol><h3 id="27c57710-0ed0-8036-aaea-dddcfb3f0fed" class=""><strong>Topic 5: Present, Discuss, and Reflect</strong></h3><h3 id="27c57710-0ed0-8094-ba00-ecb63b49b617" class=""><strong>Small Group Presentation: Explain Your Logic</strong></h3><p id="27c57710-0ed0-80b5-a4c8-f923e3c0aacc" class="">Once your group has finished your digital flowchart in Draw.io, you will present it to the class. Be prepared to:</p><ol type="1" id="27c57710-0ed0-8078-839a-edd1b7abb378" class="numbered-list" start="1"><li>Share your screen and show your flowchart.</li></ol><ol type="1" id="27c57710-0ed0-8061-8807-ed8b0a5aaf58" class="numbered-list" start="2"><li>Walk the class through your sequence of steps.</li></ol><ol type="1" id="27c57710-0ed0-80cf-93ad-e3e281437c52" class="numbered-list" start="3"><li>Point out exactly where your loop is and why it&#x27;s necessary.</li></ol><h3 id="27c57710-0ed0-80f5-a707-eebacb319d59" class=""><strong>Class Discussion: Why are Loops a Coder&#x27;s Best Friend?</strong></h3><p id="27c57710-0ed0-806f-8656-d26e637fac9e" class="">Let&#x27;s discuss as a class: <strong>How does using a loop in our flowchart help reduce repetition? Imagine you had to write this for a traffic light that runs for 24 hours. Why would a loop be better than writing out every single step?</strong></p><h3 id="27c57710-0ed0-80d3-8e94-eca419d5d7f6" class=""><strong>Reflection Journal Entry</strong></h3><p id="27c57710-0ed0-80ef-8e37-d45139b57130" class="">Now that you&#x27;ve designed logic, think about the logic you follow every day. In your journal, answer the following:</p><ul id="27c57710-0ed0-80f1-989f-dddd9d68d42f" class="bulleted-list"><li style="list-style-type:disc">&quot;Describe a process you do often (like making a sandwich, getting ready for a game, or a simple chore). What is the <strong>sequence</strong> of steps? Is there a <strong>condition</strong> or choice you have to make? Is there a <strong>loop</strong> or repeated action?&quot;</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

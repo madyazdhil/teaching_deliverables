@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Syllabus Meeting 7: From Pictures to Plans - An Intro to Pseudocode</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.highlight-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.highlight-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.block-color-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.block-color-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="27c57710-0ed0-8051-b43f-f62504ccbb48" class="page sans"><header><h1 class="page-title">Syllabus Meeting 7: <strong>From Pictures to Plans - An Intro to Pseudocode</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="27c57710-0ed0-806e-a28c-d046a4b7c307" class=""><strong>Student Grade:</strong> 7</p><h3 id="27c57710-0ed0-80e5-ba7d-dd10b8d16251" class=""><strong>Topic 1: The &quot;Tie Your Shoelaces&quot; Challenge</strong></h3><h3 id="27c57710-0ed0-80b9-acc7-f00cce621906" class=""><strong>Mission Briefing: Can You Give Perfect Instructions? 👟</strong></h3><p id="27c57710-0ed0-8032-ae43-e579887ff782" class="">Let&#x27;s start with a fun challenge. Imagine you are teaching a robot that only understands words, not actions.</p><p id="27c57710-0ed0-804a-bf90-e1665e81f901" class=""><strong>Activity:</strong> In the class chat, write down the instructions on <strong>how to tie a shoelace</strong>. Be as specific and clear as you can!</p><p id="27c57710-0ed0-80a0-aa4d-f5e145aadce3" class=""><em>(Teacher will read a few of the submitted instructions aloud as they come in.)</em></p><h3 id="27c57710-0ed0-809b-855c-c5ff0850e811" class=""><strong>Group Discussion: Where Did We Go Wrong?</strong></h3><p id="27c57710-0ed0-8074-aac3-d4a842a07475" class="">Let&#x27;s talk about the instructions.</p><ul id="27c57710-0ed0-8071-8d4b-ec1787fc2abd" class="bulleted-list"><li style="list-style-type:disc">Were they easy to follow?</li></ul><ul id="27c57710-0ed0-8030-895a-e791dd181f63" class="bulleted-list"><li style="list-style-type:disc">What was confusing or missing?</li></ul><ul id="27c57710-0ed0-80b6-8248-d1d9e829b327" class="bulleted-list"><li style="list-style-type:disc">Did anyone use a word like &quot;loop&quot; without explaining what it meant?</li></ul><ul id="27c57710-0ed0-8069-b86e-c4fee829ede9" class="bulleted-list"><li style="list-style-type:disc">Could a robot <em>actually</em> tie a shoelace with those instructions?</li></ul><p id="27c57710-0ed0-805a-9969-ec0cf99540d4" class="">This activity shows us that plain English, while great for talking to people, can be very messy and unclear when you need to give precise instructions for a complex task. We need something better for talking to computers!</p><h3 id="27c57710-0ed0-802b-a195-ea1777f6006c" class=""><strong>Topic 2: Introducing Pseudocode - A Coder&#x27;s Blueprint</strong></h3><h3 id="27c57710-0ed0-80ed-888e-c49a701271d3" class=""><strong>What is this &quot;Pseudocode&quot; thing? 🤔</strong></h3><p id="27c57710-0ed0-8090-8fc5-c15d39ee8507" class="">You&#x27;ve just seen that plain English can be a bit of a disaster for giving instructions. <strong>Pseudocode</strong> is our solution.</p><p id="27c57710-0ed0-80d3-9a84-f1f221da71b4" class=""><strong>Analogy:</strong> Think of it like a middle ground. It&#x27;s not as strict as a real programming language (like Python or JavaScript), but it&#x27;s much more organized and clear than just talking. It&#x27;s like a <strong>structured recipe</strong> that a computer can almost understand.</p><p id="27c57710-0ed0-80c8-b986-d5c4b0f69124" class="">Today, you will learn to translate your flowchart &quot;drawings&quot; into these structured &quot;recipes.&quot; This is the last step you take before writing real, working code.</p><h3 id="27c57710-0ed0-80ec-8077-cf1a1bdeb219" class=""><strong>Topic 3: Translating Your Flowchart Recipe</strong></h3><h3 id="27c57710-0ed0-8012-8a65-d53728019753" class=""><strong>Teacher Demonstration: From a Sandwich Flowchart to Pseudocode</strong></h3><p id="27c57710-0ed0-80b4-b306-f40e1818841f" class="">Let&#x27;s take a simple, everyday task: making a sandwich.</p><p id="27c57710-0ed0-80ee-8d41-c9062e6f8c55" class=""><strong>Step 1: The Flowchart</strong> First, here is a simple flowchart for making a sandwich. Notice the different shapes for actions and decisions.</p><p id="27c57710-0ed0-8006-9dba-d95f01d9f4d0" class=""><strong>Step 2: The Translation</strong> Now, let&#x27;s translate this flowchart into pseudocode, line-by-line. As we do this, we&#x27;ll introduce some important keywords that give our &quot;recipe&quot; structure.</p><table id="27c57710-0ed0-803d-8d68-de35206a0972" class="simple-table"><thead class="simple-table-header"><tr id="27c57710-0ed0-80da-aff3-f9a1f934b4bc"><th id="TjLu" class="simple-table-header-color simple-table-header">Flowchart Symbol</th><th id="=rpN" class="simple-table-header-color simple-table-header">Pseudocode Keyword/Structure</th><th id="]FiV" class="simple-table-header-color simple-table-header">Example</th></tr></thead><tbody><tr id="27c57710-0ed0-80cf-a079-da83185bdc6e"><td id="TjLu" class=""><strong>Oval (Start/End)</strong></td><td id="=rpN" class=""><code>START</code> / <code>END</code></td><td id="]FiV" class=""><code>START</code> ... <code>END</code></td></tr><tr id="27c57710-0ed0-806c-9031-f7f99e82233f"><td id="TjLu" class=""><strong>Rectangle (Process)</strong></td><td id="=rpN" class="">A clear command</td><td id="]FiV" class=""><code>Get two slices of bread</code></td></tr><tr id="27c57710-0ed0-80e3-95fa-e9e245ecc8ed"><td id="TjLu" class=""><strong>Diamond (Decision)</strong></td><td id="=rpN" class=""><code>IF-THEN-ENDIF</code></td><td id="]FiV" class=""><code>IF cheese is wanted THEN</code>     <code>Add a slice of cheese</code> <code>ENDIF</code></td></tr><tr id="27c57710-0ed0-804e-b155-d61bf5739ea0"><td id="TjLu" class=""><strong>Diamond (Decision with a &quot;No&quot; path)</strong></td><td id="=rpN" class=""><code>IF-THEN-ELSE-ENDIF</code></td><td id="]FiV" class=""><code>IF it is raining THEN</code>     <code>Take umbrella</code> <code>ELSE</code>     <code>Wear sunglasses</code> <code>ENDIF</code></td></tr></tbody></table><p id="27c57710-0ed0-80f8-8e95-d0c47bed448f" class=""><strong>Our Sandwich Pseudocode:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8075-bd26-c2acf44adfa5" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">START
+  Get two slices of bread
+  Put filling on bread
+  IF cheese is wanted THEN
+    Add a slice of cheese
+  ENDIF
+  Put slices of bread together
+END
+
+</code></pre><p id="27c57710-0ed0-801c-889a-e48a7916b53a" class="">Notice how the action &quot;Add a slice of cheese&quot; is <strong>indented</strong>. This is important! It shows that this step <em>only</em> happens if the <code>IF</code>condition is true.</p><h3 id="27c57710-0ed0-80c6-8642-f2deb2af4896" class=""><strong>Topic 4: Your Turn - The Traffic Light Pseudocode</strong></h3><h3 id="27c57710-0ed0-807c-9e73-e5634283ec62" class=""><strong>Your Mission: Translate Your Flowchart! 🚦</strong></h3><p id="27c57710-0ed0-80b1-a8ea-cfea51213892" class="">Now it&#x27;s your turn to be the translator.</p><ol type="1" id="27c57710-0ed0-8071-8e9a-f5780685bf72" class="numbered-list" start="1"><li>Open your traffic light flowchart you created in Draw.io.</li></ol><ol type="1" id="27c57710-0ed0-80ee-84f2-c6bd7acdbad6" class="numbered-list" start="2"><li>In a new text document, translate your flowchart into pseudocode.</li></ol><ol type="1" id="27c57710-0ed0-8070-9ddf-f34c972ad5e8" class="numbered-list" start="3"><li>Remember to use the keywords <code>START</code>, <code>END</code>, and clear commands for each step.</li></ol><ol type="1" id="27c57710-0ed0-8095-b192-c2f001027a67" class="numbered-list" start="4"><li>Since your flowchart has a loop that goes on forever, you can use the keywords <code>LOOP</code> and <code>ENDLOOP</code> to show the repeating section.</li></ol><p id="27c57710-0ed0-8070-8622-f5e440ad1e61" class=""><strong>Example Structure for a Loop:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80c7-8c27-dc7bc00281d5" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">START
+  LOOP
+    ... all the repeating steps go here ...
+    ... like turning lights green, waiting, turning them yellow ...
+  ENDLOOP
+END
+
+</code></pre><h3 id="27c57710-0ed0-809f-8f0a-d04b1c7ea428" class=""><strong>Topic 5: Logic Check, Discussion, and Quiz!</strong></h3><h3 id="27c57710-0ed0-8089-aeb7-c44b1ae05f92" class=""><strong>Pair-Check: Be the Logic Checker</strong></h3><p id="27c57710-0ed0-80be-8d4a-ed251c2636e7" class="">Get into pairs with a classmate. Your job is to review your partner&#x27;s pseudocode. You are a &quot;logic checker,&quot; not a grammar teacher! Can you follow their instructions from start to finish?</p><p id="27c57710-0ed0-8064-a03b-f02895555058" class=""><strong>Check for these three things:</strong></p><ol type="1" id="27c57710-0ed0-80fd-a304-de56eae27fd4" class="numbered-list" start="1"><li><strong>Clarity:</strong> Is each step a clear command? (e.g., &quot;Turn light green&quot; is better than &quot;the light&quot;).</li></ol><ol type="1" id="27c57710-0ed0-808f-8b72-f5bc04ad51cd" class="numbered-list" start="2"><li><strong>Decision Logic (if you have any):</strong> Does every <code>IF</code> have a matching <code>ENDIF</code>? Is the action inside the <code>IF</code> indented correctly?</li></ol><ol type="1" id="27c57710-0ed0-8038-95da-fcf92f46edb5" class="numbered-list" start="3"><li><strong>Completeness:</strong> Does it have a <code>START</code> and an <code>END</code>?</li></ol><p id="27c57710-0ed0-80f7-a42e-f6b2160056d9" class="">
+</p><h3 id="27c57710-0ed0-8053-9f92-d7e03aab6ad1" class=""><strong>Topic 6: Exercise</strong></h3><p id="27c57710-0ed0-803e-97a8-cabbfba618ad" class="">turn these flowchart into Pseudocode!</p><figure id="27c57710-0ed0-8032-8bd5-fa06fae3b0d6" class="image"><a href="https://framerusercontent.com/images/mKctLzfJ7JZkU57fOE7rOyQvsjY.png?width=4006&amp;height=2308"><img src="https://framerusercontent.com/images/mKctLzfJ7JZkU57fOE7rOyQvsjY.png?width=4006&amp;height=2308"/></a></figure><p id="27c57710-0ed0-808a-b929-efae9f03cfc2" class="">
+</p><figure id="27c57710-0ed0-80d1-9ccf-fc57963348ea"><div class="source"><a href="https://www.heflo.com/_next/image?url=https%3A%2F%2Fblogimages.heflo.com%2F2025%2F04%2Fflowchart-reimbursement-expenses.jpg&amp;w=1600&amp;q=80">https://www.heflo.com/_next/image?url=https%3A%2F%2Fblogimages.heflo.com%2F2025%2F04%2Fflowchart-reimbursement-expenses.jpg&amp;w=1600&amp;q=80</a></div></figure><p id="27c57710-0ed0-80e7-84c1-e325e3a4ded5" class="">
+</p><figure id="27c57710-0ed0-80a4-be4a-e2cf14a79cf0" class="image"><a href="https://asq.org/-/media/Images/LAQ/Flowchart-ASQ-Featured.jpg"><img src="https://asq.org/-/media/Images/LAQ/Flowchart-ASQ-Featured.jpg"/></a></figure><p id="27c57710-0ed0-8008-a3a6-ec55209557a7" class="">
+</p><h3 id="27c57710-0ed0-809f-8f7f-f325e1bc04bb" class=""><strong>Topic 7: Let’s Talk</strong></h3><p id="27c57710-0ed0-802a-a7bd-e45d56981fb4" class=""><strong>Recap Discussion: What&#x27;s the Point of Pseudocode?</strong></p><p id="27c57710-0ed0-801d-83bf-c6740e343e4c" class="">Let&#x27;s discuss as a class: <strong>Why do we do this? Why not just write the real code?</strong></p><p id="27c57710-0ed0-8064-8dc4-d6444106770f" class=""><strong>Key Takeaways:</strong></p><ul id="27c57710-0ed0-8043-958d-c9497ad537fa" class="bulleted-list"><li style="list-style-type:disc">It helps you plan your logic without worrying about forgetting a semicolon or a comma in a real language.</li></ul><ul id="27c57710-0ed0-80d4-a612-e3c5ba787ce2" class="bulleted-list"><li style="list-style-type:disc">It&#x27;s a universal language—anyone can understand it, even if they don&#x27;t know Python or JavaScript.</li></ul><ul id="27c57710-0ed0-802f-bc8b-d45e22e0ea1a" class="bulleted-list"><li style="list-style-type:disc">It makes writing the real code much faster and easier because the plan is already perfect.</li></ul><p id="27c57710-0ed0-801d-a688-daef2fc14428" class="">
+</p><p id="27c57710-0ed0-80ad-b073-def658243630" class="">Topic 8: Quiz</p><h3 id="27c57710-0ed0-80b0-918d-f6cfabf20c76" class=""><strong>Quizizz Time: Match the Concept!</strong></h3><p id="27c57710-0ed0-8094-9af1-d273e090750d" class="">Let&#x27;s launch a quick quiz to check our understanding!</p><p id="27c57710-0ed0-804c-89e9-f29d3c1f8a4d" class=""><strong>Question 1:</strong> The <code>IF-ELSE-ENDIF</code> block in pseudocode represents which flowchart shape?</p><ul id="27c57710-0ed0-80c7-b18b-e41fd9c41fb8" class="bulleted-list"><li style="list-style-type:disc"><strong>(A) Diamond</strong></li></ul><ul id="27c57710-0ed0-8041-bf5c-c74bff89e86c" class="bulleted-list"><li style="list-style-type:disc">(B) Rectangle</li></ul><ul id="27c57710-0ed0-808c-a8a7-db1c0c897cda" class="bulleted-list"><li style="list-style-type:disc">(C) Oval</li></ul><p id="27c57710-0ed0-8025-8172-c3f925e47571" class=""><strong>Question 2:</strong> The command <code>Brush teeth</code> in pseudocode represents which flowchart shape?</p><ul id="27c57710-0ed0-8012-84de-c5132ffd3d05" class="bulleted-list"><li style="list-style-type:disc">(A) Diamond</li></ul><ul id="27c57710-0ed0-80e6-874b-d48965264b68" class="bulleted-list"><li style="list-style-type:disc"><strong>(B) Rectangle</strong></li></ul><ul id="27c57710-0ed0-8049-8942-c02f38619191" class="bulleted-list"><li style="list-style-type:disc">(C) Parallelogram</li></ul><p id="27c57710-0ed0-8071-bb3a-e5135fbf3585" class=""><strong>Question 3:</strong> What does indentation (spacing) show in pseudocode?</p><ul id="27c57710-0ed0-809e-92a2-cd334c068073" class="bulleted-list"><li style="list-style-type:disc">(A) A mistake</li></ul><ul id="27c57710-0ed0-80c4-9b3d-cee1f2b842c7" class="bulleted-list"><li style="list-style-type:disc">(B) The start of the program</li></ul><ul id="27c57710-0ed0-80ce-b1d2-dfef6ee58239" class="bulleted-list"><li style="list-style-type:disc"><strong>(C) An action that is part of a condition</strong></li></ul><p id="27c57710-0ed0-80f7-b4af-d798cec3ab0d" class=""><strong>Question 4:</strong> Pseudocode is a mix of a programming language and ______.</p><ul id="27c57710-0ed0-8067-888f-f2b91c6d7655" class="bulleted-list"><li style="list-style-type:disc">(A) Math equations</li></ul><ul id="27c57710-0ed0-80f5-a581-ddd293942fa0" class="bulleted-list"><li style="list-style-type:disc"><strong>(B) Plain English</strong></li></ul><ul id="27c57710-0ed0-80d5-8c92-f28ca9ad276b" class="bulleted-list"><li style="list-style-type:disc">(C) Flowchart symbols</li></ul><p id="27c57710-0ed0-80e2-b77c-fb0c1a54ab77" class=""><strong>Question 5:</strong> The main purpose of pseudocode is to ______.</p><ul id="27c57710-0ed0-802d-aee3-dcee32793892" class="bulleted-list"><li style="list-style-type:disc">(A) Create a website</li></ul><ul id="27c57710-0ed0-80a9-bb8f-d566fde21327" class="bulleted-list"><li style="list-style-type:disc">(B) Confuse other programmers</li></ul><ul id="27c57710-0ed0-80fd-9492-d8edac3b9a1c" class="bulleted-list"><li style="list-style-type:disc"><strong>(C) Plan your program&#x27;s logic</strong></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

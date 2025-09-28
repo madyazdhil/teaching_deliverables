@@ -83,6 +83,7 @@
             font-weight: 600;
             color: var(--text-light);
             border-bottom: 3px solid transparent;
+            margin-bottom: -1px; /* Counteract the border-bottom on the container */
             transition: all 0.2s ease-in-out;
         }
 
@@ -129,6 +130,23 @@
         .prose img {
             border-radius: 0.75rem;
         }
+        .prose pre {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body>
@@ -136,8 +154,9 @@
     <!-- Sidebar -->
     <div class="sidebar flex flex-col">
         <div class="text-left mb-8 p-2">
-            <h1 class="text-2xl font-bold" style="color: var(--primary-blue);">Informatics</h1>
-            <p class="text-sm mt-1" style="color: var(--text-light);">by Mr. Ahmad</p>
+            <h1 class="text-3xl font-bold" style="color: var(--primary-blue);">Informatics</h1>
+            <p class="text-sm mt-1" style="color: var(--text-light);">by Mr. Ahmad Yazid</p>
+            <p class="text-xs mt-1" style="color: var(--text-light);">Supported by <img src="assets/ags.jpeg" alt="Logo" class="inline-block h-4" /></p>
         </div>
         
         <nav id="sidebar-menu" class="w-full space-y-2 flex-grow overflow-y-auto">
@@ -147,6 +166,7 @@
             <!-- JHS Accordion -->
             <div class="accordion-header sidebar-link">JHS</div>
             <div class="accordion-content space-y-1">
+                <a href="#" data-meet-id="jhs-4" class="sidebar-link text-sm">Meet 4</a>
                 <a href="#" data-meet-id="jhs-5" class="sidebar-link text-sm">Meet 5</a>
                 <a href="#" data-meet-id="jhs-6" class="sidebar-link text-sm">Meet 6</a>
                 <a href="#" data-meet-id="jhs-7" class="sidebar-link text-sm">Meet 7</a>
@@ -156,14 +176,17 @@
             <!-- IT - 11 Accordion -->
             <div class="accordion-header sidebar-link">IT - 11</div>
             <div class="accordion-content space-y-1">
-                <a href="#" data-meet-id="it11-1" class="sidebar-link text-sm">Meet 1</a>
-                <a href="#" data-meet-id="it11-2" class="sidebar-link text-sm">Meet 2</a>
+                <!-- <a href="#" data-meet-id="it11-1" class="sidebar-link text-sm">Meet 1</a>-->
+                <!-- <a href="#" data-meet-id="it11-2" class="sidebar-link text-sm">Meet 2</a>-->
+                <a href="#" data-meet-id="it11-4" class="sidebar-link text-sm">Meet 4</a>
+                <a href="#" data-meet-id="it11-5" class="sidebar-link text-sm">Meet 5</a>
+                <a href="#" data-meet-id="it11-6" class="sidebar-link text-sm">Meet 6</a>
             </div>
 
             <!-- IT - 10 Accordion -->
             <div class="accordion-header sidebar-link">IT - 10</div>
             <div class="accordion-content space-y-1">
-                <a href="#" data-meet-id="it10-1" class="sidebar-link text-sm">Meet 1</a>
+                <a href="#" data-meet-id="it10-6" class="sidebar-link text-sm">Meet 6</a>
             </div>
         </nav>
     </div>
@@ -177,31 +200,52 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             const openingTabContent = `
-                <div style="background-color: #E9F5F9; border-color: #BEE3F0;" class="border p-6 rounded-xl mb-6">
-                    <h4 class="text-xl font-semibold mb-3" style="color: #2596BE;">Class Rules!</h4>
-                    <p style="color: #333745;" class="mb-4">To make sure we have a great session:</p>
-                    <ul class="list-disc list-inside space-y-2" style="color: #333745;">
-                        <li><span class="font-semibold">Camera ON:</span> Be present!</li>
-                        <li><span class="font-semibold">Muted MIC:</span> Unmute to speak.</li>
-                        <li><span class="font-semibold">Raise Hand:</span> For questions.</li>
-                        <li><span class="font-semibold">Stay Active:</span> Participate!</li>
-                        <li><span class="font-semibold">Take Turns:</span> Listen to others.</li>
-                    </ul>
+                <h4 class="text-2xl font-bold mb-6">Let's Have a Great Class!</h4>
+                <p class="text-lg text-gray-600 mb-8">Just a few friendly reminders to make sure our session is awesome for everyone.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                    <!-- Rule Item -->
+                    <div class="bg-gray-50 p-4 rounded-lg border flex items-center gap-4">
+                        <div class="bg-blue-100 p-3 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-600"><path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0013.5 5.25h-9a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" /></svg></div>
+                        <div><p class="font-semibold">Camera On</p><p class="text-sm text-gray-500">Be present with us</p></div>
+                    </div>
+                    <!-- Rule Item -->
+                    <div class="bg-gray-50 p-4 rounded-lg border flex items-center gap-4">
+                        <div class="bg-green-100 p-3 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-600"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 016 0v8.25a3 3 0 01-3 3z" /></svg></div>
+                        <div><p class="font-semibold">Mute Your Mic</p><p class="text-sm text-gray-500">Unmute when you talk</p></div>
+                    </div>
+                    <!-- Rule Item -->
+                    <div class="bg-gray-50 p-4 rounded-lg border flex items-center gap-4">
+                        <div class="bg-yellow-100 p-3 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-yellow-600"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg></div>
+                        <div><p class="font-semibold">Participate!</p><p class="text-sm text-gray-500">Share your thoughts</p></div>
+                    </div>
                 </div>
-                <div class="bg-gray-50 border p-6 rounded-xl text-center">
-                    <h5 class="font-bold text-2xl" style="color: #333745;">Let's Get Started!</h5>
-                    <p class="mt-2" style="color: #6B7280;">Let's begin with a moment of prayer.</p>
+
+                <div class="text-center bg-gray-50 border p-8 rounded-xl">
+                    <h5 class="font-bold text-3xl text-gray-800">Let's Begin!</h5>
+                    <div class="mt-6 p-4 bg-white rounded-lg border-2 border-dashed">
+                        <p class="font-semibold text-lg text-gray-700">Check-in Question of the Day:</p>
+                        <p class="text-lg mt-2 text-blue-600">"What's one new thing you learned this week (outside of class)?"</p>
+                    </div>
+                    <p class="mt-8 text-gray-500">We'll start with a moment of prayer, and then you can share your answers!</p>
                 </div>
             `;
 
             const closingTabContent = `
-                 <div class="bg-gray-50 border p-6 rounded-xl text-center mb-6">
-                    <h5 class="font-bold text-2xl" style="color: #333745;">It's a wrap!</h5>
-                    <p class="mt-2" style="color: #6B7280;">Let's end today's class with prayer.</p>
+                <h4 class="text-2xl font-bold mb-6">Great Work Today!</h4>
+                <p class="text-lg text-gray-600 mb-8">Let's take a moment to reflect on what we've covered before we wrap up.</p>
+
+                <div class="bg-blue-50 border-2 border-dashed border-blue-200 p-8 rounded-xl mb-10">
+                    <h5 class="font-bold text-2xl text-blue-800 text-center">Reflection Corner</h5>
+                    <div class="mt-4 text-center">
+                        <p class="font-semibold text-lg text-gray-700">What was your biggest takeaway from today's lesson?</p>
+                        <p class="text-md mt-2 text-gray-500">Think about the most interesting or useful thing you learned. Be ready to share!</p>
+                    </div>
                 </div>
-                <div style="background-color: #FEF6E4; border-color: #FDEBC8;" class="border p-8 rounded-xl text-center">
-                    <h5 class="font-bold text-3xl" style="color: #D68910;">You Crushed It!</h5>
-                    <p class="text-xl mt-2" style="color: #6B7280;">See You Next Time!</p>
+
+                <div class="text-center bg-yellow-50 border border-yellow-200 p-8 rounded-xl">
+                    <h5 class="font-bold text-3xl" style="color: var(--primary-yellow);">You Crushed It!</h5>
+                    <p class="mt-4 text-gray-500">We'll close with a prayer. See you all next time!</p>
                 </div>
             `;
 
@@ -210,33 +254,54 @@
                     title: 'Welcome!',
                     subtitle: 'Informatics Material Bank',
                     tabs: [
+                        { id: 'get-started', name: 'Get Started', content: `
+                            <h4>Welcome to the Informatics Material Bank!</h4>
+                            <div class="mt-4 space-y-4">
+                                <p>This is your one-stop resource for all our class materials. Here’s how to get the most out of it:</p>
+                                <div class="p-4 rounded-lg bg-gray-50 border">
+                                    <p><strong style="color: var(--primary-blue);">1. Find Your Class:</strong> Use the sidebar on the left to navigate. Click on your class (e.g., JHS, IT-11) to expand the list of meetings.</p>
+                                </div>
+                                <div class="p-4 rounded-lg bg-gray-50 border">
+                                    <p><strong style="color: var(--primary-blue);">2. Select a Meeting:</strong> Click on a specific meeting (e.g., Meet 5) to load the materials for that day.</p>
+                                </div>
+                                <div class="p-4 rounded-lg bg-gray-50 border">
+                                    <p><strong style="color: var(--primary-blue);">3. Explore the Content:</strong> Each meeting has tabs like "Opening," "Intro," and "Closing." Click through them to follow the lesson.</p>
+                                </div>
+                                <p class="pt-2">If you have any questions, don't hesitate to reach out. Happy learning!</p>
+                            </div>
+                        `},
                         { id: 'about-teacher', name: 'About', content: `
                             <h4>About Mr. Ahmad Yazid</h4>
                             <div class="flex flex-col md:flex-row items-center gap-8 mt-4">
-                                <img src="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?q=80&w=400&auto=format&fit=crop" alt="Teacher with laptop" class="w-full md:w-1/3 h-auto object-cover rounded-xl shadow-md">
+                                <img src="assets/profil.gif" alt="Teacher" class="w-full md:w-1/3 h-auto object-cover rounded-xl shadow-md">
                                 <div class="prose">
-                                    <p>Mr. Ahmad has been teaching for the past 4 years. He started as a laboratory assistant, teaching university juniors. He then began professionally teaching kids ages 8-16, introducing them to coding from the basics to expert levels using Scratch, Construct, Roblox Studio, and Python. He is now a proud member of Alta Global School, teaching informatics to JHS and SHS students.</p>
+                                    <p>Hello! I'm Mr. Ahmad, and I'll be your guide through the exciting world of informatics. My journey into teaching began 4 years ago, and I've had the pleasure of introducing coding to students from the basics to expert levels using tools like Scratch, Roblox Studio, and Python.</p>
+                                    <p class="mt-4">As a proud member of Alta Global School, my goal is to make learning technology fun and accessible. I look forward to exploring, creating, and solving problems with all of you!</p>
                                 </div>
                             </div>
                         `},
                         { id: 'contact-me', name: 'Contact', content: `
                             <h4>Contact Me</h4>
-                            <div class="space-y-4 mt-4 text-lg">
-                                <p>Feel free to reach out!</p>
-                                <p><a href="https://wa.me/0882019861992" target="_blank">WhatsApp</a></p>
-                                <p><a href="https://linkedin.com/in/ahmad-yazid-hilmi" target="_blank">LinkedIn</a></p>
+                            <p class="mt-4">Feel free to reach out with any questions!</p>
+                            <div class="mt-6 flex items-center gap-6">
+                                <a href="https://wa.me/0882019861992" target="_blank" class="text-lg p-3 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">WhatsApp</a>
+                                <a href="https://linkedin.com/in/ahmad-yazid-hilmi" target="_blank" class="text-lg p-3 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">LinkedIn</a>
                             </div>
                         `}
                     ]
                 },
-                'jhs-5': {
-                    title: 'JHS - Meeting 5',
-                    subtitle: 'Introduction to Text Coding',
+                'jhs-4': {
+                    title: 'JHS - Meeting 4',
+                    subtitle: 'Abstraction & Algorithm Design',
                     tabs: [
                         { id: 'opening', name: 'Opening', content: openingTabContent },
-                        { id: 'intro', name: 'Intro', content: `
-                            <h4>What is Informatics?</h4>
-                            <p>Informatics is the science of information. It's about how we create, manage, and use information. It's a blend of computer science, info theory, and human-computer interaction.</p>
+                        { id: 'objectives', name: 'Learning Objectives', content: `
+                            <p>By the end of this lesson, you will be able to: </p>
+                            <ul>
+                                <li>Explain the concept of Abstraction and its use in filtering out unnecessary details to focus on what is important.</li>
+                                <li>Define an Algorithm as a sequence of clear, step-by-step instructions for solving a problem.</li>
+                                <li>Design a simple algorithm for a familiar task, demonstrating logical thinking and sequence.</li>
+                            </ul>
                         `},
                         { id: 'data-info', name: 'Data', content: `
                             <h4>The Importance of Data</h4>
@@ -246,32 +311,369 @@
                         { id: 'closing', name: 'Closing', content: closingTabContent }
                     ]
                 },
-                'jhs-6': {
-                    title: 'JHS - Meeting 6',
-                    subtitle: 'Fundamentals of Programming',
+                'jhs-5': {
+                    title: 'JHS - Meeting 5',
+                    subtitle: 'Designing Logic with Digital Flowcharts',
                     tabs: [
                         { id: 'opening', name: 'Opening', content: openingTabContent },
-                        { id: 'what-is-code', name: 'Coding', content: `
-                            <h4>What is Code?</h4>
-                            <p>Coding is using a programming language to tell a computer what to do. We'll learn the basic building blocks like variables, loops, and functions.</p>
-                             <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop" alt="Colorful code on a screen" class="my-6">
+                        { id: 'jhs5-topic1', name: 'Recap: CT', content: `
+                            <h4>Waking Up Your Supercomputer Brain! 🧠</h4>
+                            <p><strong>Mission Briefing: Remember Computational Thinking?</strong></p>
+                            <p class="mt-4">A few lessons ago, we learned about Computational Thinking. It's not about thinking like a robot; it's about learning to solve complex problems using a clear, logical process, just like a computer scientist does.</p>
+                            <p class="mt-4">You already learned the four secret powers of computational thinking:</p>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>Decomposition:</strong> Breaking big problems into small, manageable pieces.</li>
+                                <li><strong>Pattern Recognition:</strong> Finding similarities or patterns to solve problems more efficiently.</li>
+                                <li><strong>Abstraction:</strong> Focusing on the important details while ignoring the irrelevant ones.</li>
+                                <li><strong>Algorithms:</strong> Creating a step-by-step plan to solve a problem.</li>
+                            </ul>
+                            <p class="mt-4">Today, we're going to focus on <strong>Decomposition</strong> and <strong>Algorithms</strong>, and learn how to turn our plans into visual maps that anyone can understand!</p>
                         `},
-                        { id: 'algorithms', name: 'Algorithms', content: `
-                            <h4>Intro to Algorithms</h4>
-                            <p>An algorithm is a set of instructions, like a recipe. We'll look at simple algorithms and practice creating our own.</p>
+                        { id: 'jhs5-topic2', name: 'Decomposition & Algorithms', content: `
+                            <h4>Your Problem-Solving Duo: Decomposition & Algorithms</h4>
+                            <p>Let's do a quick refresh on our two most important tools for today.</p>
+                            <div class="mt-6 p-6 bg-gray-50 rounded-lg border">
+                                <h5 class="font-bold text-lg">1. Decomposition: The Art of the Chop!</h5>
+                                <p class="mt-2">Decomposition is simply breaking a giant, scary problem into smaller, bite-sized chunks.</p>
+                                <p class="mt-4"><strong>Big Problem:</strong> "Clean your room."</p>
+                                <p><strong>Decomposition into smaller chunks:</strong></p>
+                                <ul class="list-disc list-inside text-sm mt-2">
+                                    <li>Make the bed.</li>
+                                    <li>Put away all the clothes on the floor.</li>
+                                    <li>Tidy the desk.</li>
+                                    <li>Empty the trash can.</li>
+                                </ul>
+                                <p class="mt-2">It’s much easier to tackle these small tasks than to just stare at a messy room!</p>
+                            </div>
+                            <div class="mt-6 p-6 bg-gray-50 rounded-lg border">
+                                <h5 class="font-bold text-lg">2. Algorithm: The Perfect Recipe</h5>
+                                <p class="mt-2">An algorithm is the detailed, step-by-step set of instructions to complete one of those small chunks. Every step must be in the correct order.</p>
+                                <p class="mt-4"><strong>Activity: The Ultimate Sandwich Algorithm</strong></p>
+                                <p>In small groups, your mission is to write a perfect, super-detailed algorithm for making a peanut butter and jelly sandwich. Pretend you are writing instructions for a robot that has never seen a kitchen. What could go wrong if your steps are out of order or not specific enough?</p>
+                            </div>
+                        `},
+                        { id: 'jhs5-topic3', name: 'Algo to Flowchart', content: `
+                            <h4>Connecting Algorithms to Flowcharts 🗺️</h4>
+                            <p>Writing an algorithm as a list of text is great, but sometimes it can be long, boring, or even a little confusing. What if we could draw our algorithm? That's exactly what a flowchart is!</p>
+                            <p class="mt-4">A <strong>flowchart</strong> is a visual diagram that shows the steps and decisions in a process. It uses simple shapes and arrows to create a map of your algorithm that is easy to follow.</p>
+                            <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                <p><strong>Analogy:</strong></p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>An <strong>algorithm</strong> is like turn-by-turn driving directions written in a list.</li>
+                                    <li>A <strong>flowchart</strong> is like a map with the route highlighted.</li>
+                                </ul>
+                                <p class="mt-2">Both get you to the same destination, but the map (the flowchart) often helps you see the "big picture" more clearly.</p>
+                            </div>
+                        `},
+                        { id: 'jhs5-topic4', name: 'Intro to Draw.io', content: `
+                            <h4>Mission Briefing: From Paper to Pixels! ️</h4>
+                            <p>You've learned how to think like a computer, and now it's time to use the tools of a digital designer. We will be using <strong>Draw.io</strong> (which is also called diagrams.net), a free and powerful online tool for creating professional diagrams, including flowcharts!</p>
+                            <p class="mt-4"><strong>Let's Get Started:</strong></p>
+                            <ol class="list-decimal list-inside mt-2 space-y-2">
+                                <li>Open your web browser and go to <strong><a href="https://app.diagrams.net/" target="_blank">https://app.diagrams.net/</a></strong>.</li>
+                                <li>The site will ask you where you want to save your diagram. For now, just choose <strong>"Decide Later"</strong>.</li>
+                                <li>You now have a blank digital canvas ready for your ideas! On the left-hand side, you'll see a library of shapes. We'll be using the ones under the <strong>"Flowchart"</strong> section.</li>
+                            </ol>
+                        ` },
+                        { id: 'jhs5-topic5', name: 'Flowchart Symbols', content: `
+                            <h4>Mastering the Symbols of Logic 🔷</h4>
+                            <p>Every flowchart uses a standard set of symbols to represent different types of actions or decisions. Think of them as a universal language for logic! Here’s a breakdown of the most common symbols:</p>
+                            <img src="/Users/user/Documents/Personal Project/Web-Dev/Learning_Material/materials/jhs-meet5/Syllabus Meeting 5 Designing Logic with Digital Fl 27c577100ed080b3ac54cbfb6920da71/image.png" alt="A flowchart diagram with symbols for start, process, and decision" class="my-6">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li><strong>Terminator (Oval):</strong> Represents the <strong>Start</strong> and <strong>End</strong> points of your process.</li>
+                                <li><strong>Process (Rectangle):</strong> Your main action symbol. It represents a step, a calculation, or an operation.</li>
+                                <li><strong>Input/Output (Parallelogram):</strong> Used whenever the process needs to get information (input) or display information (output).</li>
+                                <li><strong>Flow Line (Arrow):</strong> These are the connectors. They show the direction of the process.</li>
+                            </ul>
+                        ` },
+                        { id: 'jhs5-topic6', name: 'Case Study: Sequence', content: `
+                            <h4>Case Study: Making a Cup of Tea ☕</h4>
+                            <p>A flowchart is like a visual recipe. It shows a series of steps in a specific order. This is called a <strong>sequence</strong>. Let's look at a simple, everyday task.</p>
+                            <ul class="list-disc list-inside mt-4 space-y-3">
+                                <li>You can't pour water before you boil it.</li>
+                                <li>You can't add a tea bag to an empty cup.</li>
+                                <li>Each step must follow the one before it.</li>
+                            </ul>
+                            <p class="mt-4">In programming, getting the sequence right is the most fundamental skill. Our first flowcharts will focus only on getting the steps in the correct order.</p>
+                        ` },
+                        { id: 'jhs5-topic7', name: 'Algorithm Breakdown', content: `
+                            <h4>From Task to Algorithm 📝</h4>
+                            <p>An <strong>algorithm</strong> is a clear, step-by-step list of instructions to complete a task. Let's turn our "Making a Cup of Tea" task into a simple algorithm.</p>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Tea Making Algorithm:</p>
+                                <ol class="list-decimal list-inside mt-2 space-y-1">
+                                    <li>Start</li>
+                                    <li>Boil water</li>
+                                    <li>Put tea bag in cup</li>
+                                    <li>Pour boiled water into cup</li>
+                                    <li>Wait for tea to steep</li>
+                                    <li>Remove tea bag</li>
+                                    <li>End</li>
+                                </ol>
+                            </div>
+                            <p class="mt-4">This plain-language algorithm is the "brain" of our flowchart. The next step is to translate it into visual symbols.</p>
+                        `},
+                        { id: 'jhs5-topic8', name: 'Guided Challenge', content: `
+                            <h4>Let's Build Together!</h4>
+                            <p>Before you try on your own, let's walk through two simple challenges as a class. We'll focus on using just the basic symbols.</p>
+                            
+                            <!-- Challenge 1 -->
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Challenge 1: The Classic "Hello, World!"</p>
+                                <p class="text-sm text-gray-600">Let's design a flowchart for a program that simply displays the message "Hello, World!" on the screen. We will need a Start, a Process, and an End.</p>
+                                <button class="internal-accordion-btn mt-4 text-sm font-semibold text-blue-600">Show Breakdown ▼</button>
+                                <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                    <p><strong>Decomposition:</strong> The problem is very simple. We need to start the program, show a message, and then stop. There is no user input.</p>
+                                    <p class="mt-2"><strong>Algorithm:</strong></p>
+                                    <ol class="list-decimal list-inside text-sm">
+                                        <li>Start</li>
+                                        <li>Display "Hello, World!"</li>
+                                        <li>End</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <!-- Challenge 2 -->
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Challenge 2: A Simple Greeting</p>
+                                <p class="text-sm text-gray-600">Now, let's make it interactive. We'll design a flowchart that asks for a user's name (Input) and then displays a personalized greeting (Output).</p>
+                                <button class="internal-accordion-btn mt-4 text-sm font-semibold text-blue-600">Show Breakdown ▼</button>
+                                <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                    <p><strong>Decomposition:</strong> This is a three-step process. First, we need to get information from the user. Second, we use that information. Third, we show the result.</p>
+                                    <p class="mt-2"><strong>Algorithm:</strong></p>
+                                    <ol class="list-decimal list-inside text-sm">
+                                        <li>Start</li>
+                                        <li>Get user's name</li>
+                                        <li>Display "Hello, " + user's name</li>
+                                        <li>End</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        ` },
+                        { id: 'jhs5-topic9', name: 'Practice Drills', content: `
+                            <h4>Flowchart Practice Drills</h4>
+                            <p>Time to practice! Try to create a simple flowchart for each of the scenarios below. Remember to use only the <strong>Terminator (Oval)</strong>, <strong>Process (Rectangle)</strong>, and <strong>Input/Output (Parallelogram)</strong> symbols.</p>
+                            
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Drill 1 (Medium): Sum of Two Numbers</p>
+                                <p class="text-sm text-gray-600">Create a flowchart for a program that asks the user for two numbers, calculates their sum, and then displays the final result.</p>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Drill 2 (Medium): Story Generator</p>
+                                <p class="text-sm text-gray-600">Design a flowchart that asks the user for a noun, a verb, and an adjective, and then displays a short story using those words.</p>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Drill 3 (Hard): Simple Currency Converter</p>
+                                <p class="text-sm text-gray-600">Create a flowchart that asks the user for an amount in USD and a conversion rate. It should then calculate the equivalent amount in another currency and display it.</p>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Drill 4 (Hard): Calculating an Average</p>
+                                <p class="text-sm text-gray-600">Design a flowchart that gets three separate test scores from a user, calculates the average of the three scores, and then displays the average score.</p>
+                            </div>
+                        `
+                        },
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'jhs-6': {
+                    title: 'JHS - Meeting 6',
+                    subtitle: 'Making Smart Decisions with Flowcharts',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'jhs6-topic1', name: 'Refresher', content: `
+                            <h4>Let's Revisit Our Flowchart Basics!</h4>
+                            <p>Last time, we learned that a flowchart is a visual map of an algorithm. We used our first set of symbols to plan a simple process. Do you remember these?</p>
+                            <ul class="list-disc list-inside mt-4 space-y-3">
+                                <li><strong>Terminator (Oval):</strong> Used for the <strong>Start</strong> and <strong>End</strong> of our process.</li>
+                                <li><strong>Process (Rectangle):</strong> Used for any action or command, like "Add jelly to bread."</li>
+                                <li><strong>Input/Output (Parallelogram):</strong> Used for getting information (input) or displaying information (output).</li>
+                            </ul>
+                            <p class="mt-4">Today, we're focusing on a powerful new symbol that makes our flowcharts "smart."</p>
+                        `},
+                        { id: 'jhs6-topic2', name: 'The Decision Symbol', content: `
+                            <h4>Making Your Flowchart "Smart" 🧠</h4>
+                            <p>What makes a process interesting? The ability to make <strong>choices</strong>! In a flowchart, we use the <strong>Decision (Diamond)</strong> symbol to ask a question.</p>
+                            <p class="mt-4">A <strong>Decision diamond</strong> always asks a question that can be answered with <strong>"Yes"</strong> or <strong>"No"</strong> (or "True"/"False"). Because there are two possible answers, there will always be <strong>two arrows</strong> coming out of a diamond, one for each path. This allows our flowchart to change its behavior based on a <strong>condition</strong>.</p>
+                            <p class="mt-6">Here is an example of a decision or a condition used in a flowchart:</p>
+                            <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQBCyNN6fH5BGC7WfkasrTX4W6HXCQ6apxA1Dhbf9l8yM6dZbtob7Sv6-0-cRifuJ6b1YbMGdqa6shSWGgCfdJa0MtlCOdXKoanMmie2PnYilSAKvk" alt="Flowchart example showing a decision diamond" class="my-4 mx-auto"/>
+                        `},
+                        { id: 'jhs6-topic3', name: 'Decision Case Studies', content: `
+                            <h4>Decisions in Action - Case Studies</h4>
+                            <p>Let's see how this works with some real-world examples.</p>
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Case Study #1: The Umbrella Dilemma ☔</p>
+                                <p class="text-sm text-gray-600 mt-2"><strong>Problem:</strong> Should you take an umbrella when you leave the house? The answer depends on the weather. The key question is: <strong>Is it raining?</strong> If YES, take an umbrella. If NO, wear sunglasses.</p>
+                                <button class="internal-accordion-btn mt-4 text-sm font-semibold text-blue-600">Show Algorithm ▼</button>
+                                <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                    <p><strong>Algorithm:</strong></p>
+                                    <ol class="list-decimal list-inside text-sm">
+                                        <li>Start</li>
+                                        <li>Look outside.</li>
+                                        <li>Is it raining?</li>
+                                        <li>If YES, take an umbrella.</li>
+                                        <li>If NO, wear sunglasses.</li>
+                                        <li>End</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Case Study #2: The Secret Password 🔑</p>
+                                <p class="text-sm text-gray-600 mt-2"><strong>Problem:</strong> A user is trying to log into a game. They should only get in if they enter the correct password. If YES, display "Welcome!". If NO, display "Access Denied."</p>
+                                <button class="internal-accordion-btn mt-4 text-sm font-semibold text-blue-600">Show Algorithm ▼</button>
+                                <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                    <p><strong>Algorithm:</strong></p>
+                                    <ol class="list-decimal list-inside text-sm">
+                                        <li>Start</li>
+                                        <li>Ask for password (Input).</li>
+                                        <li>Is password "Secret123"?</li>
+                                        <li>If YES, display "Welcome!".</li>
+                                        <li>If NO, display "Access Denied.".</li>
+                                        <li>End</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        `},
+                        { id: 'jhs6-topic4', name: 'How Loops Work', content: `
+                            <h4>The Never-Ending Story: How Loops Work 🔁</h4>
+                            <p>Does a traffic light change colors once and then stop forever? No! It repeats its pattern over and over. This is a <strong>loop</strong>. A loop is a way to repeat a set of actions.</p>
+                            <p class="mt-4">In a flowchart, we show a loop simply by drawing a <strong>flow line (arrow)</strong> from a later step <strong>back to an earlier step</strong>. This creates a cycle that can repeat.</p>
+                        `},
+                        { id: 'jhs6-topic5', name: 'Group Challenge', content: `
+                            <h4>Your Mission: Control the Intersection! 🚦</h4>
+                            <p>It's time to combine everything: sequencing, decisions (implied by timers), and loops. Your challenge is to create a flowchart for a simple traffic light.</p>
+                            <p class="mt-4"><strong>The Logic to Map:</strong></p>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>Start</li>
+                                <li>Turn the main street light <strong>Green</strong>.</li>
+                                <li>Wait for 30 seconds.</li>
+                                <li>Turn the main street light <strong>Yellow</strong>.</li>
+                                <li>Wait for 5 seconds.</li>
+                                <li>Turn the main street light <strong>Red</strong>.</li>
+                                <li><strong>Loop!</strong> Go back to step 2 and repeat the cycle forever.</li>
+                            </ol>
+                        `},
+                        { id: 'jhs6-topic6', name: 'Solo Missions', content: `
+                            <h4>Your Turn to be the Planner!</h4>
+                            <p>Now it's your turn to solve some problems by creating a flowchart for each case study. Use all the symbols you've learned!</p>
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Case Study #1: The Gaming Session</p>
+                                <p class="text-sm text-gray-600 mt-2">You want to play a video game, but your rule is that you can only play if your homework is done. Create a flowchart that decides whether you should play the game or do your homework.</p>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Case Study #2: The Snack Machine</p>
+                                <p class="text-sm text-gray-600 mt-2">A snack machine sells chips for Rp 5,000. Create a flowchart that takes a user's money as input, checks if they inserted enough money, and then either dispenses the chips or tells them they don't have enough money.</p>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg border">
+                                <p class="font-semibold">Case Study #3: The Pet Feeder</p>
+                                <p class="text-sm text-gray-600 mt-2">You are training your pet. Before you give them their food, you want them to sit. Create a flowchart that tells the pet to sit. It should check if the pet sat. If not, it should loop and tell them to sit again. If the pet did sit, the flowchart should proceed to give them their food.</p>
+                            </div>
                         `},
                         { id: 'closing', name: 'Closing', content: closingTabContent }
                     ]
                 },
                 'jhs-7': {
                     title: 'JHS - Meeting 7',
-                    subtitle: 'Data Structures',
+                    subtitle: 'From Pictures to Plans - An Intro to Pseudocode',
                     tabs: [
                         { id: 'opening', name: 'Opening', content: openingTabContent },
-                        { id: 'data-struct', name: 'Structures', content: `
-                            <h4>What are Data Structures?</h4>
-                            <p>They are ways of organizing and storing data. Think of lists, dictionaries, and arrays. Choosing the right one makes your code more efficient!</p>
-                            <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=800&auto=format&fit=crop" alt="Abstract network of nodes" class="my-6">
+                        { id: 'jhs7-topic1', name: 'Intro Challenge', content: `
+                            <h4>Mission Briefing: Can You Give Perfect Instructions? 👟</h4>
+                            <p>Let's start with a fun challenge. Imagine you are teaching a robot that only understands words, not actions.</p>
+                            <p class="mt-4"><strong>Activity:</strong> In the class chat, write down the instructions on <strong>how to tie a shoelace</strong>. Be as specific and clear as you can!</p>
+                            <p class="mt-4">This activity shows us that plain English, while great for talking to people, can be very messy and unclear when you need to give precise instructions for a complex task. We need something better for talking to computers!</p>
+                        `},
+                        { id: 'jhs7-topic2', name: 'What is Pseudocode?', content: `
+                            <h4>What is this "Pseudocode" thing? 🤔</h4>
+                            <p>You've just seen that plain English can be a bit of a disaster for giving instructions. <strong>Pseudocode</strong> is our solution.</p>
+                            <p class="mt-4"><strong>Analogy:</strong> Think of it like a middle ground. It's not as strict as a real programming language (like Python or JavaScript), but it's much more organized and clear than just talking. It's like a <strong>structured recipe</strong> that a computer can almost understand.</p>
+                            <p class="mt-4">Today, you will learn to translate your flowchart "drawings" into these structured "recipes." This is the last step you take before writing real, working code.</p>
+                        `},
+                        { id: 'jhs7-topic3', name: 'Translation Guide', content: `
+                            <h4>Teacher Demonstration: From a Sandwich Flowchart to Pseudocode</h4>
+                            <p><strong>Step 1: The Flowchart</strong><br>First, let's look at a flowchart that finds the larger of two numbers. Notice the different shapes for input, decisions, and output.</p>
+                            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20241015145101770742/example.png" alt="Flowchart for finding the larger of two numbers" class="my-6 mx-auto">
+                            
+                            <div class="overflow-x-auto mt-6">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="p-2 border">Flowchart Symbol</th>
+                                            <th class="p-2 border">Pseudocode Keyword/Structure</th>
+                                            <th class="p-2 border">Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-t">
+                                            <td class="p-2 border"><strong>Oval (Start/End)</strong></td>
+                                            <td class="p-2 border"><code>START</code> / <code>END</code></td>
+                                            <td class="p-2 border"><code>START ... END</code></td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="p-2 border"><strong>Rectangle (Process)</strong></td>
+                                            <td class="p-2 border">A clear command</td>
+                                            <td class="p-2 border"><code>Get two slices of bread</code></td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="p-2 border"><strong>Diamond (Decision)</strong></td>
+                                            <td class="p-2 border"><code>IF-THEN-ENDIF</code></td>
+                                            <td class="p-2 border"><code>IF cheese is wanted THEN<br>&nbsp;&nbsp;&nbsp;&nbsp;Add a slice of cheese<br>ENDIF</code></td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="p-2 border"><strong>Diamond (Decision with a "No" path)</strong></td>
+                                            <td class="p-2 border"><code>IF-THEN-ELSE-ENDIF</code></td>
+                                            <td class="p-2 border"><code>IF it is raining THEN<br>&nbsp;&nbsp;&nbsp;&nbsp;Take umbrella<br>ELSE<br>&nbsp;&nbsp;&nbsp;&nbsp;Wear sunglasses<br>ENDIF</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="mt-6"><strong>Step 2: The Translation</strong><br>Now, let's write the pseudocode for our number comparator program. We'll use the keywords we've learned to give it structure.</p>
+
+                            <button class="internal-accordion-btn mt-6 text-sm font-semibold text-blue-600">Show Pseudocode ▼</button>
+                            <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                <p>Here is the simple pseudocode for the given flowchart:</p>
+                                <pre class="bg-gray-100 p-4 rounded-lg mt-2"><code>BEGIN
+    INPUT num1
+    INPUT num2
+
+    IF num1 > num2 THEN
+        DISPLAY num1
+    ELSE
+        DISPLAY num2
+    END IF
+END</code></pre>
+                                <p class="mt-4"><strong>Explanation:</strong></p>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>BEGIN/END:</strong> These mark the start and stop points of the algorithm, corresponding to the ovals in the flowchart.</li>
+                                    <li><strong>INPUT num1, INPUT num2:</strong> These lines represent the two parallelogram shapes, where the program prompts the user to enter two numbers.</li>
+                                    <li><strong>IF num1 > num2 THEN ... ELSE ... END IF:</strong> This block corresponds to the diamond (decision) shape. It checks if num1 is greater than num2 and follows the appropriate path.</li>
+                                    <li><strong>DISPLAY:</strong> This keyword represents the output operation (the parallelogram shapes for displaying the result).</li>
+                                </ul>
+                            </div>
+                        `},
+                        { id: 'jhs7-topic4', name: 'Group Challenge', content: `
+                            <h4>Your Mission: Translate Your Flowchart! 🚦</h4>
+                            <p>Now it's your turn to be the translator. Open your traffic light flowchart from the last lesson and translate it into pseudocode. Remember to use keywords like <code>START</code>, <code>END</code>, <code>IF/THEN/ELSE</code>, and <code>LOOP/ENDLOOP</code> for the repeating section.</p>
+                        `},
+                        { id: 'jhs7-topic5', name: 'Practice Drills', content: `
+                            <h4>Exercise: Turn these flowcharts into Pseudocode!</h4>
+                            <p>Work in groups to translate the logic in the following flowcharts into clear pseudocode.</p>
+                            <img src="https://framerusercontent.com/images/mKctLzfJ7JZkU57fOE7rOyQvsjY.png" alt="Flowchart exercise 1" class="my-6">
+                            <img src="https://lekh.app/assets/resources/res/flowchart/lamp.png" alt="Flowchart exercise 2" class="my-6">
+                            <img src="https://www.heflo.com/_next/image?url=https%3A%2F%2Fblogimages.heflo.com%2F2025%2F04%2Fflowchart-reimbursement-expenses.jpg&w=1600&q=80" alt="Flowchart exercise 3" class="my-6">
+                        `},
+                        { id: 'jhs7-topic6', name: 'Recap & Quiz', content: `
+                            <h4>Recap Discussion: What's the Point of Pseudocode?</h4>
+                            <p>Why do we do this? Why not just write the real code?</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li>It helps you plan your logic without worrying about syntax.</li>
+                                <li>It's a universal language—anyone can understand it.</li>
+                                <li>It makes writing the real code much faster and easier.</li>
+                            </ul>
+                            <h4 class="mt-8">Quiz Time!</h4>
+                            <p><strong>1. The <code>IF-ELSE-ENDIF</code> block in pseudocode represents which flowchart shape?</strong><br>(A) Diamond</p>
+                            <p><strong>2. The command <code>Brush teeth</code> in pseudocode represents which flowchart shape?</strong><br>(B) Rectangle</p>
+                            <p><strong>3. What does indentation (spacing) show in pseudocode?</strong><br>(C) An action that is part of a condition</p>
                         `},
                         { id: 'closing', name: 'Closing', content: closingTabContent }
                     ]
@@ -294,10 +696,7 @@
                     subtitle: 'Advanced Algorithms',
                     tabs: [
                         { id: 'opening', name: 'Opening', content: openingTabContent },
-                        { id: 'graph-theory', name: 'Graphs', content: `
-                            <h4>Graph Theory</h4>
-                            <p>We'll dive deep into graph theory and explore algorithms like Dijkstra's and Breadth-First Search, essential for solving network problems.</p>
-                        `},
+                        { id: 'tbd', name: 'To Be Determined', content: `<h4>Content for this meeting is coming soon!</h4>`},
                         { id: 'closing', name: 'Closing', content: closingTabContent }
                     ]
                 },
@@ -314,18 +713,895 @@
                         { id: 'closing', name: 'Closing', content: closingTabContent }
                     ]
                 },
-                'it10-1': {
-                    title: 'IT-10 - Meeting 1',
-                    subtitle: 'Web Dev Fundamentals',
+                'it11-4': {
+                    title: 'IT-11 - Meeting 4',
+                    subtitle: 'HTML Basics – Your First Webpage',
                     tabs: [
                         { id: 'opening', name: 'Opening', content: openingTabContent },
-                        { id: 'html-css', name: 'HTML/CSS', content: `
-                            <h4>HTML & CSS</h4>
-                            <p>Learn to structure web pages with HTML and style them with CSS to create beautiful, responsive designs.</p>
+                        { id: 'it11-4-topic0', name: 'Setup', content: `
+                            <h4>Mission Briefing: Install Your Code Editor</h4>
+                            <p>Before we can build a website, we need a special tool called a <strong>code editor</strong>. Think of it like a super-smart notebook for writing code. We're going to use a very popular and free one called <strong>Visual Studio Code (VS Code)</strong>.</p>
+                            <h5 class="font-semibold mt-4">How to Install VS Code</h5>
+                            <ol class="list-decimal list-inside mt-2 space-y-2">
+                                <li>Open your web browser and go to the official VS Code download page: <strong><a href="https://code.visualstudio.com/download" target="_blank">https://code.visualstudio.com/download</a></strong></li>
+                                <li>Follow the instructions for your computer type.</li>
+                            </ol>
+                            <p class="mt-4"><strong>For Windows 💻:</strong></p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Click the big blue "Windows" button. This will download an installer file (it will end in <code>.exe</code>).</li>
+                                <li>Find the downloaded file in your 'Downloads' folder and double-click it.</li>
+                                <li>The installation wizard will open. Just click "Next" on all the steps to accept the default settings. It's safe and easy!</li>
+                                <li>Once it's finished, VS Code will be installed on your computer.</li>
+                            </ul>
+                            <p class="mt-4"><strong>For Mac 🍎:</strong></p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Click the big blue "Mac" button. This will download a <code>.zip</code> file.</li>
+                                <li>Find the downloaded file in your 'Downloads' folder and double-click it to unzip it.</li>
+                                <li>You will now see a new application called "Visual Studio Code".</li>
+                                <li>Drag this application into your "Applications" folder. That's it!</li>
+                            </ul>
+                            <h5 class="font-semibold mt-4">How to Open and Create Your First HTML File</h5>
+                            <ol class="list-decimal list-inside mt-2 space-y-2">
+                                <li><strong>Open VS Code:</strong> Find the Visual Studio Code icon on your computer and open it. You'll see a welcome screen.</li>
+                                <li><strong>Create a New File:</strong>
+                                    <ul class="list-disc list-inside ml-4">
+                                        <li>Go to the top menu and click <code>File</code> -> <code>New File</code>.</li>
+                                        <li>An empty, untitled tab will open.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Save the File as HTML:</strong> This is a very important step!
+                                    <ul class="list-disc list-inside ml-4">
+                                        <li>Go to the top menu and click <code>File</code> -> <code>Save</code>.</li>
+                                        <li>A save window will pop up.</li>
+                                        <li>For the <strong>File name</strong>, type <code><strong>index.html</strong></code>. Using <code>.html</code> at the end is how the computer knows this is a webpage file.</li>
+                                        <li>Choose a place to save it, like your Desktop or a new folder for your projects.</li>
+                                        <li>Click "Save".</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p class="mt-4">You're all set! You now have an empty HTML file open in your code editor, ready for you to start building.</p>
                         `},
-                        { id: 'js-basics', name: 'JS Basics', content: `
-                            <h4>JavaScript</h4>
-                            <p>We will introduce JavaScript, the language of the web, and learn how to make your websites interactive.</p>
+                        { id: 'it11-4-topic1', name: 'What is HTML?', content: `
+                            <h4>Mission Briefing: Let's Talk Websites!</h4>
+                            <p>Before we start, let's think about the websites we use every day.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Opening Discussion:</strong> In the chat, share one website you visit a lot. What do you like about it? Is it the text, the images, the links?</li>
+                            </ul>
+                            <p class="mt-4">Everything you see on those websites—the headings, the paragraphs, the pictures, and the links—is organized by a special language. Today, you're going to learn that language. It's called <strong>HTML</strong>.</p>
+                            <h5 class="font-semibold mt-4">Decoding the Secret Language: What is HTML?</h5>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>HTML</strong> stands for <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage.</li>
+                                <li>It's the standard language used to create all web pages.</li>
+                                <li>Think of it like the <strong>skeleton</strong> of a webpage. It gives the page its structure.</li>
+                                <li>HTML uses "elements" or "tags" to label pieces of content. It tells the browser things like, "this is a heading," "this is a paragraph," or "this is a link."</li>
+                            </ul>
+                        `},
+                        { id: 'it11-4-topic2', name: 'Page Structure', content: `
+                            <h4>Every Page Has the Same Bones 🦴</h4>
+                            <p>Every single HTML page, no matter how complicated, is built on the same basic skeleton.</p>
+                            <p class="mt-4"><strong>A Simple HTML Document Example:</strong></p>
+                            <img src="materials/shs-11/meet4/asset-meet4/image.png" alt="Diagram of HTML page structure" class="my-4 rounded-lg shadow-md">
+                            
+                            <h5 class="font-semibold mt-4">Example Explained:</h5>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><code>&lt;!DOCTYPE html&gt;</code>: This is the very first thing on the page. It tells the web browser, "Hey! This is an HTML5 page."</li>
+                                <li><code>&lt;html&gt;</code>: This is the root or the main container for the entire page. Everything else goes inside it.</li>
+                                <li><code>&lt;head&gt;</code>: This section contains hidden information about the page, like the title. You won't see this content on the main part of the page.</li>
+                                <li><code>&lt;title&gt;</code>: This is the title that shows up in the browser tab at the very top of your screen.</li>
+                                <li><code>&lt;body&gt;</code>: This is the most important part! It's the container for <strong>all the visible content</strong>—the headings, paragraphs, images, and links that you see on the website.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-4-topic3', name: 'Elements & Attributes', content: `
+                            <h4>What is an HTML Element?</h4>
+                            <p>An HTML element is usually made up of a <strong>start tag</strong>, some <strong>content</strong>, and an <strong>end tag</strong>.</p>
+                            <p class="mt-2"><code><strong>&lt;tagname&gt;</strong></code> Content goes here... <code><strong>&lt;/tagname&gt;</strong></code></p>
+                            <p class="mt-2">The <strong>element</strong> is everything from the start tag to the end tag.</p>
+                            <p class="mt-4"><em>Note: Some HTML elements are "empty" because they don't have any content or an end tag. A common one is <code>&lt;br&gt;</code>, which creates a line break.</em></p>
+                            <h5 class="font-semibold mt-6">What are HTML Attributes?</h5>
+                            <p>Attributes are extra pieces of information you can add to an HTML element. They are like superpowers for your tags!</p>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li>All HTML elements can have <strong>attributes</strong>.</li>
+                                <li>Attributes provide <strong>additional information</strong> about elements.</li>
+                                <li>Attributes are always specified in the <strong>start tag</strong>.</li>
+                                <li>Attributes usually come in name/value pairs like: <code><strong>name="value"</strong></code>.</li>
+                            </ul>
+                            <p class="mt-4">Let's explore some of the most important attributes.</p>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>The <code>href</code> Attribute for Links:</strong> The <code>&lt;a&gt;</code> tag defines a hyperlink. The <code>href</code> attribute specifies the URL of the page the link goes to.</li>
+                                <li><strong>The <code>lang</code> Attribute for the Page:</strong> You should always include the <code>lang</code> attribute inside the <code>&lt;html&gt;</code> tag to declare the language of the Web page. This helps search engines and browsers.</li>
+                                <li><strong>The <code>title</code> Attribute for Tooltips:</strong> The <code>title</code> attribute defines some extra information about an element. The value will be displayed as a tooltip when you mouse over the element.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-4-topic4', name: 'Content Tags', content: `
+                            <h4>HTML Headings</h4>
+                            <p>HTML headings are titles or subtitles that you want to display on a webpage. They are defined with the <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> tags. <code>&lt;h1&gt;</code> is the most important (and biggest), and <code>&lt;h6&gt;</code> is the least important (and smallest).</p>
+                            <p class="mt-2"><strong>Headings are Important!</strong> Search engines use headings to understand the structure of your page. Use them to organize your content, not just to make text big.</p>
+                            <h5 class="font-semibold mt-6">HTML Paragraphs</h5>
+                            <p>The <code>&lt;p&gt;</code> element defines a paragraph. A paragraph always starts on a new line, and browsers automatically add some white space (a margin) before and after it.</p>
+                            <h5 class="font-semibold mt-6">Controlling Space and Lines</h5>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>The Browser Ignores Extra Space:</strong> If you put lots of spaces or new lines in your HTML code inside a <code>&lt;p&gt;</code> tag, the browser will ignore them.</li>
+                                <li><strong>Horizontal Rules (<code>&lt;hr&gt;</code>):</strong> The <code>&lt;hr&gt;</code> tag creates a horizontal line, often used to separate content. It's an empty tag.</li>
+                                <li><strong>Line Breaks (<code>&lt;br&gt;</code>):</strong> The <code>&lt;br&gt;</code> tag creates a line break. Use it if you want a new line without starting a whole new paragraph. It's also an empty tag.</li>
+                                <li><strong>The <code>&lt;pre&gt;</code> Element:</strong> If you need to display text exactly as it's written in your code, including all spaces and line breaks (like for a poem), use the <code>&lt;pre&gt;</code> tag.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-4-topic5', name: 'Formatting', content: `
+                            <h4>Text Formatting Elements</h4>
+                            <p>You can use special tags to change the appearance and meaning of your text.</p>
+                            <ul class="list-disc list-inside mt-4 space-y-3">
+                                <li><code>&lt;b&gt;</code> - <strong>Bold text</strong></li>
+                                <li><code>&lt;strong&gt;</code> - <strong>Important text:</strong> Typically looks bold, but also tells screen readers the text is important.</li>
+                                <li><code>&lt;i&gt;</code> - <em>Italic text</em></li>
+                                <li><code>&lt;em&gt;</code> - <em>Emphasized text:</em> Typically looks italic, but tells screen readers to say it with emphasis.</li>
+                                <li><code>&lt;mark&gt;</code> - <mark>Marked text</mark></li>
+                                <li><code>&lt;del&gt;</code> - <del>Deleted text</del></li>
+                                <li><code>&lt;ins&gt;</code> - <ins>Inserted text</ins></li>
+                                <li><code>&lt;sub&gt;</code> - <sub>Subscript</sub> text</li>
+                                <li><code>&lt;sup&gt;</code> - <sup>Superscript</sup> text</li>
+                            </ul>
+                        `},
+                        { id: 'it11-4-topic5b', name: 'Inline Styling', content: `
+                            <h4>Quick Styling with the <code>style</code> Attribute</h4>
+                            <p>The <code>style</code> attribute allows you to add CSS (Cascading Style Sheets) styling directly to a single HTML element. This is called "inline CSS" and it's a great way to quickly test styles or apply a unique look to one specific item without creating a whole stylesheet.</p>
+                            <p class="mt-4">The syntax is <code>style="property:value;"</code>. You can add multiple styles by separating them with a semicolon.</p>
+                            <h5 class="font-semibold mt-6">Common Style Properties to Try:</h5>
+                            <ul class="list-disc list-inside mt-4 space-y-2">
+                                <li><strong>Text Color:</strong> <code>style="color:red;"</code></li>
+                                <li><strong>Background Color:</strong> <code>style="background-color:powderblue;"</code></li>
+                                <li><strong>Font Size:</strong> <code>style="font-size:150%;"</code></li>
+                                <li><strong>Font Family:</strong> <code>style="font-family:monospace;"</code></li>
+                                <li><strong>Text Alignment:</strong> <code>style="text-align:center;"</code></li>
+                                <li><strong>Borders:</strong> <code>style="border:2px solid Tomato;"</code></li>
+                            </ul>
+                            <p class="mt-6"><strong>Example:</strong></p>
+                            <pre><code>&lt;h1 style="color:blue; text-align:center;"&gt;This is a blue, centered heading.&lt;/h1&gt;
+&lt;p style="background-color:Tomato; color:white;"&gt;This paragraph has a red background and white text.&lt;/p&gt;</code></pre>
+                        `},
+                        { id: 'it11-4-topic6', name: 'Images', content: `
+                            <h4>Working with Images</h4>
+                            <p>The <code>&lt;img&gt;</code> tag is used to embed an image in a web page. It's an empty tag and has two required attributes: <code>src</code> and <code>alt</code>.</p>
+                            <p class="mt-2"><strong>Syntax: </strong><code><strong>&lt;img src="url" alt="alternatetext"&gt;</strong></code></p>
+                            <h5 class="font-semibold mt-4">Image Attributes Explained</h5>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>The <code>src</code> Attribute (Source):</strong> This is the path or URL to the image.</li>
+                                <li><strong>The <code>alt</code> Attribute (Alternate Text):</strong> This text describes the image. It is shown if the image cannot load and is read aloud by screen readers. <strong>It is required!</strong></li>
+                                <li><strong>The <code>width</code> and <code>height</code> Attributes:</strong> You should always specify the size of your image in pixels. This helps the page load smoothly.</li>
+                            </ul>
+                            <h5 class="font-semibold mt-4">More Image Tricks</h5>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>Image as a Link:</strong> To make an image clickable, just wrap the <code>&lt;img&gt;</code> tag inside an <code>&lt;a&gt;</code> tag.</li>
+                                <li><strong>Animated Images:</strong> HTML supports animated GIFs. Just use the <code>.gif</code> file in your <code>src</code> attribute.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-4-topic7', name: 'Challenge', content: `
+                            <h4>Your First Mission: Build a Personal Profile Page!</h4>
+                            <p>Now it's time to use everything you've learned.</p>
+                            <ol class="list-decimal list-inside mt-4 space-y-2">
+                                <li>Open VS Code.</li>
+                                <li>Create a new file and save it as <code>index.html</code>.</li>
+                                <li>Type the basic HTML skeleton into your file. Remember to set the language with <code>&lt;html lang="en"&gt;</code>.</li>
+                                <li>Inside the <code>&lt;body&gt;</code> tags, create your personal profile. It must include:
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li>Your name inside an <code>&lt;h1&gt;</code> tag. Add a <code>style</code> attribute to change its color.</li>
+                                        <li>A short paragraph about your hobbies using a <code>&lt;p&gt;</code> tag. Use <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code> on a word you want to emphasize.</li>
+                                        <li>An image! Use a placeholder from <code>https://placehold.co</code>. Make sure to set the <code>src</code>, <code>alt</code>, <code>width</code>, and <code>height</code> attributes.</li>
+                                        <li>A link to your favorite website using the <code>&lt;a&gt;</code> tag. Add a <code>title</code> attribute to the link to create a tooltip.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        `},
+                        { id: 'it11-4-topic8', name: 'Save & Reflect', content: `
+                            <h4>GitHub Upload: Your Online Portfolio</h4>
+                            <p>You've built your first webpage! Now let's save it online so you can see it from anywhere and share it with others.</p>
+                            <p class="mt-4">Open your terminal in VS Code and run these commands:</p>
+                            <pre class="bg-gray-900 text-white p-4 rounded-lg mt-2"><code>git add index.html
+git commit -m "Create my first personal profile page with attributes and styles"
+git push</code></pre>
+                            <h5 class="font-semibold mt-6">Closing Reflection</h5>
+                            <p>To finish today's mission, go to your GitHub repository for this project.</p>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>Find the <code>README.md</code> file and click the pencil icon to edit it.</li>
+                                <li>At the bottom of the file, write one question you still have about HTML or one thing you learned today that you found interesting.</li>
+                                <li>Commit your changes to the <code>README.md</code> file.</li>
+                            </ol>
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it11-5': {
+                    title: 'IT-11 - Meeting 5',
+                    subtitle: 'Structuring Pages and Collecting Information',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'it11-5-warmup', name: 'Warm-Up', content: `
+                            <h4>Quick Review</h4>
+                            <p>Let's start by looking at the profile pages we built last time. Open up your <code>index.html</code> file. We created a basic page with headings, paragraphs, and images. Today, we are going to learn how to organize that content into logical sections and how to add forms to make our pages interactive!</p>
+                        `},
+                        { id: 'it11-5-topic1', name: 'Layout', content: `
+                            <h4>Structuring Content with <code>&lt;div&gt;</code> and Layout Elements</h4>
+                            <h5 class="font-semibold mt-6">The <code>&lt;div&gt;</code> Element: The All-Purpose Container</h5>
+                            <p>The <code>&lt;div&gt;</code> element is one of the most common tags in HTML. Think of it as an empty cardboard box that you can use to <strong>group other elements together</strong>. It has no special look on its own, but it's incredibly useful for organizing your page into sections so you can style them or move them around together.</p>
+                            <ul class="list-disc list-inside mt-4">
+                                <li><strong><code>&lt;div&gt;</code> is a "Block" Element:</strong> By default, a <code>&lt;div&gt;</code> is a <strong>block-level element</strong>. This means it always starts on a new line and takes up the full width available on the page, like a whole paragraph block.</li>
+                            </ul>
+                            <p class="mt-4"><strong>Example: <code>&lt;div&gt;</code> as a container</strong><br>In this example, we group a heading and two paragraphs inside a single <code>&lt;div&gt;</code>. We can then add a border to the entire group with one style attribute.</p>
+                            <pre><code>&lt;div style="border:1px solid black; padding:10px; margin-bottom:10px;"&gt;
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;London is the capital city of England.&lt;/p&gt;
+  &lt;p&gt;London has over 9 million inhabitants.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            <p class="mt-4"><strong>How to Center a <code>&lt;div&gt;</code></strong><br>If you give a <code>&lt;div&gt;</code> a specific width that is less than the full page width, it will align to the left by default. To center it, you can use the inline style <code>margin:auto;</code>.</p>
+                            <pre><code>&lt;div style="width:300px; margin:auto; border:1px solid black; padding:10px;"&gt;
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;London is the capital city of England.&lt;/p&gt;
+  &lt;p&gt;London has over 9 million inhabitants.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            <p class="mt-2">This tells the browser to automatically calculate equal margins on the left and right, pushing the box into the center.</p>
+                            <h5 class="font-semibold mt-6">HTML Layout Elements: Giving Your Page Meaning</h5>
+                            <p>While you can build an entire website using only <code>&lt;div&gt;</code>s, modern HTML gives us special tags that work like <code>&lt;div&gt;</code>s but have meaningful names. These are called <strong>semantic elements</strong> because they describe the <em>meaning</em> or <em>purpose</em> of the content inside them.</p>
+                            <p class="mt-4"><strong>Why use Semantic Elements?</strong></p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Accessibility:</strong> Screen readers can use them to help visually impaired users navigate your page.</li>
+                                <li><strong>SEO:</strong> Search engines like Google can better understand your content, which can help your site rank higher.</li>
+                                <li><strong>Clarity:</strong> It makes your code easier for you and other developers to read.</li>
+                            </ul>
+                            <img src="https://www.w3schools.com/html/img_sem_elements.gif" alt="Diagram of semantic HTML layout elements" class="my-6">
+                            <p><strong>Meet the Layout Team:</strong></p>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><code>&lt;header&gt;</code>: The introduction for a page or a section. Usually contains the logo, site title, and main navigation.</li>
+                                <li><code>&lt;nav&gt;</code>: Specifically for a block of navigation links.</li>
+                                <li><code>&lt;section&gt;</code>: A major, standalone section of a document. Think of it like a chapter in a book.</li>
+                                <li><code>&lt;article&gt;</code>: For self-contained content that could be distributed on its own, like a blog post, news story, or forum post.</li>
+                                <li><code>&lt;aside&gt;</code>: For content that is indirectly related to the main content, like a sidebar with related links or an author bio.</li>
+                                <li><code>&lt;footer&gt;</code>: The footer for a page or a section. Usually contains copyright information, contact details, and links.</li>
+                                <li><code>&lt;details&gt;</code> & <code>&lt;summary&gt;</code>: A fun interactive widget that the user can open and close to see more details. <code>&lt;summary&gt;</code> provides the visible heading.</li>
+                            </ul>
+                            <p class="mt-6"><strong>Example of a Semantic Layout:</strong><br>Here is an example of a simple webpage layout using these meaningful elements.</p>
+                            <pre><code>&lt;body&gt;
+
+&lt;header style="background-color:#f1f1f1; text-align:center; padding:20px;"&gt;
+  &lt;h1&gt;My Awesome Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav style="background-color:#333; overflow:hidden;"&gt;
+  &lt;a href="#" style="color:white; padding:14px 20px; float:left;"&gt;Home&lt;/a&gt;
+  &lt;a href="#" style="color:white; padding:14px 20px; float:left;"&gt;About&lt;/a&gt;
+  &lt;a href="#" style="color:white; padding:14px 20px; float:left;"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;section style="padding:20px;"&gt;
+  &lt;h2&gt;About Me&lt;/h2&gt;
+  &lt;p&gt;This is where I talk about myself.&lt;/p&gt;
+  &lt;details&gt;
+    &lt;summary&gt;More Fun Facts&lt;/summary&gt;
+    &lt;p&gt;I also enjoy playing the guitar and coding!&lt;/p&gt;
+  &lt;/details&gt;
+&lt;/section&gt;
+
+&lt;footer style="background-color:#333; color:white; text-align:center; padding:10px; margin-top:20px;"&gt;
+  &lt;p&gt;Copyright 2025&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;/body&gt;</code></pre>
+                        `},
+                        { id: 'it11-5-topic2', name: 'Forms', content: `
+                            <h4>Collecting Information with HTML Forms</h4>
+                            <p>An HTML <code>&lt;form&gt;</code> is used to collect input from the user. This is how you create login pages, contact forms, search bars, and quizzes!</p>
+                            <h5 class="font-semibold mt-6">The Core Form Elements</h5>
+                            <ul class="list-disc list-inside mt-2 space-y-4">
+                                <li><code><strong>&lt;form&gt;</strong></code>: This is the main container for all your form elements. It has two crucial attributes:
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li><code>action</code>: This attribute tells the browser <strong>where</strong> to send the form data when it's submitted. This is usually a URL to a script on a server.</li>
+                                        <li><code>method</code>: This attribute tells the browser <strong>how</strong> to send the data. The two most common methods are <code>GET</code> and <code>POST</code>.</li>
+                                    </ul>
+                                </li>
+                                <li><code><strong>&lt;input&gt;</strong></code>: This is the most used form element. The <code>type</code> attribute changes how it looks and behaves. We'll explore different types soon.</li>
+                                <li><code><strong>&lt;label&gt;</strong></code>: This defines a label for an input element. It's important for two reasons:
+                                    <ol class="list-decimal list-inside ml-4 mt-2 space-y-1">
+                                        <li>It helps screen-reader users understand what the input field is for.</li>
+                                        <li>It allows users to click on the label text to focus on or select the input field, which is great for small radio buttons or checkboxes.</li>
+                                    </ol>
+                                    <p class="mt-2 ml-4">The <code>for</code> attribute of the <code>&lt;label&gt;</code> must match the <code>id</code> attribute of the <code>&lt;input&gt;</code> to connect them.</p>
+                                </li>
+                            </ul>
+                            <h5 class="font-semibold mt-6">Understanding <code>GET</code> vs. <code>POST</code></h5>
+                            <p>Think of it like sending mail:</p>
+                            <ul class="list-disc list-inside mt-2 space-y-3">
+                                <li><code><strong>method="GET"</strong></code><strong> is like sending a postcard.</strong> ✉️ The data you submit is attached to the URL in the address bar, visible to everyone. It looks like this: <code>.../process.html?name=John&amp;age=14</code>. This method is fine for things like search queries, but you should <strong>never</strong> use it for sensitive information like passwords.</li>
+                                <li><code><strong>method="POST"</strong></code><strong> is like sending a sealed letter.</strong> 📮 The data is sent in the body of the web request, hidden from the URL. This is more secure and is used for sending private information, like when you log in to an account.</li>
+                            </ul>
+                            <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <p><strong>The <code>name</code> Attribute is VITAL!</strong> Notice that each input field must have a <code>name</code> attribute to be submitted. This <code>name</code> becomes the "key" for the data. For example, <code>name="username"</code> with a value of "Sarah" becomes <code>username=Sarah</code> when it's sent. If the <code>name</code> attribute is missing, the data from that field <strong>will not be sent</strong>.</p>
+                            </div>
+                            <h5 class="font-semibold mt-6">Common Input Types</h5>
+                            <div class="overflow-x-auto mt-4">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="p-2 border">Type</th>
+                                            <th class="p-2 border">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-t"> <td class="p-2 border"><code>&lt;input type="text"&gt;</code></td> <td class="p-2 border">A single-line text input field.</td> </tr>
+                                        <tr class="border-t"> <td class="p-2 border"><code>&lt;input type="radio"&gt;</code></td> <td class="p-2 border">A radio button (for selecting ONE of many choices).</td> </tr>
+                                        <tr class="border-t"> <td class="p-2 border"><code>&lt;input type="checkbox"&gt;</code></td> <td class="p-2 border">A checkbox (for selecting ZERO or MORE of many choices).</td> </tr>
+                                        <tr class="border-t"> <td class="p-2 border"><code>&lt;input type="submit"&gt;</code></td> <td class="p-2 border">A button that submits the form.</td> </tr>
+                                        <tr class="border-t"> <td class="p-2 border"><code>&lt;input type="button"&gt;</code></td> <td class="p-2 border">A simple clickable button.</td> </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        `},
+                        { id: 'it11-5-topic3', name: 'Form Demo', content: `
+                            <h4>Showcase: Seeing Form Data in Action!</h4>
+                            <p>Let's do a quick experiment to see how the <code>GET</code> method works. This is a sneak peek for when we learn JavaScript later!</p>
+                            <p class="mt-4"><strong>Activity: The Data Postcard</strong></p>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>Create two new HTML files in the same folder: <code>formindex.html</code> and <code>process.html</code>.</li>
+                                <li>Copy the code below into each file.</li>
+                            </ol>
+                            <p class="mt-4"><strong>File 1: <code>formindex.html</code></strong></p>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;HTML Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="font-family: sans-serif; padding: 20px;"&gt;
+
+    &lt;h1&gt;Enter Your Details&lt;/h1&gt;
+
+    &lt;!--
+      The &lt;form&gt; tag is the container for our inputs.
+      - The 'action' attribute tells the browser to send the data to our 'process.html' page.
+      - The 'method="GET"' attribute tells the browser to send the form data in the URL.
+        You will see it in the address bar on the next page!
+    --&gt;
+    &lt;form action="process.html" method="GET"&gt;
+
+        &lt;!-- Label for the name input. The 'for' attribute links it to the input's 'id'. --&gt;
+        &lt;label for="name"&gt;Name:&lt;/label&gt;&lt;br&gt;
+        &lt;!--
+          The 'name' attribute is very important. It becomes the key for the data we send.
+          For example: name=John
+        --&gt;
+        &lt;input type="text" id="name" name="name" required&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;!-- Label for the age input. --&gt;
+        &lt;label for="age"&gt;Age:&lt;/label&gt;&lt;br&gt;
+        &lt;!-- The 'name' attribute here will be 'age'. For example: age=25 --&gt;
+        &lt;input type="number" id="age" name="age" required&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;!-- A simple submit button to send the form. --&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <p class="mt-4"><strong>File 2: <code>process.html</code></strong></p>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Data Sent&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="font-family: sans-serif; padding: 20px;"&gt;
+    &lt;h1&gt;Data Sent Successfully!&lt;/h1&gt;
+    &lt;p style="background-color: #eee; border: 1px solid #ccc; padding: 10px; border-radius: 5px;"&gt;
+        &lt;strong&gt;Teaching Moment:&lt;/strong&gt; Check the browser's address bar! You'll see the values you just entered attached to the URL. That's the \`GET\` method in action.
+    &lt;/p&gt;
+    &lt;a href="formindex.html"&gt;Go Back&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <p class="mt-4"><strong>Instructions:</strong></p>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>Open <code>formindex.html</code> in your browser.</li>
+                                <li>Fill in your name and an age, then click "Submit".</li>
+                                <li><strong>Look at the address bar on the <code>process.html</code> page!</strong> You will see your data right there in the URL. You've just used the <code>GET</code> method!</li>
+                            </ol>
+                        `},
+                        { id: 'it11-5-topic4', name: 'More Elements', content: `
+                            <h4>More Awesome Form Elements</h4>
+                            <ul class="list-disc list-inside mt-4 space-y-4">
+                                <li><code><strong>&lt;textarea&gt;</strong></code>: A multi-line text box for longer messages.</li>
+                                <li><code><strong>&lt;select&gt;</strong></code> and <code><strong>&lt;option&gt;</strong></code>: A drop-down list.</li>
+                                <li><code><strong>&lt;button&gt;</strong></code>: A clickable button. Always specify the <code>type</code> attribute (e.g., <code>type="submit"</code>).</li>
+                                <li><code><strong>&lt;fieldset&gt;</strong></code> and <code><strong>&lt;legend&gt;</strong></code>: Use <code>&lt;fieldset&gt;</code> to draw a box around related data in a form, and <code>&lt;legend&gt;</code> to give the group a caption.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-5-topic5', name: 'Mission', content: `
+                            <h4>Your Grand Mission: Profile Page with a Form!</h4>
+                            <p>Now it's time to combine everything. You will add a contact form to the personal profile page you created in our last session.</p>
+                            <ol class="list-decimal list-inside mt-4 space-y-2">
+                                <li><strong>Open your <code>index.html</code> file in VS Code.</strong></li>
+                                <li>Below your existing profile information, create a new <code>&lt;section&gt;</code> for a contact form.</li>
+                                <li><strong>Create the Form:</strong>
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li>Add an <code>&lt;h2&gt;</code> that says "Contact Me".</li>
+                                        <li>Start with a <code>&lt;form action="/action_page.php" method="POST"&gt;</code> tag.</li>
+                                        <li>Add a text input field for "Name" (<code>&lt;input type="text"&gt;</code>). Don't forget the <code>&lt;label&gt;</code>.</li>
+                                        <li>Add a text input field for "Email".</li>
+                                        <li>Add a <code>&lt;textarea&gt;</code> for a "Message".</li>
+                                        <li>Add a submit button (<code>&lt;input type="submit"&gt;</code>).</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Independent Task:</strong> Enhance your form using other attributes like <code>placeholder</code> and <code>required</code>.</li>
+                            </ol>
+                        `},
+                        { id: 'it11-5-topic6', name: 'Save & Reflect', content: `
+                            <h4>Save and Share Your Work</h4>
+                            <p>You've built a webpage with layout and a form! Let's save your major update online.</p>
+                            <p class="mt-4">Open your terminal in VS Code and run these commands:</p>
+                            <pre><code>git add .
+git commit -m "Add layout structure and a contact form to my profile page"
+git push</code></pre>
+                            <h5 class="font-semibold mt-6">Closing Reflection</h5>
+                            <p>To finish today's mission, go to your GitHub repository for this project.</p>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>Find the <code>README.md</code> file and click the pencil icon to edit it.</li>
+                                <li>At the bottom of the file, answer this question: <strong>"How could the form you built be useful in a real project?"</strong></li>
+                                <li>Commit your changes to the <code>README.md</code> file.</li>
+                            </ol>
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it11-6': {
+                    title: 'IT-11 - Meeting 6',
+                    subtitle: 'The Superpowers of CSS',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'it11-6-topic1', name: 'What is CSS?', content: `
+                            <h4>What is CSS and How Does it Talk to HTML?</h4>
+                            <h5 class="font-semibold mt-6">Your Mission, Should You Choose to Accept It: The CSS Rule 📜</h5>
+                            <p>Imagine your HTML document is a secret agent, and CSS is the mission briefing that tells the agent how to look and act. To give an HTML element (like a paragraph or a heading) its instructions, you need to write a <strong>CSS Rule</strong>.</p>
+                            <p class="mt-4">A CSS rule has two main parts:</p>
+                            <ol class="list-decimal list-inside mt-2 space-y-2">
+                                <li><strong>The Selector:</strong> This is <em>who</em> you're talking to. It's like calling out an agent's name, e.g., "Hey, Agent <code>&lt;p&gt;</code>!"</li>
+                                <li><strong>The Declaration Block:</strong> This is the <em>mission</em>. It's a list of instructions enclosed in curly braces <code>{}</code>. Each instruction has a <strong>property</strong> (what to change, like <code>color</code> or <code>font-size</code>) and a <strong>value</strong> (how to change it, like <code>blue</code> or <code>20px</code>), separated by a colon.</li>
+                            </ol>
+                            <p class="mt-4">Here is the structure:</p>
+                            <pre><code>selector {
+  property: value;
+  property: value;
+}</code></pre>
+                            <p class="mt-4">For example, if we want all our paragraphs to have blue text, the rule would be:</p>
+                            <pre><code>p {
+  color: blue;
+}</code></pre>
+                        `},
+                        { id: 'it11-6-topic1b', name: 'CSS Methods', content: `
+                            <h4>Inline vs. Internal vs. External CSS</h4>
+                            <p>There are three main ways to add CSS to your HTML, each with its own advantages and best use cases. Understanding them helps you write cleaner and more efficient code.</p>
+
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border">
+                                <h5 class="font-semibold text-lg">1. Inline CSS (The "Quick Fix")</h5>
+                                <p class="mt-2 text-sm text-gray-600">Applies styles directly to a single HTML element using the <code>style</code> attribute.</p>
+                                <p class="mt-4"><strong>Example:</strong></p>
+                                <pre><code>&lt;h1 style="color: blue; text-align: center;"&gt;A Blue, Centered Heading&lt;/h1&gt;</code></pre>
+                                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                    <div class="p-3 bg-green-50 rounded-md border border-green-200">
+                                        <p class="font-semibold text-green-800">Advantages:</p>
+                                        <ul class="list-disc list-inside mt-1">
+                                            <li>Very useful for quick tests or applying a unique style to just one element.</li>
+                                            <li>Has the highest priority, so it can override other styles.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-3 bg-red-50 rounded-md border border-red-200">
+                                        <p class="font-semibold text-red-800">Disadvantages:</p>
+                                        <ul class="list-disc list-inside mt-1">
+                                            <li>Mixes content (HTML) with presentation (CSS), which is considered bad practice.</li>
+                                            <li>Very difficult to maintain on a large site.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border">
+                                <h5 class="font-semibold text-lg">2. Internal CSS (The "Single Page" Style)</h5>
+                                <p class="mt-2 text-sm text-gray-600">Defines styles for a single HTML page inside a <code>&lt;style&gt;</code> tag within the <code>&lt;head&gt;</code> section.</p>
+                                <p class="mt-4"><strong>Example:</strong></p>
+                                <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+                                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                    <div class="p-3 bg-green-50 rounded-md border border-green-200">
+                                        <p class="font-semibold text-green-800">Advantages:</p>
+                                        <ul class="list-disc list-inside mt-1">
+                                            <li>Good for styling a single, unique page.</li>
+                                            <li>Keeps all styles for that page in one place.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-3 bg-red-50 rounded-md border border-red-200">
+                                        <p class="font-semibold text-red-800">Disadvantages:</p>
+                                        <ul class="list-disc list-inside mt-1">
+                                            <li>Cannot be reused across multiple pages.</li>
+                                            <li>Makes the HTML file larger.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mt-6">The third method, <strong>External CSS</strong>, solves these problems and is the professional standard for most websites. Let's explore that in the next tab!</p>
+                        `},
+                        { id: 'it11-6-topic2', name: 'Simple Selectors', content: `
+                            <h4>The Art of Selection - Simple Selectors</h4>
+                            <h5 class="font-semibold mt-6">Power Up!: How to Target Your Elements 🎯</h5>
+                            <p>To give styling instructions, you first need to be a good detective and find the <em>exact</em> HTML element you want to change. Simple selectors are your basic detective tools.</p>
+                            <ul class="list-disc list-inside mt-4 space-y-2">
+                                <li><strong>The Element Selector (a.k.a. The "Everybody" Selector):</strong> Targets <em>all</em> elements of a certain type (e.g., <code>p</code>, <code>h1</code>, <code>div</code>).</li>
+                                <li><strong>The ID Selector (a.k.a. The "Only You" Selector):</strong> Targets <em>one specific</em> element. You give that element a unique <code>id</code> in your HTML. In CSS, you call it with a hash symbol (<code>#</code>).</li>
+                                <li><strong>The Class Selector (a.k.a. The "Group" Selector):</strong> Targets <em>all</em> elements that you've put into a specific group. You give these elements the same <code>class</code> name in HTML. In CSS, you call the group with a period (<code>.</code>).</li>
+                            </ul>
+                            <h5 class="font-semibold mt-6">Case Study Investigation: Seeing Selectors in Action</h5>
+                            <p>Let's investigate a simple HTML file.</p>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to the Detective Agency&lt;/h1&gt;
+    &lt;p&gt;We solve the mystery of styling!&lt;/p&gt;
+    &lt;p class="secret-clue"&gt;This clue is for your eyes only.&lt;/p&gt;
+    &lt;div id="headquarters"&gt;This is our main base.&lt;/div&gt;
+    &lt;p class="secret-clue"&gt;Here is another clue.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <p class="mt-4">Now, let's see how our selectors can style this page.</p>
+                            <ul class="list-disc list-inside mt-2 space-y-4">
+                                <li><strong>Case Study #1: The Element Selector</strong><br>To change <em>every single</em> paragraph (<code>&lt;p&gt;</code>), we use the element selector.<br><strong>CSS:</strong> <pre><code>p { color: gray; }</code></pre> <strong>Result:</strong> All paragraphs turn gray.</li>
+                                <li><strong>Case Study #2: The ID Selector</strong><br>To style <em>only</em> our headquarters <code>&lt;div&gt;</code>, we use its unique ID.<br><strong>CSS:</strong> <pre><code>#headquarters { background-color: lightblue; border: 2px solid black; }</code></pre> <strong>Result:</strong> The "headquarters" div gets a light blue background and a black border.</li>
+                                <li><strong>Case Study #3: The Class Selector</strong><br>To highlight <em>all</em> our secret clues at once, we use their shared class.<br><strong>CSS:</strong> <pre><code>.secret-clue { background-color: yellow; font-weight: bold; }</code></pre> <strong>Result:</strong> Both paragraphs with the <code>secret-clue</code> class get a yellow background and bold text.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-6-practice1', name: 'Practice: Simple Selectors', content: `
+                            <h4>Time to Practice: Your First Missions!</h4>
+                            <p>Before you start, we need a way to add our CSS to our HTML. Let's use the <strong>Internal CSS</strong> method for now. This means we'll put all our CSS code inside <code>&lt;style&gt;</code> tags right in the <code>&lt;head&gt;</code> of our HTML file.</p>
+                            <p class="mt-4"><strong>Use this HTML file for the exercises:</strong></p>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Detectives&lt;/title&gt;
+    &lt;style&gt;
+        /* YOUR CSS CODE GOES HERE */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="main-title"&gt;My Awesome Website&lt;/h1&gt;
+    &lt;p class="intro"&gt;This is the introduction to my site.&lt;/p&gt;
+    &lt;h2&gt;Chapter 1&lt;/h2&gt;
+    &lt;p&gt;Here is the first paragraph of content.&lt;/p&gt;
+    &lt;p class="intro"&gt;I want this to look like the first intro paragraph.&lt;/p&gt;
+    &lt;h2 class="chapter-title"&gt;Chapter 2&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <ul class="list-disc list-inside mt-6 space-y-4">
+                                <li><strong>Exercise #1: The General Vibe</strong>
+                                    <ol class="list-decimal list-inside ml-4">
+                                        <li>Select all <code>&lt;h2&gt;</code> elements.</li>
+                                        <li>Change their <code>color</code> to <code>purple</code>.</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Exercise #2: The Unique Headline</strong>
+                                    <ol class="list-decimal list-inside ml-4">
+                                        <li>Select the <code>&lt;h1&gt;</code> element using its <code>id</code>.</li>
+                                        <li>Give it a <code>text-align</code> property with a value of <code>center</code>.</li>
+                                        <li>Give it a <code>font-family</code> property with a value of <code>monospace</code>.</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Exercise #3: The Special Paragraphs</strong>
+                                    <ol class="list-decimal list-inside ml-4">
+                                        <li>Select all paragraphs with the class <code>intro</code>.</li>
+                                        <li>Make their text <em>italic</em> by using the <code>font-style</code> property.</li>
+                                        <li>Give them a light gray background color (<code>lightgray</code>).</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <button class="internal-accordion-btn mt-6 text-sm font-semibold text-blue-600">Show Solution ▼</button>
+                            <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                <pre><code>/* Solution for Exercise 1 */
+h2 {
+    color: purple;
+}
+
+/* Solution for Exercise 2 */
+#main-title {
+    text-align: center;
+    font-family: monospace;
+}
+
+/* Solution for Exercise 3 */
+.intro {
+    font-style: italic;
+    background-color: lightgray;
+}</code></pre>
+                            </div>
+                        `},
+                        { id: 'it11-6-topic3', name: 'Advanced Selectors', content: `
+                            <h4>Smarter Styling - Advanced Selectors</h4>
+                            <h5 class="font-semibold mt-6">Level Up Your Detective Skills: Advanced Targeting 🕵️‍♀️</h5>
+                            <p>Now that you know the basics, let's learn some advanced moves to select elements based on their relationships, their current state, or even their HTML attributes!</p>
+                            <ul class="list-disc list-inside mt-4 space-y-4">
+                                <li><strong>Combinator Selectors (The "Relationship" Selectors):</strong> These selectors use a special symbol to select elements based on where they are in relation to other elements.
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li><strong>Descendant Selector (space):</strong> Selects an element that is <em>inside</em> another element. <code>div p</code> selects all <code>&lt;p&gt;</code> tags that are anywhere inside a <code>&lt;div&gt;</code>.</li>
+                                        <li><strong>Child Selector (<code>&gt;</code>):</strong> Selects an element that is a <em>direct child</em> of another. <code>div > p</code> only selects <code>&lt;p&gt;</code> tags whose direct parent is a <code>&lt;div&gt;</code>.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Pseudo-class Selectors (The "State" Selectors):</strong> These select elements based on a special state they are in. They start with a colon <code>:</code>.
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li><code>:hover</code> selects an element when your mouse is hovering over it.</li>
+                                        <li><code>:nth-child(n)</code> selects an element based on its order among its siblings.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Attribute Selectors (The "Property" Selectors):</strong> These select elements that have a certain HTML attribute or attribute value. They use square brackets <code>[]</code>.
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li><code>a[target="_blank"]</code> selects all link (<code>&lt;a&gt;</code>) tags that have the attribute <code>target</code> set to <code>"_blank"</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h5 class="font-semibold mt-6">Case Study Investigation: Advanced Techniques</h5>
+                            <p>Let's see these selectors in action with the following HTML:</p>
+                            <pre><code>&lt;div class="container"&gt;
+    &lt;p&gt;I am a paragraph inside the container.&lt;/p&gt;
+    &lt;a href="#"&gt;Link 1&lt;/a&gt;
+    &lt;section&gt;
+        &lt;p&gt;I am a paragraph deep inside the container.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/div&gt;
+&lt;p&gt;I am a paragraph outside the container.&lt;/p&gt;
+&lt;a href="https://www.google.com" target="_blank"&gt;Go to Google (new tab)&lt;/a&gt;
+&lt;button&gt;Hover Over Me!&lt;/button&gt;</code></pre>
+                            <ul class="list-disc list-inside mt-4 space-y-4">
+                                <li><strong>Case Study #1: Combinator Selector</strong><br>To select <em>only</em> the paragraph that is a direct child of the <code>.container</code> div:<br><strong>CSS:</strong> <pre><code>.container > p { border: 2px dashed green; }</code></pre> <strong>Result:</strong> Only the first paragraph gets a green dashed border. The paragraph inside the <code>&lt;section&gt;</code> is ignored.</li>
+                                <li><strong>Case Study #2: Pseudo-class Selector</strong><br>To make the button change color when you hover over it:<br><strong>CSS:</strong> <pre><code>button:hover { background-color: crimson; color: white; }</code></pre> <strong>Result:</strong> The button turns red with white text when you mouse over it.</li>
+                                <li><strong>Case Study #3: Attribute Selector</strong><br>To add a special style to links that open in a new tab:<br><strong>CSS:</strong> <pre><code>a[target="_blank"] { font-weight: bold; text-decoration: none; }</code></pre> <strong>Result:</strong> The "Go to Google" link becomes bold and loses its underline, while "Link 1" is unaffected.</li>
+                            </ul>
+                        `},
+                        { id: 'it11-6-topic4', name: 'Practice: Advanced', content: `
+                            <h4>Time to Practice: Advanced Missions!</h4>
+                            <p>Use the HTML below and add your CSS to the <code>&lt;style&gt;</code> block to complete the exercises.</p>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Advanced CSS&lt;/title&gt;
+    &lt;style&gt;
+        /* Our CSS will go here */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;p&gt;I am a paragraph inside the container.&lt;/p&gt;
+        &lt;a href="#"&gt;Link 1&lt;/a&gt;
+        &lt;section&gt;
+            &lt;p&gt;I am a paragraph deep inside the container.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+    &lt;p&gt;I am a paragraph outside the container.&lt;/p&gt;
+    &lt;a href="https://www.google.com" target="_blank"&gt;Go to Google (new tab)&lt;/a&gt;
+    &lt;button&gt;Hover Over Me!&lt;/button&gt;
+    &lt;input type="text" disabled&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <ul class="list-disc list-inside mt-6 space-y-4">
+                                <li><strong>Exercise #1: Deep Selection</strong>
+                                    <ol class="list-decimal list-inside ml-4">
+                                        <li>Select <em>all</em> <code>p</code> elements that are descendants (anywhere inside) of the div with the class <code>container</code>.</li>
+                                        <li>Change their <code>font-size</code> to <code>18px</code>.</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Exercise #2: Link Styling</strong>
+                                    <ol class="list-decimal list-inside ml-4">
+                                        <li>Select any <code>a</code> (link) element when you hover over it.</li>
+                                        <li>Change its <code>color</code> to <code>orange</code>.</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Exercise #3: Input Power</strong>
+                                    <ol class="list-decimal list-inside ml-4">
+                                        <li>Select any <code>input</code> element that has the <code>disabled</code> attribute.</li>
+                                        <li>Give it a <code>background-color</code> of <code>#eeeeee</code>.</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <button class="internal-accordion-btn mt-6 text-sm font-semibold text-blue-600">Show Solution ▼</button>
+                            <div class="internal-accordion-content hidden mt-4 pt-4 border-t">
+                                <pre><code>/* Solution for Exercise 1 */
+.container p {
+    font-size: 18px;
+}
+
+/* Solution for Exercise 2 */
+a:hover {
+    color: orange;
+}
+
+/* Solution for Exercise 3 */
+input[disabled] {
+    background-color: #eeeeee;
+}</code></pre>
+                            </div>
+                        `},
+                        { id: 'it11-6-topic5', name: 'External CSS', content: `
+                            <h4>Organizing Your Style - External CSS</h4>
+                            <h5 class="font-semibold mt-6">Stay Organized, Stay Awesome: Using an External Stylesheet</h5>
+                            <p>So far, we've been writing our CSS code directly inside our HTML file. This is called <strong>Internal CSS</strong>. It's fine for small projects, but what if you have 10 pages that all need to look the same? Copying and pasting the <code>&lt;style&gt;</code> block everywhere would be a nightmare!</p>
+                            <p class="mt-4">The professional way is to use an <strong>External CSS</strong> file.</p>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>You create a new file and save it with a <code>.css</code> extension (e.g., <code>style.css</code>).</li>
+                                <li>You write <em>all</em> your CSS code in this file. No <code>&lt;style&gt;</code> tags are needed!</li>
+                                <li>You link this CSS file to your HTML file using a <code>&lt;link&gt;</code> tag in the <code>&lt;head&gt;</code>.</li>
+                            </ol>
+                            <p class="mt-4"><strong>Benefits:</strong></p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Clean HTML:</strong> Your HTML file is just for content.</li>
+                                <li><strong>Easy to Reuse:</strong> One CSS file can style your entire website.</li>
+                                <li><strong>Faster Loading:</strong> Your browser can cache (save) the CSS file, making your site load faster on future visits.</li>
+                            </ul>
+                            <h5 class="font-semibold mt-6">Let's Do It: Convert to External CSS</h5>
+                            <ol class="list-decimal list-inside mt-2 space-y-1">
+                                <li>Create a new file in the same folder as your HTML and name it <code><strong>style.css</strong></code>.</li>
+                                <li><strong>Cut</strong> all the CSS code from inside the <code>&lt;style&gt;</code> tags in your HTML.</li>
+                                <li><strong>Paste</strong> that code into <code>style.css</code>.</li>
+                                <li><strong>Delete</strong> the now-empty <code>&lt;style&gt;</code> block from your HTML.</li>
+                                <li>In the <code>&lt;head&gt;</code> of your HTML, add this single line:
+                                <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+                                </li>
+                            </ol>
+                            <p class="mt-4">Your website should look exactly the same, but now your code is organized like a pro!</p>
+                        `},
+                        { id: 'it11-6-topic6', name: 'Challenge & Save', content: `
+                            <h4>Final Challenge: Explore Independently!</h4>
+                            <p>The world of CSS is huge and exciting. Your next mission is to explore on your own! Go to <strong><a href="https://www.w3schools.com/css/" target="_blank">w3schools.com/css</a></strong> and try to find the answers to these questions:</p>
+                            <ol class="list-decimal list-inside mt-4 space-y-2">
+                                <li>How do you change the <code>background-image</code> of the <code>&lt;body&gt;</code>?</li>
+                                <li>What does the <code>text-transform</code> property do?</li>
+                                <li>Find a pseudo-element like <code>::first-letter</code> and see what it does.</li>
+                            </ol>
+                            <h5 class="font-semibold mt-8">End of Session: Save Your Progress!</h5>
+                            <p>Great work today, agent! You've learned a ton about styling web pages. Now it's time to save your work to your portfolio on GitHub.</p>
+                            <p class="mt-4">Open your terminal or command prompt in your project folder and run these commands:</p>
+                            <pre><code>git add .
+git commit -m "Complete CSS Syntax and Selectors lesson"
+git push</code></pre>
+                            <p class="mt-2">This saves your new HTML and CSS files to your GitHub repository so you can show off your awesome new skills!</p>
+                        `},
+                        { id: 'closing', name: 'Closing', content: closingTabContent }
+                    ]
+                },
+                'it10-6': {
+                    title: 'IT-10 - Meeting 6',
+                    subtitle: 'How The Web Works - From Your Keyboard to the Globe',
+                    tabs: [
+                        { id: 'opening', name: 'Opening', content: openingTabContent },
+                        { id: 'it10-6-warmup', name: 'Warm-Up', content: `
+                            <h4>Opening Mission</h4>
+                            <h5 class="font-semibold mt-6">Warm-Up Question:</h5>
+                            <p>Let's start with a big question. You do it every day, but have you ever thought about it? <strong>"What do you <em>actually</em> think happens, step-by-step, when you type <code>google.com</code> into your browser and hit Enter?"</strong></p>
+                            <p class="mt-2">Let's brainstorm some ideas. There are no wrong answers!</p>
+                            <h5 class="font-semibold mt-6">Live Demo: Peeking Under the Hood</h5>
+                            <p>Watch as I open a website and open up a secret tool called <strong>Developer Tools</strong> (or "Inspect Element"). This tool is built into every modern browser and lets us see the raw code that builds the pages we use every day. What do you notice? What looks familiar or strange? This is the code that makes the web work, and today we're going to understand what it is and how it gets to your screen.</p>
+                        `},
+                        { id: 'it10-6-topic1', name: 'The Journey', content: `
+                            <h4>The Journey of a Website - How the Internet Works</h4>
+                            <p>When you request a website, you're kicking off an amazing, near-instantaneous global journey. Think of it like ordering a pizza:</p>
+                            <ol class="list-decimal list-inside mt-4 space-y-3">
+                                <li><strong>You Decide What You Want (The URL):</strong> You tell your browser (<code>Chrome</code>, <code>Firefox</code>, etc.) you want to go to <code>www.google.com</code>. This is like deciding you want a pepperoni pizza.</li>
+                                <li><strong>Look Up the Address (DNS):</strong> Your computer doesn't know where <code>google.com</code> lives. It needs a specific address, called an <strong>IP Address</strong> (e.g., <code>142.250.191.78</code>). Your computer asks a special internet phonebook called the <strong>DNS (Domain Name System)</strong>. The DNS looks up "google.com" and tells your computer its IP address. This is like looking up the pizza place's street address.</li>
+                                <li><strong>Place the Order (HTTP Request):</strong> Your browser now sends a message, called an <strong>HTTP Request</strong>, across the internet to the computer (called a <strong>server</strong>) at that IP address. The message says, "Please send me the files for the google.com homepage." This is you calling the pizza place and ordering your pizza.</li>
+                                <li><strong>The Kitchen Prepares the Order (The Server):</strong> The Google <strong>server</strong> is a powerful computer whose job is to listen for these requests. When it gets your request, it gathers all the necessary files—the HTML, CSS, and JavaScript—to build the homepage. This is the pizza kitchen making your pizza.</li>
+                                <li><strong>Deliver the Pizza (HTTP Response):</strong> The server sends all those files back across the internet to your browser. This is called an <strong>HTTP Response</strong>. This is the delivery driver bringing the pizza to your house.</li>
+                                <li><strong>Enjoy Your Meal (Rendering the Page):</strong> Your browser receives the files and reads them, assembling them into the visual website you can see and interact with. This is you opening the box and seeing the delicious pizza!</li>
+                            </ol>
+                            <p class="mt-4">This entire process happens through a global network of cables, satellites, and routers. Every time you click a link, you're sending a new request on this incredible journey.</p>
+                        `},
+                        { id: 'it10-6-topic2', name: 'Frontend vs. Backend', content: `
+                            <h4>The Two Sides of a Website - Frontend vs. Backend</h4>
+                            <p>Every complex website or web application has two "sides," just like a restaurant has a dining room and a kitchen. This is called the <strong>Client-Server Model</strong>.</p>
+                            <ul class="list-disc list-inside mt-4 space-y-3">
+                                <li><strong>The Client (Frontend):</strong> This is everything you, the user, can see and interact with in your browser. It's the "dining room" of the restaurant—the tables, the menus, the decor. The code for the frontend is sent to your browser and runs on <em>your</em> computer.</li>
+                                <li><strong>The Server (Backend):</strong> This is the hidden part of the website that you don't see. It's the "kitchen"—where the data is stored (in <strong>databases</strong>), where user accounts are managed, and where all the complex logic happens. The backend code runs on the company's powerful computers (servers).</li>
+                            </ul>
+                            <p class="mt-4">When you log into Instagram, the login form you see is the <strong>Frontend</strong>. When you hit "Login," your details are sent to the <strong>Backend</strong>, which checks if your password is correct and then sends back your profile data to be displayed by the frontend.</p>
+                        `},
+                        { id: 'it10-6-topic3', name: 'The Building Blocks', content: `
+                            <h4>The Building Blocks of the Web - HTML, CSS, & JavaScript</h4>
+                            <p>The frontend of every website is built with three essential languages. The best way to understand their roles is with an analogy: building a house.</p>
+                            <img src="https://miro.medium.com/v2/resize:fit:800/1*4u3N6gec_QEVA_Yu2Tfi0w.jpeg" alt="HTML, CSS, JS as a house analogy" class="my-6">
+                            <h5 class="font-semibold mt-6">HTML (HyperText Markup Language): The Structure</h5>
+                            <p>HTML is the standard language for creating the <strong>content and structure</strong> of a webpage. It's the skeleton or the blueprint of the house. It uses "tags" like <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;img&gt;</code> to define what each piece of content <em>is</em>.</p>
+                            <pre><code>&lt;h1&gt;Welcome to My House&lt;/h1&gt;
+&lt;p&gt;This is the living room.&lt;/p&gt;</code></pre>
+                            <h5 class="font-semibold mt-6">CSS (Cascading Style Sheets): The Style</h5>
+                            <p>CSS is the language used to describe the <strong>presentation and visual design</strong> of a webpage. It's the interior and exterior decoration of the house. It targets the HTML elements and tells them how to look.</p>
+                            <pre><code>h1 {
+  color: blue;
+  font-size: 40px;
+}
+p {
+  color: grey;
+}</code></pre>
+                            <h5 class="font-semibold mt-6">JavaScript (JS): The Behavior</h5>
+                            <p>JavaScript is a programming language that brings <strong>interactivity and dynamic behavior</strong> to a website. It's the electricity, plumbing, and appliances that make the house functional. It handles things that happen <em>after</em> the page has loaded.</p>
+                            <pre><code>let button = document.querySelector('button');
+button.addEventListener('click', () =&gt; {
+  alert('You rang the doorbell!');
+});</code></pre>
+                        `},
+                        { id: 'it10-6-topic4', name: 'IDEs', content: `
+                            <h4>The Developer's Workshop - Integrated Development Environments (IDEs)</h4>
+                            <h5 class="font-semibold mt-6">What is an IDE?</h5>
+                            <p>An <strong>IDE (Integrated Development Environment)</strong> is a software application that provides programmers with a complete set of tools for software development. Think of it as a super-powered text editor designed specifically for writing code.</p>
+                            <h5 class="font-semibold mt-6">What Does an IDE Do?</h5>
+                            <p>An IDE combines several tools into one program:</p>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>Code Editor:</strong> A smart text editor with features like syntax highlighting and autocomplete.</li>
+                                <li><strong>Debugger:</strong> A tool that helps you find and fix bugs (errors) in your code.</li>
+                                <li><strong>Build Automation:</strong> Tools that help compile and prepare your code to be run.</li>
+                                <li><strong>Terminal/Console:</strong> A built-in command line so you can run commands without leaving the application.</li>
+                            </ul>
+                        `},
+                        { id: 'it10-6-topic5', name: 'VS Code', content: `
+                            <h4>Your First Workshop: Visual Studio Code (VS Code)</h4>
+                            <h5 class="font-semibold mt-6">Why VS Code?</h5>
+                            <p>There are many IDEs, but <strong>VS Code</strong> is currently the most popular choice for web development, and for good reason:</p>
+                            <ul class="list-disc list-inside mt-2 space-y-2">
+                                <li><strong>Free:</strong> It's completely free, with no hidden costs.</li>
+                                <li><strong>Fast & Lightweight:</strong> It doesn't slow down your computer like some larger IDEs.</li>
+                                <li><strong>Huge Extension Library:</strong> There's an extension for almost anything you can imagine.</li>
+                                <li><strong>Integrated Terminal:</strong> You can run Git commands and other tools right inside the editor.</li>
+                            </ul>
+                            <h5 class="font-semibold mt-6">How to Install VS Code</h5>
+                            <ol class="list-decimal list-inside mt-2 space-y-2">
+                                <li><strong>Go to the Official Website:</strong> Open your browser and navigate to <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a>.</li>
+                                <li><strong>Download:</strong> The website will automatically detect your OS. Click the download button.</li>
+                                <li><strong>Run the Installer:</strong>
+                                    <ul class="list-disc list-inside ml-4 mt-1">
+                                        <li><strong>On Windows:</strong> Find the downloaded <code>.exe</code> file and double-click it. Follow the setup wizard.</li>
+                                        <li><strong>On Mac:</strong> Find the downloaded <code>.zip</code> file. Unzip it, and drag the <code>Visual Studio Code.app</code> into your <code>Applications</code> folder.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p class="mt-2">That's it! You now have a professional-grade code editor on your computer.</p>
+                        `},
+                        { id: 'it10-6-topic6', name: 'Putting It Together', content: `
+                            <h4>Connecting All the Pieces</h4>
+                            <p>So, how does everything we've talked about fit together?</p>
+                            <blockquote class="mt-4 border-l-4 border-blue-500 pl-4 italic">
+                                <p>You, the developer, use an <strong>IDE</strong> like <strong>VS Code</strong> to write your <strong>HTML</strong> (structure), <strong>CSS</strong> (style), and <strong>JavaScript</strong> (behavior) code. These three languages combine to create the <strong>frontend</strong> of your website.</p>
+                                <p class="mt-2">When you're done, you upload these files to a <strong>server</strong>.</p>
+                                <p class="mt-2">When a user wants to see your site, they use the <strong>Internet</strong> to send a request from their browser (the client) to your server. The server sends your HTML, CSS, and JS files back to them, and their browser assembles it all into the final, beautiful, interactive website you built.</p>
+                            </blockquote>
+                        `},
+                        { id: 'it10-6-topic7', name: 'Activity', content: `
+                            <h4>Your Turn to be the Inspector!</h4>
+                            <p>Now it's your turn to use the Developer Tools to see these building blocks in action on the live web.</p>
+                            <ol class="list-decimal list-inside mt-4 space-y-2">
+                                <li>Choose two of your favorite websites.</li>
+                                <li>On each website, right-click anywhere on the page and select <strong>"Inspect"</strong> (or press <code>Ctrl+Shift+I</code> on Windows, <code>Cmd+Option+I</code> on Mac).</li>
+                                <li><strong>Explore!</strong>
+                                    <ul class="list-disc list-inside ml-4 mt-1">
+                                        <li>In the <strong>"Elements"</strong> tab, you'll see the live HTML of the page. Hover over different HTML tags. What happens on the page itself?</li>
+                                        <li>In the <strong>"Styles"</strong> tab (usually on the right), you'll see the CSS that applies to the element you have selected. Try unchecking some of the CSS boxes. What changes?</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Document Your Findings:</strong> Take a screenshot of something interesting you found on each site (e.g., the HTML for a logo, the CSS for a button).</li>
+                                <li><strong>Share:</strong> Post your screenshots and a brief observation about what you found on our class Padlet (or other shared space).</li>
+                            </ol>
+                        `},
+                        { id: 'it10-6-topic8', name: 'Reflection', content: `
+                            <h4>Closing Reflection</h4>
+                            <p>To wrap up, please go to our Google Classroom and answer the following post:</p>
+                            <blockquote class="mt-4 border-l-4 border-gray-300 pl-4 italic">
+                                “What surprised you most about how websites work? Was it how the internet sends data, the roles of the three languages, or something you saw using the Inspector tool?”
+                            </blockquote>
+                            <p class="mt-4">Answering this will help solidify what you've learned today!</p>
                         `},
                         { id: 'closing', name: 'Closing', content: closingTabContent }
                     ]
@@ -348,12 +1624,12 @@
                         <h3 class="text-xl text-gray-500 mt-2">${meeting.subtitle}</h3>
                     </header>
                     <div class="card">
-                        <div class="flex border-b border-gray-200 mb-6">
+                        <div class="flex overflow-x-auto border-b border-gray-200 mb-6 pb-1 hide-scrollbar">
                 `;
 
                 meeting.tabs.forEach((tab, index) => {
                     const activeClass = index === 0 ? 'active' : '';
-                    htmlContent += `<button class="tab-button ${activeClass}" data-tab="${tab.id}">${tab.name}</button>`;
+                    htmlContent += `<button class="tab-button flex-shrink-0 mr-4 ${activeClass}" data-tab="${tab.id}">${tab.name}</button>`;
                 });
 
                 htmlContent += `</div><div class="prose max-w-none">`;
@@ -376,6 +1652,16 @@
 
                         button.classList.add('active');
                         document.getElementById(button.dataset.tab).classList.add('active');
+                    });
+                });
+
+                // Attach event listeners for internal accordions within the active tab
+                const internalAccordions = mainContentContainer.querySelectorAll('.internal-accordion-btn');
+                internalAccordions.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        content.classList.toggle('hidden');
+                        button.textContent = content.classList.contains('hidden') ? 'Show Breakdown ▼' : 'Hide Breakdown ▲';
                     });
                 });
             }
@@ -405,4 +1691,3 @@
     </script>
 </body>
 </html>
-

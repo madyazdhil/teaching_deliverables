@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Syllabus Meeting 6</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.highlight-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.highlight-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.block-color-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.block-color-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="26e57710-0ed0-80d1-9c80-ffc52c296dd7" class="page sans"><header><h1 class="page-title">Syllabus Meeting 6</h1><p class="page-description"></p></header><div class="page-body"><h3 id="26e57710-0ed0-8096-855f-c69bb2d30f54" class=""><strong>Meeting 6: The Superpowers of CSS</strong></h3><h3 id="26e57710-0ed0-80cb-9823-e0e5d4b0fb58" class=""><strong>Topic 1: What is CSS and How Does it Talk to HTML?</strong></h3><h3 id="26e57710-0ed0-8082-8c04-cbc22a3447ef" class=""><strong>Your Mission, Should You Choose to Accept It: The CSS Rule 📜</strong></h3><p id="26e57710-0ed0-80dd-b54d-cdd2031ba0c5" class="">Imagine your HTML document is a secret agent, and CSS is the mission briefing that tells the agent how to look and act. To give an HTML element (like a paragraph or a heading) its instructions, you need to write a <strong>CSS Rule</strong>.</p><p id="26e57710-0ed0-80c7-86b8-c1d8dffd5873" class="">A CSS rule has two main parts:</p><ol type="1" id="26e57710-0ed0-806b-b9e8-c7417fa8b2cd" class="numbered-list" start="1"><li><strong>The Selector:</strong> This is <em>who</em> you&#x27;re talking to. It&#x27;s like calling out an agent&#x27;s name, e.g., &quot;Hey, Agent <code>&lt;p&gt;</code>!&quot;</li></ol><ol type="1" id="26e57710-0ed0-80f2-bb8c-f015338dec50" class="numbered-list" start="2"><li><strong>The Declaration Block:</strong> This is the <em>mission</em>. It&#x27;s a list of instructions enclosed in curly braces <code>{}</code>. Each instruction has a <strong>property</strong> (what to change, like <code>color</code> or <code>font-size</code>) and a <strong>value</strong> (how to change it, like <code>blue</code> or <code>20px</code>), separated by a colon.</li></ol><p id="26e57710-0ed0-80f5-a23b-f89e834794d5" class="">Here is the structure:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-8029-8a19-d81c74034726" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">selector {
+  property: value;
+  property: value;
+}</code></pre><p id="26e57710-0ed0-8052-b740-c89ff160469c" class="">For example, if we want all our paragraphs to have blue text, the rule would be:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-80a1-a216-c32f1c091dbb" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">p {
+  color: blue;
+}</code></pre><h3 id="26e57710-0ed0-80ee-aa5c-f96594321437" class=""><strong>Topic 2: The Art of Selection - Simple Selectors</strong></h3><h3 id="26e57710-0ed0-8053-80a2-d18c581cd1ba" class=""><strong>Power Up!: How to Target Your Elements 🎯</strong></h3><p id="26e57710-0ed0-8004-9633-f02b7cdd018e" class="">To give styling instructions, you first need to be a good detective and find the <em>exact</em> HTML element you want to change. Simple selectors are your basic detective tools.</p><ul id="26e57710-0ed0-8002-b13e-e12ad160593c" class="bulleted-list"><li style="list-style-type:disc"><strong>The Element Selector (a.k.a. The &quot;Everybody&quot; Selector):</strong> Targets <em>all</em> elements of a certain type (e.g., <code>p</code>, <code>h1</code>, <code>div</code>).</li></ul><ul id="26e57710-0ed0-8000-89f7-ef6b56b64ed1" class="bulleted-list"><li style="list-style-type:disc"><strong>The ID Selector (a.k.a. The &quot;Only You&quot; Selector):</strong> Targets <em>one specific</em> element. You give that element a unique <code>id</code> in your HTML. In CSS, you call it with a hash symbol (<code>#</code>).</li></ul><ul id="26e57710-0ed0-809d-a0dc-fc094cb2cade" class="bulleted-list"><li style="list-style-type:disc"><strong>The Class Selector (a.k.a. The &quot;Group&quot; Selector):</strong> Targets <em>all</em> elements that you&#x27;ve put into a specific group. You give these elements the same <code>class</code> name in HTML. In CSS, you call the group with a period (<code>.</code>).</li></ul><h3 id="26e57710-0ed0-80c1-8672-e24da82a8ee6" class=""><strong>Case Study Investigation: Seeing Selectors in Action</strong></h3><p id="26e57710-0ed0-8001-a1a0-cdeaf405ccac" class="">Let&#x27;s investigate a simple HTML file. In your project folder, create a file named <code>index.html</code>.</p><p id="26e57710-0ed0-80e4-a973-fdd86eba5e80" class=""><code><strong>index.html</strong></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-80d7-800e-efb74c9f3a7b" class="code code-wrap"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Detectives&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Welcome to the Detective Agency&lt;/h1&gt;
+    &lt;p&gt;We solve the mystery of styling!&lt;/p&gt;
+    &lt;p class=&quot;secret-clue&quot;&gt;This clue is for your eyes only.&lt;/p&gt;
+    &lt;div id=&quot;headquarters&quot;&gt;This is our main base.&lt;/div&gt;
+    &lt;p class=&quot;secret-clue&quot;&gt;Here is another clue.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p id="26e57710-0ed0-8054-ada5-c3efaaa3b3d3" class="">Now, let&#x27;s see how our selectors can style this page.</p><ul id="26e57710-0ed0-806d-8cf1-e32bb3d11b0b" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study #1: The Element Selector</strong> To change <em>every single</em> paragraph (<code>&lt;p&gt;</code>), we use the element selector. <strong>CSS Code:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-8025-975c-e946f45849a3" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">p {
+  color: gray;
+}</code></pre><p id="26e57710-0ed0-80bb-9716-f45baab992a0" class=""><strong>Result:</strong> All paragraphs turn gray.</p></li></ul><ul id="26e57710-0ed0-80fd-9df2-ff30ae7005b9" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study #2: The ID Selector</strong> To style <em>only</em> our headquarters <code>&lt;div&gt;</code>, we use its unique ID. <strong>CSS Code:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-807b-96f6-e187116c45cc" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">#headquarters {
+  background-color: lightblue;
+  border: 2px solid black;
+}</code></pre><p id="26e57710-0ed0-805d-94b0-cd380a9aaf0e" class=""><strong>Result:</strong> The &quot;headquarters&quot; div gets a light blue background and a black border. No other element is affected.</p></li></ul><ul id="26e57710-0ed0-8058-887f-cfe483edfae2" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study #3: The Class Selector</strong> To highlight <em>all</em> our secret clues at once, we use their shared class. <strong>CSS Code:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-80f1-a4dc-e8538b683d34" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">.secret-clue {
+  background-color: yellow;
+  font-weight: bold;
+}</code></pre><p id="26e57710-0ed0-8005-801a-fb45a2dd9850" class=""><strong>Result:</strong> Both paragraphs with the <code>secret-clue</code> class get a yellow background and bold text.</p></li></ul><h3 id="26e57710-0ed0-8002-a014-e89b1878105b" class=""><strong>Deeper Dive: When to Use Which Selector?</strong></h3><ul id="26e57710-0ed0-8083-a0e7-d292bfc13357" class="bulleted-list"><li style="list-style-type:disc">Use the <strong>element selector</strong> for general, site-wide styles. For example, setting the default font for all paragraphs.</li></ul><ul id="26e57710-0ed0-804d-857e-f8f5c802f95b" class="bulleted-list"><li style="list-style-type:disc">Use the <strong>ID selector</strong> for a single, unique element that appears only once on a page, like a main navigation bar or a footer. Think of it as a fingerprint – there&#x27;s only one!</li></ul><ul id="26e57710-0ed0-8075-9dc1-c3dc0c691856" class="bulleted-list"><li style="list-style-type:disc">Use the <strong>class selector</strong> for styling multiple elements the same way. This is your most-used tool! Think of it like a uniform for a team.</li></ul><h3 id="26e57710-0ed0-80f3-acfc-f13319377c2e" class=""><strong>Time to Practice: Your First Missions!</strong></h3><p id="26e57710-0ed0-8058-92ac-cf50bc74d129" class="">Before you start, we need a way to add our CSS to our HTML. Let&#x27;s use the <strong>Internal CSS</strong> method for now. This means we&#x27;ll put all our CSS code inside <code>&lt;style&gt;</code> tags right in the <code>&lt;head&gt;</code> of our <code>index.html</code> file.</p><p id="26e57710-0ed0-8048-83ce-f4d896f77619" class=""><strong>Update your </strong><code><strong>index.html</strong></code><strong> file to this:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-808b-8141-c34570705e57" class="code code-wrap"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Detectives&lt;/title&gt;
+    &lt;style&gt;
+        /* YOUR CSS CODE GOES HERE */
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1 id=&quot;main-title&quot;&gt;My Awesome Website&lt;/h1&gt;
+    &lt;p class=&quot;intro&quot;&gt;This is the introduction to my site.&lt;/p&gt;
+    &lt;h2&gt;Chapter 1&lt;/h2&gt;
+    &lt;p&gt;Here is the first paragraph of content.&lt;/p&gt;
+    &lt;p class=&quot;intro&quot;&gt;I want this to look like the first intro paragraph.&lt;/p&gt;
+    &lt;h2 class=&quot;chapter-title&quot;&gt;Chapter 2&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><ul id="26e57710-0ed0-806e-9cab-e7c6dbbd1174" class="bulleted-list"><li style="list-style-type:disc"><strong>Exercise #1: The General Vibe</strong><ol type="1" id="26e57710-0ed0-8069-b807-d753bdec7f59" class="numbered-list" start="1"><li>Select all <code>&lt;h2&gt;</code> elements.</li></ol><ol type="1" id="26e57710-0ed0-809e-9f76-e5f096765ecd" class="numbered-list" start="2"><li>Change their <code>color</code> to <code>purple</code>.</li></ol></li></ul><ul id="26e57710-0ed0-80c3-a7c3-cae92fb9ef0b" class="bulleted-list"><li style="list-style-type:disc"><strong>Exercise #2: The Unique Headline</strong><ol type="1" id="26e57710-0ed0-800b-ad24-e7884602fe95" class="numbered-list" start="1"><li>Select the <code>&lt;h1&gt;</code> element using its <code>id</code>.</li></ol><ol type="1" id="26e57710-0ed0-8081-8326-e3be437e3cb9" class="numbered-list" start="2"><li>Give it a <code>text-align</code> property with a value of <code>center</code>.</li></ol><ol type="1" id="26e57710-0ed0-80d5-b315-f37fd2e7065a" class="numbered-list" start="3"><li>Give it a <code>font-family</code> property with a value of <code>monospace</code>.</li></ol></li></ul><ul id="26e57710-0ed0-8092-9f12-c0ddd842db3b" class="bulleted-list"><li style="list-style-type:disc"><strong>Exercise #3: The Special Paragraphs</strong><ol type="1" id="26e57710-0ed0-8025-8e0d-ecbd86074aa0" class="numbered-list" start="1"><li>Select all paragraphs with the class <code>intro</code>.</li></ol><ol type="1" id="26e57710-0ed0-8068-8c58-d1b3bcbe0ccb" class="numbered-list" start="2"><li>Make their text <code>italic</code> by using the <code>font-style</code> property.</li></ol><ol type="1" id="26e57710-0ed0-8031-91c9-f39b625da57c" class="numbered-list" start="3"><li>Give them a light gray background color (<code>lightgray</code>).</li></ol></li></ul><p id="26e57710-0ed0-8067-956a-f246a2c2a32b" class=""><strong>Solution:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-8014-8d3a-d029bd20962d" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">/* Solution for Exercise 1 */
+h2 {
+    color: purple;
+}
+
+/* Solution for Exercise 2 */
+#main-title {
+    text-align: center;
+    font-family: monospace;
+}
+
+/* Solution for Exercise 3 */
+.intro {
+    font-style: italic;
+    background-color: lightgray;
+}</code></pre><h3 id="26e57710-0ed0-80e1-a11d-cbd2b7c60a89" class=""><strong>Mission Debrief: What We&#x27;ve Learned</strong></h3><p id="26e57710-0ed0-8025-975a-c902577daced" class="">You&#x27;ve learned the fundamental rule of CSS: a <strong>selector</strong> targets an element, and the <strong>declaration block</strong> gives it style instructions. You&#x27;ve also mastered the three simple selectors: <strong>element</strong>, <strong>ID</strong>, and <strong>class</strong>, which are the building blocks for all your future styling missions!</p><h3 id="26e57710-0ed0-804a-a6e5-c51333816581" class=""><strong>Topic 3: Smarter Styling - Advanced Selectors</strong></h3><h3 id="26e57710-0ed0-80fa-8fba-f35bd4e5f446" class=""><strong>Level Up Your Detective Skills: Advanced Targeting 🕵️‍♀️</strong></h3><p id="26e57710-0ed0-806c-8f22-d318f3798676" class="">Now that you know the basics, let&#x27;s learn some advanced moves to select elements based on their relationships, states, or even their attributes!</p><ul id="26e57710-0ed0-80d2-8f0d-f09ba737c1ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Combinator Selectors (The &quot;Relationship&quot; Selectors):</strong> These selectors use a special symbol to select elements based on where they are in relation to other elements.<ul id="26e57710-0ed0-80a8-a0dc-ec93d8b38d93" class="bulleted-list"><li style="list-style-type:circle"><strong>Descendant Selector (space):</strong> Selects an element that is <em>inside</em> another element. <code>div p</code> selects all <code>&lt;p&gt;</code> tags that are anywhere inside a <code>&lt;div&gt;</code>.</li></ul><ul id="26e57710-0ed0-80ed-9c69-f8e618c8eda0" class="bulleted-list"><li style="list-style-type:circle"><strong>Child Selector (</strong><code><strong>&gt;</strong></code><strong>):</strong> Selects an element that is a <em>direct child</em> of another. <code>div &gt; p</code> only selects <code>&lt;p&gt;</code> tags whose direct parent is a <code>&lt;div&gt;</code>.</li></ul></li></ul><ul id="26e57710-0ed0-801d-9ed1-e339ac6dcfe4" class="bulleted-list"><li style="list-style-type:disc"><strong>Pseudo-class Selectors (The &quot;State&quot; Selectors):</strong> These select elements based on a special state they are in. They start with a colon <code>:</code>.<ul id="26e57710-0ed0-80d5-884c-f25fddf9ba8e" class="bulleted-list"><li style="list-style-type:circle"><code>:hover</code> selects an element when your mouse is hovering over it.</li></ul><ul id="26e57710-0ed0-8002-b0cf-dbc283e4de46" class="bulleted-list"><li style="list-style-type:circle"><code>:nth-child(n)</code> selects an element based on its order among its siblings.</li></ul></li></ul><ul id="26e57710-0ed0-80dc-89dd-cb5ae91cd684" class="bulleted-list"><li style="list-style-type:disc"><strong>Attribute Selectors (The &quot;Property&quot; Selectors):</strong> These select elements that have a certain HTML attribute or attribute value. They use square brackets <code>[]</code>.<ul id="26e57710-0ed0-80e0-9844-f0da0ab5defe" class="bulleted-list"><li style="list-style-type:circle"><code>a[target=&quot;_blank&quot;]</code> selects all link (<code>&lt;a&gt;</code>) tags that have the attribute <code>target</code> set to <code>&quot;_blank&quot;</code>.</li></ul></li></ul><h3 id="26e57710-0ed0-8089-9aa8-eab5130153b0" class=""><strong>Case Study Investigation: Advanced Techniques</strong></h3><p id="26e57710-0ed0-8012-b446-fa847c031e57" class="">Create a new file named <code>advanced.html</code>.</p><p id="26e57710-0ed0-809e-8d7c-ccfa3ae3a9ba" class=""><code><strong>advanced.html</strong></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-80ff-956c-c5d184a11b34" class="code code-wrap"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Advanced CSS&lt;/title&gt;
+    &lt;style&gt;
+        /* Our CSS will go here */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;p&gt;I am a paragraph inside the container.&lt;/p&gt;
+        &lt;a href=&quot;#&quot;&gt;Link 1&lt;/a&gt;
+        &lt;section&gt;
+            &lt;p&gt;I am a paragraph deep inside the container.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+    &lt;p&gt;I am a paragraph outside the container.&lt;/p&gt;
+    &lt;a href=&quot;[https://www.google.com](https://www.google.com)&quot; target=&quot;_blank&quot;&gt;Go to Google (new tab)&lt;/a&gt;
+    &lt;button&gt;Hover Over Me!&lt;/button&gt;
+    &lt;input type=&quot;text&quot; disabled&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><ul id="26e57710-0ed0-8000-92e1-c2d1fcac0646" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study #1: Combinator Selector</strong> To select <em>only</em> the paragraph that is a direct child of the <code>.container</code> div:<strong>CSS Code:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-807b-a74a-c2b73d0d420d" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">.container &gt; p {
+  border: 2px dashed green;
+}</code></pre><p id="26e57710-0ed0-80bc-9627-e89d7475fadb" class=""><strong>Result:</strong> Only the first paragraph gets a green dashed border.</p></li></ul><ul id="26e57710-0ed0-800b-a5f7-c597224886e1" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study #2: Pseudo-class Selector</strong> To make the button change color when you hover over it: <strong>CSS Code:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-801e-a290-e895b6da0ce9" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">button:hover {
+  background-color: crimson;
+  color: white;
+}</code></pre><p id="26e57710-0ed0-80c0-a521-fb8d86c5f2d4" class=""><strong>Result:</strong> The button turns red with white text when you mouse over it.</p></li></ul><ul id="26e57710-0ed0-803a-9f82-d75d79e5e67b" class="bulleted-list"><li style="list-style-type:disc"><strong>Case Study #3: Attribute Selector</strong> To add a special style to links that open in a new tab: <strong>CSS Code:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-8012-99df-c100ebfb3ae2" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">a[target=&quot;_blank&quot;] {
+  font-weight: bold;
+  text-decoration: none;
+}</code></pre><p id="26e57710-0ed0-803d-a932-f84ea7a91d25" class=""><strong>Result:</strong> The &quot;Go to Google&quot; link becomes bold and loses its underline.</p></li></ul><h3 id="26e57710-0ed0-80bf-a0ba-fa63f111c8e5" class=""><strong>Time to Practice: Advanced Missions!</strong></h3><p id="26e57710-0ed0-8072-915c-fa35f839e7d1" class="">Use the <code>advanced.html</code> file and add your CSS to the <code>&lt;style&gt;</code> block.</p><ul id="26e57710-0ed0-804f-ad55-f6bfd818da7d" class="bulleted-list"><li style="list-style-type:disc"><strong>Exercise #1: Deep Selection</strong><ol type="1" id="26e57710-0ed0-8020-b2a5-fabaabdb036c" class="numbered-list" start="1"><li>Select <em>all</em> <code>p</code> elements that are descendants (anywhere inside) of the div with the class <code>container</code>.</li></ol><ol type="1" id="26e57710-0ed0-807a-814e-d62999f48ce4" class="numbered-list" start="2"><li>Change their <code>font-size</code> to <code>18px</code>.</li></ol></li></ul><ul id="26e57710-0ed0-8074-9590-d9b38a819971" class="bulleted-list"><li style="list-style-type:disc"><strong>Exercise #2: Link Styling</strong><ol type="1" id="26e57710-0ed0-808a-897d-d872377687f8" class="numbered-list" start="1"><li>Select any <code>a</code> (link) element when you hover over it.</li></ol><ol type="1" id="26e57710-0ed0-808b-9131-f78be67ee47c" class="numbered-list" start="2"><li>Change its <code>color</code> to <code>orange</code>.</li></ol></li></ul><ul id="26e57710-0ed0-802c-9cd9-ed1e5500e1c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Exercise #3: Input Power</strong><ol type="1" id="26e57710-0ed0-8011-bd2b-f3f105bcedcf" class="numbered-list" start="1"><li>Select any <code>input</code> element that has the <code>disabled</code> attribute.</li></ol><ol type="1" id="26e57710-0ed0-808f-8028-d3237687582c" class="numbered-list" start="2"><li>Give it a <code>background-color</code> of <code>#eeeeee</code>.</li></ol></li></ul><p id="26e57710-0ed0-8054-8f27-dfcf3ecb15a5" class=""><strong>Solution:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-8035-8fbb-e5d37f86cff4" class="code code-wrap"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">/* Solution for Exercise 1 */
+.container p {
+    font-size: 18px;
+}
+
+/* Solution for Exercise 2 */
+a:hover {
+    color: orange;
+}
+
+/* Solution for Exercise 3 */
+input[disabled] {
+    background-color: #eeeeee;
+}</code></pre><h3 id="26e57710-0ed0-8085-ad83-d76cf0e3dd22" class=""><strong>Mission Debrief: You&#x27;re a CSS Pro!</strong></h3><p id="26e57710-0ed0-8076-b1aa-e02a03b431c6" class="">You&#x27;ve now learned how to target elements with incredible precision. You can select them based on their family tree (<strong>Combinators</strong>), their current mood or state (<strong>Pseudo-classes</strong>), and even their special HTML properties (<strong>Attribute Selectors</strong>).</p><h3 id="26e57710-0ed0-80cb-a773-d1bd726d8653" class=""><strong>Topic 4: Organizing Your Style - External CSS</strong></h3><h3 id="26e57710-0ed0-807f-a7c0-c871c4359311" class=""><strong>Stay Organized, Stay Awesome: Using an External Stylesheet</strong></h3><p id="26e57710-0ed0-80d3-ae26-d737302444f3" class="">So far, we&#x27;ve been writing our CSS code directly inside our HTML file. This is called <strong>Internal CSS</strong>. It&#x27;s fine for small projects, but what if you have 10 pages that all need to look the same? Copying and pasting the <code>&lt;style&gt;</code> block everywhere would be a nightmare!</p><p id="26e57710-0ed0-8026-9e84-d604cbc3cb8d" class="">The professional way is to use an <strong>External CSS</strong> file.</p><ol type="1" id="26e57710-0ed0-809d-b6dd-d2aafa08c0fb" class="numbered-list" start="1"><li>You create a new file and save it with a <code>.css</code> extension (e.g., <code>style.css</code>).</li></ol><ol type="1" id="26e57710-0ed0-80dd-8743-c8ac4fd56351" class="numbered-list" start="2"><li>You write <em>all</em> your CSS code in this file. No <code>&lt;style&gt;</code> tags are needed!</li></ol><ol type="1" id="26e57710-0ed0-804c-9f2e-ccbfebc0f54c" class="numbered-list" start="3"><li>You link this CSS file to your HTML file using a <code>&lt;link&gt;</code> tag in the <code>&lt;head&gt;</code>.</li></ol><p id="26e57710-0ed0-80ba-a203-e4b84cd163c7" class=""><strong>Benefits:</strong></p><ul id="26e57710-0ed0-80ab-9055-e0464576c3d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Clean HTML:</strong> Your HTML file is just for content.</li></ul><ul id="26e57710-0ed0-80d2-8ca7-c8da00fdb4ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Easy to Reuse:</strong> One CSS file can style your entire website.</li></ul><ul id="26e57710-0ed0-8048-8838-d601da61af0a" class="bulleted-list"><li style="list-style-type:disc"><strong>Faster Loading:</strong> Your browser can cache (save) the CSS file, making your site load faster on future visits.</li></ul><h3 id="26e57710-0ed0-809c-94b4-fa82ffe20625" class=""><strong>Let&#x27;s Do It: Convert to External CSS</strong></h3><ol type="1" id="26e57710-0ed0-8029-b644-e67c14aa84f5" class="numbered-list" start="1"><li>Create a new file in the same folder as your <code>index.html</code> and name it <code><strong>style.css</strong></code>.</li></ol><ol type="1" id="26e57710-0ed0-808c-be0a-dada10182e57" class="numbered-list" start="2"><li><strong>Cut</strong> all the CSS code from inside the <code>&lt;style&gt;</code> tags in <code>index.html</code>.</li></ol><ol type="1" id="26e57710-0ed0-80f5-829f-e779487a8a4e" class="numbered-list" start="3"><li><strong>Paste</strong> that code into <code>style.css</code>.</li></ol><ol type="1" id="26e57710-0ed0-8046-a243-ff4daf0ed161" class="numbered-list" start="4"><li><strong>Delete</strong> the now-empty <code>&lt;style&gt;</code> block from <code>index.html</code>.</li></ol><ol type="1" id="26e57710-0ed0-80b2-a86e-fb1b63cd5f80" class="numbered-list" start="5"><li>In the <code>&lt;head&gt;</code> of <code>index.html</code>, add this single line:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-80c9-9fa0-d1c7298db1b5" class="code code-wrap"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></pre></li></ol><p id="26e57710-0ed0-804a-a74e-e65487394bcd" class="">Your website should look exactly the same, but now your code is organized like a pro!</p><h3 id="26e57710-0ed0-804d-9e36-d54291eb878d" class=""><strong>Final Challenge: Explore Independently!</strong></h3><p id="26e57710-0ed0-80f1-992e-ef838cb0c71e" class="">The world of CSS is huge and exciting. Your next mission is to explore on your own! Go to <strong><a href="https://www.w3schools.com/css/">w3schools.com/css</a></strong> and try to find the answers to these questions:</p><ol type="1" id="26e57710-0ed0-8070-a573-f836b3a8d236" class="numbered-list" start="1"><li>How do you change the <code>background-image</code> of the <code>&lt;body&gt;</code>?</li></ol><ol type="1" id="26e57710-0ed0-8004-8be7-fb611d4cee1e" class="numbered-list" start="2"><li>What does the <code>text-transform</code> property do?</li></ol><ol type="1" id="26e57710-0ed0-8052-9197-cb63a7fa2032" class="numbered-list" start="3"><li>Find a pseudo-element like <code>::first-letter</code> and see what it does.</li></ol><h3 id="26e57710-0ed0-80ee-9e6d-e50e06072c6c" class=""><strong>End of Session: Save Your Progress!</strong></h3><p id="26e57710-0ed0-801f-8c75-db021a9dac22" class="">Great work today, agent! You&#x27;ve learned a ton about styling web pages. Now it&#x27;s time to save your work to your portfolio on GitHub.</p><p id="26e57710-0ed0-802b-8d98-d809bbeb26e8" class="">Open your terminal or command prompt in your project folder and run these commands:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26e57710-0ed0-8091-bcb5-cc0799804324" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">git add .
+git commit -m &quot;Complete CSS Syntax and Selectors lesson&quot;
+git push</code></pre><p id="26e57710-0ed0-800f-96fc-d92c8aa910af" class="">This saves your <code>index.html</code>, <code>advanced.html</code>, and <code>style.css</code> files to your GitHub repository so you can show off your awesome new skills!</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

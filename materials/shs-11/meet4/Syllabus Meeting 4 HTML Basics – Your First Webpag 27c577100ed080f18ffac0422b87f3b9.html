@@ -1,0 +1,751 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Syllabus Meeting 4: HTML Basics – Your First Webpage</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.highlight-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.highlight-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(128, 125, 120, 1);
+	fill: rgba(128, 125, 120, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(204, 121, 47, 1);
+	fill: rgba(204, 121, 47, 1);
+}
+.block-color-yellow {
+	color: rgba(195, 148, 67, 1);
+	fill: rgba(195, 148, 67, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(179, 84, 136, 1);
+	fill: rgba(179, 84, 136, 1);
+}
+.block-color-red {
+	color: rgba(201, 85, 73, 1);
+	fill: rgba(201, 85, 73, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="27c57710-0ed0-80f1-8ffa-c0422b87f3b9" class="page sans"><header><h1 class="page-title">Syllabus Meeting 4: <strong>HTML Basics – Your First Webpage</strong></h1><p class="page-description"></p></header><div class="page-body"><h3 id="27c57710-0ed0-8067-a514-cd503b60bfda" class=""><strong>Meeting 4: HTML Basics – Your First Webpage</strong></h3><p id="27c57710-0ed0-8074-9db4-f326333974f1" class=""><strong>Student Grade:</strong> 11</p><h3 id="27c57710-0ed0-8004-b1bc-db8c56dfefb6" class=""><strong>Topic 0: Getting Your Tools Ready</strong></h3><h3 id="27c57710-0ed0-8017-bc16-f1fda6b6d607" class=""><strong>Mission Briefing: Install Your Code Editor</strong></h3><p id="27c57710-0ed0-800e-9d07-edefc9b49c23" class="">Before we can build a website, we need a special tool called a <strong>code editor</strong>. Think of it like a super-smart notebook for writing code. We&#x27;re going to use a very popular and free one called <strong>Visual Studio Code (VS Code)</strong>.</p><h3 id="27c57710-0ed0-80bc-8055-c34284d1df4d" class=""><strong>How to Install VS Code</strong></h3><ol type="1" id="27c57710-0ed0-80d2-820a-e7487434b9be" class="numbered-list" start="1"><li>Open your web browser and go to the official VS Code download page: <strong><a href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a></strong></li></ol><ol type="1" id="27c57710-0ed0-8057-ae5d-c1822255ed5c" class="numbered-list" start="2"><li>Follow the instructions for your computer type.</li></ol><p id="27c57710-0ed0-805c-bd36-e77debcb1a35" class=""><strong>For Windows 💻:</strong></p><ul id="27c57710-0ed0-808c-b7a9-e099154f921d" class="bulleted-list"><li style="list-style-type:disc">Click the big blue &quot;Windows&quot; button. This will download an installer file (it will end in <code>.exe</code>).</li></ul><ul id="27c57710-0ed0-80d3-957d-c4a6d3fff9f0" class="bulleted-list"><li style="list-style-type:disc">Find the downloaded file in your &#x27;Downloads&#x27; folder and double-click it.</li></ul><ul id="27c57710-0ed0-8007-9f74-e6838b2436f5" class="bulleted-list"><li style="list-style-type:disc">The installation wizard will open. Just click &quot;Next&quot; on all the steps to accept the default settings. It&#x27;s safe and easy!</li></ul><ul id="27c57710-0ed0-80ae-b6c3-ce273761badc" class="bulleted-list"><li style="list-style-type:disc">Once it&#x27;s finished, VS Code will be installed on your computer.</li></ul><p id="27c57710-0ed0-8000-ad86-eaf6d78d1237" class=""><strong>For Mac 🍎:</strong></p><ul id="27c57710-0ed0-8054-a83a-ffb57ea8277f" class="bulleted-list"><li style="list-style-type:disc">Click the big blue &quot;Mac&quot; button. This will download a <code>.zip</code> file.</li></ul><ul id="27c57710-0ed0-80ea-9abb-f58a9216613b" class="bulleted-list"><li style="list-style-type:disc">Find the downloaded file in your &#x27;Downloads&#x27; folder and double-click it to unzip it.</li></ul><ul id="27c57710-0ed0-807f-81c7-e40f60fb59f0" class="bulleted-list"><li style="list-style-type:disc">You will now see a new application called &quot;Visual Studio Code&quot;.</li></ul><ul id="27c57710-0ed0-8071-9a00-f131f5db810d" class="bulleted-list"><li style="list-style-type:disc">Drag this application into your &quot;Applications&quot; folder. That&#x27;s it!</li></ul><h3 id="27c57710-0ed0-80e2-b750-c987c7fc7dcd" class=""><strong>How to Open and Create Your First HTML File</strong></h3><ol type="1" id="27c57710-0ed0-8021-b0de-e4edf5980107" class="numbered-list" start="1"><li><strong>Open VS Code:</strong> Find the Visual Studio Code icon on your computer and open it. You&#x27;ll see a welcome screen.</li></ol><ol type="1" id="27c57710-0ed0-80e4-af98-faebef8f59d8" class="numbered-list" start="2"><li><strong>Create a New File:</strong><ul id="27c57710-0ed0-80d5-9bdb-e1e8f2afaadb" class="bulleted-list"><li style="list-style-type:disc">Go to the top menu and click <code>File</code> -&gt; <code>New File</code>.</li></ul><ul id="27c57710-0ed0-80ba-b15c-c1b4867a8da4" class="bulleted-list"><li style="list-style-type:disc">An empty, untitled tab will open.</li></ul></li></ol><ol type="1" id="27c57710-0ed0-8021-9f42-f2562d462c8a" class="numbered-list" start="3"><li><strong>Save the File as HTML:</strong> This is a very important step!<ul id="27c57710-0ed0-805f-915e-cb12827591d1" class="bulleted-list"><li style="list-style-type:disc">Go to the top menu and click <code>File</code> -&gt; <code>Save</code>.</li></ul><ul id="27c57710-0ed0-801d-9c58-ef122984b58a" class="bulleted-list"><li style="list-style-type:disc">A save window will pop up.</li></ul><ul id="27c57710-0ed0-80de-834e-cae923804c75" class="bulleted-list"><li style="list-style-type:disc">For the <strong>File name</strong>, type <code><strong>index.html</strong></code>. Using <code>.html</code> at the end is how the computer knows this is a webpage file.</li></ul><ul id="27c57710-0ed0-80ed-9026-d186952cd17a" class="bulleted-list"><li style="list-style-type:disc">Choose a place to save it, like your Desktop or a new folder for your projects.</li></ul><ul id="27c57710-0ed0-8036-9f0e-dfd133fae0dd" class="bulleted-list"><li style="list-style-type:disc">Click &quot;Save&quot;.</li></ul></li></ol><p id="27c57710-0ed0-809a-b8c4-e2faf3d07338" class="">You&#x27;re all set! You now have an empty HTML file open in your code editor, ready for you to start building.</p><h3 id="27c57710-0ed0-8029-820b-fc426a781e23" class=""><strong>Topic 1: What in the World is a Website Made Of?</strong></h3><h3 id="27c57710-0ed0-80a8-81d7-ceb7037205d4" class=""><strong>Mission Briefing: Let&#x27;s Talk Websites!</strong></h3><p id="27c57710-0ed0-8032-96a8-fffc1c15367b" class="">Before we start, let&#x27;s think about the websites we use every day.</p><ul id="27c57710-0ed0-808f-8dfb-e9fb1582da78" class="bulleted-list"><li style="list-style-type:disc"><strong>Opening Discussion:</strong> In the chat, share one website you visit a lot. What do you like about it? Is it the text, the images, the links?</li></ul><p id="27c57710-0ed0-8059-87c3-f419ae35ac93" class="">Everything you see on those websites—the headings, the paragraphs, the pictures, and the links—is organized by a special language. Today, you&#x27;re going to learn that language. It&#x27;s called <strong>HTML</strong>.</p><h3 id="27c57710-0ed0-80ce-8a75-f70f1e9a77de" class=""><strong>Decoding the Secret Language: What is HTML?</strong></h3><ul id="27c57710-0ed0-803f-9414-f606295e7ffa" class="bulleted-list"><li style="list-style-type:disc"><strong>HTML</strong> stands for <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage.</li></ul><ul id="27c57710-0ed0-805b-a6da-ea15d6361f2b" class="bulleted-list"><li style="list-style-type:disc">It&#x27;s the standard language used to create all web pages.</li></ul><ul id="27c57710-0ed0-80fd-a0dc-f0dda45fe1a9" class="bulleted-list"><li style="list-style-type:disc">Think of it like the <strong>skeleton</strong> of a webpage. It gives the page its structure.</li></ul><ul id="27c57710-0ed0-80bb-8ea6-da0111ecde75" class="bulleted-list"><li style="list-style-type:disc">HTML uses &quot;elements&quot; or &quot;tags&quot; to label pieces of content. It tells the browser things like, &quot;this is a heading,&quot; &quot;this is a paragraph,&quot; or &quot;this is a link.&quot;</li></ul><p id="27c57710-0ed0-80dd-b274-ec197cf5ae3e" class="">Let&#x27;s look at some secret code. What do you think this does?</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8096-8d87-c97554a36898" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;p&gt;Welcome to my first website.&lt;/p&gt;
+
+</code></pre><p id="27c57710-0ed0-804e-823e-f701e25c1726" class="">You probably guessed it! It creates a big heading and a paragraph. You&#x27;re already starting to understand HTML!</p><h3 id="27c57710-0ed0-80cc-9437-f1804c6665f4" class=""><strong>Topic 2: The Skeleton of a Webpage</strong></h3><h3 id="27c57710-0ed0-8046-8e10-f50aac26cbf5" class=""><strong>Every Page Has the Same Bones 🦴</strong></h3><p id="27c57710-0ed0-805a-8857-c9620f75a096" class="">Every single HTML page, no matter how complicated, is built on the same basic skeleton.</p><p id="27c57710-0ed0-808f-920a-f86a5c50976c" class=""><strong>A Simple HTML Document Example:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80ea-8d76-c44135afed6d" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Heading&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre><figure id="27c57710-0ed0-80a9-9a60-e2d1261f5606" class="image"><a href="Syllabus%20Meeting%204%20HTML%20Basics%20%E2%80%93%20Your%20First%20Webpag%2027c577100ed080f18ffac0422b87f3b9/image.png"><img style="width:2282px" src="Syllabus%20Meeting%204%20HTML%20Basics%20%E2%80%93%20Your%20First%20Webpag%2027c577100ed080f18ffac0422b87f3b9/image.png"/></a></figure><h3 id="27c57710-0ed0-8033-849d-d907363a446b" class=""><strong>Example Explained:</strong></h3><ul id="27c57710-0ed0-80c7-ac35-cd028fa3c404" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;!DOCTYPE html&gt;</code>: This is the very first thing on the page. It tells the web browser, &quot;Hey! This is an HTML5 page.&quot;</li></ul><ul id="27c57710-0ed0-805a-9cb5-cfd1a30e51c9" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;html&gt;</code>: This is the root or the main container for the entire page. Everything else goes inside it.</li></ul><ul id="27c57710-0ed0-8095-a1f9-ff74d08c51a7" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;head&gt;</code>: This section contains hidden information about the page, like the title. You won&#x27;t see this content on the main part of the page.</li></ul><ul id="27c57710-0ed0-8006-9e76-c50efbe0fe5e" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;title&gt;</code>: This is the title that shows up in the browser tab at the very top of your screen.</li></ul><ul id="27c57710-0ed0-8017-a94f-d90f0d22b753" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;body&gt;</code>: This is the most important part! It&#x27;s the container for <strong>all the visible content</strong>—the headings, paragraphs, images, and links that you see on the website.</li></ul><h3 id="27c57710-0ed0-80c2-ac74-fd72366ac76a" class=""><strong>Topic 3: Understanding HTML Elements &amp; Attributes</strong></h3><h3 id="27c57710-0ed0-80a4-88d2-f1c894d6fa1f" class=""><strong>What is an HTML Element?</strong></h3><p id="27c57710-0ed0-808b-9cd5-da5b47f788d5" class="">An HTML element is usually made up of a <strong>start tag</strong>, some <strong>content</strong>, and an <strong>end tag</strong>.</p><p id="27c57710-0ed0-803d-8d4a-e95db93c6a7d" class=""><code><strong>&lt;tagname&gt;</strong></code> Content goes here... <code><strong>&lt;/tagname&gt;</strong></code></p><p id="27c57710-0ed0-800d-aade-dd92dee099c3" class="">The <strong>element</strong> is everything from the start tag to the end tag. Let&#x27;s break it down:</p><table id="27c57710-0ed0-8036-87af-d528bb8084c7" class="simple-table"><thead class="simple-table-header"><tr id="27c57710-0ed0-800f-bb79-fff3f67af247"><th id="R;?y" class="simple-table-header-color simple-table-header">Start tag</th><th id="Z{S^" class="simple-table-header-color simple-table-header">Element content</th><th id="KExM" class="simple-table-header-color simple-table-header">End tag</th></tr></thead><tbody><tr id="27c57710-0ed0-8010-8368-edb07ebc7b86"><td id="R;?y" class=""><code>&lt;h1&gt;</code></td><td id="Z{S^" class="">My First Heading</td><td id="KExM" class=""><code>&lt;/h1&gt;</code></td></tr><tr id="27c57710-0ed0-80db-9f41-e36ab8ba6e84"><td id="R;?y" class=""><code>&lt;p&gt;</code></td><td id="Z{S^" class="">My first paragraph.</td><td id="KExM" class=""><code>&lt;/p&gt;</code></td></tr><tr id="27c57710-0ed0-80e3-b41d-e7f259831be5"><td id="R;?y" class=""><code>&lt;br&gt;</code></td><td id="Z{S^" class=""><em>none</em></td><td id="KExM" class=""><em>none</em></td></tr></tbody></table><blockquote id="27c57710-0ed0-80c9-95c2-f6cc1b3d28ad" class="">Note: Some HTML elements are &quot;empty&quot; because they don&#x27;t have any content or an end tag. A common one is &lt;br&gt;, which creates a line break.</blockquote><h3 id="27c57710-0ed0-805e-bef8-c2531d0d1fcd" class=""><strong>Visualizing the Structure</strong></h3><p id="27c57710-0ed0-8073-bb81-ed44261d7680" class="">Here’s how all those parts fit together to form a page. The <code>&lt;body&gt;</code> contains everything you see, and the <code>&lt;head&gt;</code> contains the hidden info like the title.</p><h3 id="27c57710-0ed0-80d1-b41f-e8c328a5d2e0" class=""><strong>What are HTML Attributes?</strong></h3><p id="27c57710-0ed0-80cf-b7ea-f11f2ab759d9" class="">Attributes are extra pieces of information you can add to an HTML element. They are like superpowers for your tags!</p><ul id="27c57710-0ed0-80b0-9730-f0e4b125f2c4" class="bulleted-list"><li style="list-style-type:disc">All HTML elements can have <strong>attributes</strong>.</li></ul><ul id="27c57710-0ed0-8088-ad01-da164ab872cc" class="bulleted-list"><li style="list-style-type:disc">Attributes provide <strong>additional information</strong> about elements.</li></ul><ul id="27c57710-0ed0-8005-afb8-f567265258f7" class="bulleted-list"><li style="list-style-type:disc">Attributes are always specified in the <strong>start tag</strong>.</li></ul><ul id="27c57710-0ed0-8034-be3b-f8eaf625e496" class="bulleted-list"><li style="list-style-type:disc">Attributes usually come in name/value pairs like: <code><strong>name=&quot;value&quot;</strong></code>.</li></ul><p id="27c57710-0ed0-8007-ae42-dad38cfa0c37" class="">Let&#x27;s explore some of the most important attributes.</p><ul id="27c57710-0ed0-80bc-b7e2-ca2506a4a7f4" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>href</strong></code><strong> Attribute for Links</strong> The <code>&lt;a&gt;</code> tag defines a hyperlink. The <code>href</code> attribute specifies the URL of the page the link goes to.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-800b-88a3-dc7eb44d4f2f" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;a href=&quot;[https://www.w3schools.com](https://www.w3schools.com)&quot;&gt;Visit W3Schools&lt;/a&gt;
+
+</code></pre></li></ul><ul id="27c57710-0ed0-803f-b3d8-d7f092819c2f" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>lang</strong></code><strong> Attribute for the Page</strong> You should always include the <code>lang</code> attribute inside the <code>&lt;html&gt;</code> tag to declare the language of the Web page. This helps search engines and browsers.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8045-8a4e-c54d9029682c" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+&lt;body&gt;
+...
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre></li></ul><ul id="27c57710-0ed0-8004-b51f-fc1041183585" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>title</strong></code><strong> Attribute for Tooltips</strong> The <code>title</code> attribute defines some extra information about an element. The value of the title attribute will be displayed as a tooltip when you mouse over the element.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80cd-8f92-f24f18878b62" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;p title=&quot;I&#x27;m a tooltip&quot;&gt;This is a paragraph.&lt;/p&gt;
+
+</code></pre></li></ul><h3 id="27c57710-0ed0-8020-8584-f901ea00919f" class=""><strong>Important Rules for Attributes</strong></h3><ul id="27c57710-0ed0-80b2-85d5-e9bdd18b09b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Always Use Lowercase Attributes:</strong> While <code>TITLE</code> would work, the official recommendation is to always use lowercase, like <code>title</code>.</li></ul><ul id="27c57710-0ed0-8097-87d4-ed68971e1aaa" class="bulleted-list"><li style="list-style-type:disc"><strong>Always Quote Attribute Values:</strong> You should always put quotes around the value, like <code>href=&quot;some-url.com&quot;</code>, not <code>href=some-url.com</code>. This prevents errors, especially if the value has spaces. You can use single <code>&#x27;</code> or double <code>&quot;</code> quotes.</li></ul><h3 id="27c57710-0ed0-802d-b5af-c46c83fe7f4c" class=""><strong>Topic 4: Core Content Tags: Headings &amp; Paragraphs</strong></h3><h3 id="27c57710-0ed0-80ec-a880-ddae4b9858c7" class=""><strong>HTML Headings</strong></h3><p id="27c57710-0ed0-80fe-9a5a-d26b064da6ae" class="">HTML headings are titles or subtitles that you want to display on a webpage. They are defined with the <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> tags. <code>&lt;h1&gt;</code> is the most important (and biggest), and <code>&lt;h6&gt;</code> is the least important (and smallest).</p><ul id="27c57710-0ed0-8054-a812-df7000782a7c" class="bulleted-list"><li style="list-style-type:disc"><strong>Headings are Important!</strong> Search engines use headings to understand the structure of your page. Use them to organize your content, not just to make text big.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80a8-9078-c3f55eb6267b" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+
+</code></pre><h3 id="27c57710-0ed0-80f4-8b90-c5e9dcd9ef5f" class=""><strong>HTML Paragraphs</strong></h3><p id="27c57710-0ed0-80b3-a2ba-d3104d5c6755" class="">The <code>&lt;p&gt;</code> element defines a paragraph. A paragraph always starts on a new line, and browsers automatically add some white space (a margin) before and after it.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-808d-a070-fb4e514c6271" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;
+
+</code></pre><h3 id="27c57710-0ed0-80d1-a196-f2af775ba8fa" class=""><strong>Controlling Space and Lines</strong></h3><ul id="27c57710-0ed0-80de-b1a6-c66af5d3caba" class="bulleted-list"><li style="list-style-type:disc"><strong>The Browser Ignores Extra Space:</strong> If you put lots of spaces or new lines in your HTML code inside a <code>&lt;p&gt;</code> tag, the browser will ignore them and just show it as a single space.</li></ul><ul id="27c57710-0ed0-8021-b9df-ea21671d1207" class="bulleted-list"><li style="list-style-type:disc"><strong>Horizontal Rules (</strong><code><strong>&lt;hr&gt;</strong></code><strong>):</strong> The <code>&lt;hr&gt;</code> tag creates a horizontal line, often used to separate content. It&#x27;s an empty tag.</li></ul><ul id="27c57710-0ed0-8092-beb9-c755520a5268" class="bulleted-list"><li style="list-style-type:disc"><strong>Line Breaks (</strong><code><strong>&lt;br&gt;</strong></code><strong>):</strong> The <code>&lt;br&gt;</code> tag creates a line break. Use it if you want a new line without starting a whole new paragraph. It&#x27;s also an empty tag.</li></ul><ul id="27c57710-0ed0-8075-ab04-f0567e9f2582" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>&lt;pre&gt;</strong></code><strong> Element:</strong> If you need to display text exactly as it&#x27;s written in your code, including all spaces and line breaks (like for a poem), use the <code>&lt;pre&gt;</code> tag.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8075-99e2-f75245bfe8db" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;p&gt;This is&lt;br&gt;a paragraph&lt;br&gt;with line breaks.&lt;/p&gt;
+&lt;hr&gt;
+&lt;pre&gt;
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+&lt;/pre&gt;
+
+</code></pre><h3 id="27c57710-0ed0-8001-83f4-e8e03fa0ecdf" class=""><strong>Topic 5: Formatting &amp; Styling Your Text</strong></h3><p id="27c57710-0ed0-8028-b12b-cda75cc19858" class="">You can use special tags to change the appearance and meaning of your text.</p><h3 id="27c57710-0ed0-80c6-a904-c043a00b0d4d" class=""><strong>Text Formatting Elements</strong></h3><ul id="27c57710-0ed0-8079-85f5-d0f1d7c58800" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;b&gt;</code> - <strong>Bold text:</strong> <code>&lt;b&gt;This text is bold&lt;/b&gt;</code></li></ul><ul id="27c57710-0ed0-800c-a2de-deb9f6953ac6" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;strong&gt;</code> - <strong>Important text:</strong> Typically looks bold, but also tells screen readers the text is important. <code>&lt;strong&gt;This is important!&lt;/strong&gt;</code></li></ul><ul id="27c57710-0ed0-8023-a850-ccfcbc6ba05a" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;i&gt;</code> - <em>Italic text:</em> <code>&lt;i&gt;This text is italic&lt;/i&gt;</code></li></ul><ul id="27c57710-0ed0-807f-95c3-e1698d610cd6" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;em&gt;</code> - <em>Emphasized text:</em> Typically looks italic, but tells screen readers to say it with emphasis. <code>&lt;em&gt;This text is emphasized&lt;/em&gt;</code></li></ul><ul id="27c57710-0ed0-80cc-b791-d01ab86cea94" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;mark&gt;</code> - Marked text: <code>&lt;mark&gt;Highlights&lt;/mark&gt;</code> the text.</li></ul><ul id="27c57710-0ed0-805e-91c7-c5abaa298255" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;del&gt;</code> - Deleted text: Puts a &lt;del&gt;line through&lt;/del&gt; the text.</li></ul><ul id="27c57710-0ed0-8008-9b4f-c81a5024d609" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;ins&gt;</code> - Inserted text: &lt;ins&gt;Underlines&lt;/ins&gt; the text.</li></ul><ul id="27c57710-0ed0-8091-b530-d4dfcee61f19" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;sub&gt;</code> - Subscript text: For chemical formulas like H&lt;sub&gt;2&lt;/sub&gt;O.</li></ul><ul id="27c57710-0ed0-8026-b581-db61bcc580b2" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;sup&gt;</code> - Superscript text: For footnotes like WWW&lt;sup&gt;[1]&lt;/sup&gt;.</li></ul><h3 id="27c57710-0ed0-803d-b689-f7f21bfdaec0" class=""><strong>The </strong><code><strong>style</strong></code><strong> Attribute</strong></h3><p id="27c57710-0ed0-80a4-88d5-cf9dee3e6b44" class="">The <code>style</code> attribute lets you add CSS (Cascading Style Sheets) directly to an element. This is a great way to quickly change its appearance.</p><ul id="27c57710-0ed0-80e6-ab8d-e0506be03d58" class="bulleted-list"><li style="list-style-type:disc"><strong>Background Color:</strong> <code>style=&quot;background-color:powderblue;&quot;</code></li></ul><ul id="27c57710-0ed0-80c1-9674-dfaaa811d663" class="bulleted-list"><li style="list-style-type:disc"><strong>Text Color:</strong> <code>style=&quot;color:red;&quot;</code></li></ul><ul id="27c57710-0ed0-805d-b79f-efd1d16e1b89" class="bulleted-list"><li style="list-style-type:disc"><strong>Font:</strong> <code>style=&quot;font-family:courier;&quot;</code></li></ul><ul id="27c57710-0ed0-800b-8878-db4b93f1ab7b" class="bulleted-list"><li style="list-style-type:disc"><strong>Text Size:</strong> <code>style=&quot;font-size:160%;&quot;</code></li></ul><ul id="27c57710-0ed0-80e9-a533-f0311c584d2e" class="bulleted-list"><li style="list-style-type:disc"><strong>Text Alignment:</strong> <code>style=&quot;text-align:center;&quot;</code></li></ul><ul id="27c57710-0ed0-803f-8272-d96d763404a7" class="bulleted-list"><li style="list-style-type:disc"><strong>Borders:</strong> <code>style=&quot;border:2px solid Tomato;&quot;</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8081-abad-ca6b1bf8bf66" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;h1 style=&quot;color:blue; text-align:center;&quot;&gt;This is a blue, centered heading.&lt;/h1&gt;
+&lt;p style=&quot;background-color:Tomato; color:white;&quot;&gt;This paragraph has a red background and white text.&lt;/p&gt;
+
+</code></pre><h3 id="27c57710-0ed0-80c7-a08a-f14adc20fc96" class=""><strong>Topic 6: Working with Images</strong></h3><p id="27c57710-0ed0-80b2-8e94-f5aa969cead7" class="">The <code>&lt;img&gt;</code> tag is used to embed an image in a web page. It&#x27;s an empty tag and has two required attributes: <code>src</code> and <code>alt</code>.</p><p id="27c57710-0ed0-802d-ad2b-fb7228691f70" class=""><strong>Syntax: </strong><code><strong>&lt;img src=&quot;url&quot; alt=&quot;alternatetext&quot;&gt;</strong></code></p><h3 id="27c57710-0ed0-806c-9919-ec6697bf8cd8" class=""><strong>Image Attributes Explained</strong></h3><ul id="27c57710-0ed0-80d7-953b-f5318db56647" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>src</strong></code><strong> Attribute (Source):</strong> This is the path or URL to the image.<ul id="27c57710-0ed0-8077-b657-ea32faf017d5" class="bulleted-list"><li style="list-style-type:circle"><strong>Relative URL:</strong> An image on your own website (e.g., <code>src=&quot;images/my_photo.jpg&quot;</code>). This is the best method.</li></ul><ul id="27c57710-0ed0-80a4-9651-d4679978d1e9" class="bulleted-list"><li style="list-style-type:circle"><strong>Absolute URL:</strong> An image on another website (e.g., <code>src=&quot;https://placehold.co/200x200&quot;</code>).</li></ul></li></ul><ul id="27c57710-0ed0-80b7-a65a-d82367652eb2" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>alt</strong></code><strong> Attribute (Alternate Text):</strong> This text describes the image. It is shown if the image cannot load and is read aloud by screen readers for visually impaired users. <strong>It is required!</strong></li></ul><ul id="27c57710-0ed0-809a-aa97-d135b6ae89a9" class="bulleted-list"><li style="list-style-type:disc"><strong>The </strong><code><strong>width</strong></code><strong> and </strong><code><strong>height</strong></code><strong> Attributes:</strong> You should always specify the size of your image in pixels. This helps the page load smoothly without flickering.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-800c-ac90-c86b61150da7" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; width=&quot;500&quot; height=&quot;600&quot;&gt;
+
+</code></pre></li></ul><h3 id="27c57710-0ed0-80ab-8068-d431eb00413f" class=""><strong>More Image Tricks</strong></h3><ul id="27c57710-0ed0-803e-9f0b-fad342fca702" class="bulleted-list"><li style="list-style-type:disc"><strong>Image as a Link:</strong> To make an image clickable, just wrap the <code>&lt;img&gt;</code> tag inside an <code>&lt;a&gt;</code> tag.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-80e1-9cb8-efbf53649653" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;a href=&quot;page2.html&quot;&gt;
+  &lt;img src=&quot;button.gif&quot; alt=&quot;Go to page 2&quot;&gt;
+&lt;/a&gt;
+
+</code></pre></li></ul><ul id="27c57710-0ed0-804d-83ce-c4798c5d5fe7" class="bulleted-list"><li style="list-style-type:disc"><strong>Animated Images:</strong> HTML supports animated GIFs. Just use the <code>.gif</code> file in your <code>src</code> attribute.</li></ul><h3 id="27c57710-0ed0-804c-a3ce-d29ae43b94e1" class=""><strong>Topic 7: Your First Mission: Build a Personal Profile Page!</strong></h3><h3 id="27c57710-0ed0-8087-a0b8-f0616cd532bb" class=""><strong>Let&#x27;s Build!</strong></h3><p id="27c57710-0ed0-80f2-8188-c4efaf48d4fc" class="">Now it&#x27;s time to use everything you&#x27;ve learned.</p><ol type="1" id="27c57710-0ed0-8023-9424-ef323c6321b9" class="numbered-list" start="1"><li>Open VS Code.</li></ol><ol type="1" id="27c57710-0ed0-80c2-91ee-ea24b03097ac" class="numbered-list" start="2"><li>Create a new file and save it as <code>index.html</code>.</li></ol><ol type="1" id="27c57710-0ed0-80e7-9e52-dd6090d44f45" class="numbered-list" start="3"><li>Type the basic HTML skeleton into your file. Remember to set the language with <code>&lt;html lang=&quot;en&quot;&gt;</code>.</li></ol><ol type="1" id="27c57710-0ed0-80cc-b21a-e8d3043e16d6" class="numbered-list" start="4"><li>Inside the <code>&lt;body&gt;</code> tags, create your personal profile. It must include:<ul id="27c57710-0ed0-8014-96f8-f7faad12b4df" class="bulleted-list"><li style="list-style-type:disc">Your name inside an <code>&lt;h1&gt;</code> tag. Add a <code>style</code> attribute to change its color.</li></ul><ul id="27c57710-0ed0-800e-aa6b-c330cfda014b" class="bulleted-list"><li style="list-style-type:disc">A short paragraph about your hobbies using a <code>&lt;p&gt;</code> tag. Use <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code> on a word you want to emphasize.</li></ul><ul id="27c57710-0ed0-80ef-91f2-fe98858b71cd" class="bulleted-list"><li style="list-style-type:disc">An image! Use a placeholder from <code>https://placehold.co</code>. Make sure to set the <code>src</code>, <code>alt</code>, <code>width</code>, and <code>height</code> attributes.</li></ul><ul id="27c57710-0ed0-807d-b847-e5d063e88639" class="bulleted-list"><li style="list-style-type:disc">A link to your favorite website using the <code>&lt;a&gt;</code> tag. Add a <code>title</code> attribute to the link to create a tooltip.</li></ul></li></ol><h3 id="27c57710-0ed0-80a8-9e34-ff2b5011b5b2" class=""><strong>Topic 8: Save and Share Your Work</strong></h3><h3 id="27c57710-0ed0-80b4-9d93-c671b28ecdaf" class=""><strong>GitHub Upload: Your Online Portfolio</strong></h3><p id="27c57710-0ed0-8060-8c8a-d4040a06c8f3" class="">You&#x27;ve built your first webpage! Now let&#x27;s save it online so you can see it from anywhere and share it with others.</p><p id="27c57710-0ed0-8088-b8e0-fcd1263636ad" class="">Open your terminal in VS Code and run these commands:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="27c57710-0ed0-8024-a1f1-ffc9dd335c8c" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">git add index.html
+git commit -m &quot;Create my first personal profile page with attributes and styles&quot;
+git push
+
+</code></pre><h3 id="27c57710-0ed0-8096-ac47-d4ead6b910e4" class=""><strong>Topic 9: Closing Reflection</strong></h3><h3 id="27c57710-0ed0-806d-b346-fda202c2eda1" class=""><strong>What Did You Learn?</strong></h3><p id="27c57710-0ed0-80e1-b7af-c2c40dbdc35c" class="">To finish today&#x27;s mission, go to your GitHub repository for this project.</p><ol type="1" id="27c57710-0ed0-804a-9c17-d19b1dbc32af" class="numbered-list" start="1"><li>Find the <code>README.md</code> file and click the pencil icon to edit it.</li></ol><ol type="1" id="27c57710-0ed0-80bb-b8b0-f4c54ccaa948" class="numbered-list" start="2"><li>At the bottom of the file, write one of the following:<ul id="27c57710-0ed0-8033-a01c-ce7092241046" class="bulleted-list"><li style="list-style-type:disc">One question you still have about HTML.</li></ul><ul id="27c57710-0ed0-807d-9921-c11be21aa6b5" class="bulleted-list"><li style="list-style-type:disc">One thing you learned today that you found interesting or useful.</li></ul></li></ol><ol type="1" id="27c57710-0ed0-80cf-b230-e1e78417c949" class="numbered-list" start="3"><li>Commit your changes to the <code>README.md</code> file.</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
